@@ -1,0 +1,272 @@
+= Get query
+:experimental:
+:tabs-sync-option:
+
+A Get query is used to retrieve concepts from a TypeDB database.
+//#todo Add a link to the Concept term definition
+
+This page assumes you've already followed instructions from the xref:manual::writing/overview.adoc[] section.
+Here, you'll see how to retrieve data from a database using Studio, Console, or one of the drivers.
+
+== How to send a Get query
+
+The easiest way to send a Get query is to use Studio or Console:
+
+[tabs]
+====
+Studio::
++
+--
+Follow the xref:manual::studio.adoc#_prepare_a_query[Studio manual]
+to connect to TypeDB and select a project folder.
+Then use the steps below:
+
+. Use a drop-down list in the top toolbar to select a database with the name `sample_db`.
+. Switch to `data` session and `read` transaction types.
+. Open a new tab and insert or type in an Insert query, for example:
++
+.TypeQL Insert query
+[,typeql]
+----
+match
+$u isa user, has email $e;
+get
+$u, $e;
+----
+. Run the query by clicking the btn:[Run query] button (image:home::studio-icons/run.png[run]).
+. Commit the changes by clicking the btn:[Commit query] button (image:home::studio-icons/commit.png[Commit]).
+--
+
+Console::
++
+--
+. Open a session and transaction:
++
+[,bash]
+----
+transaction sample_db data read
+----
+. Send the Define query:
++
+[,bash]
+----
+match
+$u isa user, has email $e;
+get
+$u, $e;
+----
++
+Push btn:[Enter] twice to send the query.
+. Commit the changes:
++
+[,bash]
+----
+commit
+----
+--
+====
+
+The resulted Log output should look like this:
+
+[,js]
+----
+{
+    $e alice@vaticle.com isa email;
+    $u iid 0x826e80018000000000000000 isa user;
+}
+{
+    $e the-bob@vaticle.com isa email;
+    $u iid 0x826e80018000000000000001 isa user;
+}
+{
+    $e charlie@vaticle.com isa email;
+    $u iid 0x826e80018000000000000002 isa user;
+}
+----
+
+To send a Get query programmatically, use xref:manual::installing/drivers.adoc[drivers]:
+
+//#todo Check the code
+//#todo Add the response processing
+[tabs]
+====
+Rust::
++
+--
+Follow the xref:manual::connecting/connection.adoc[connection guide]
+to connect the `driver` to TypeDB Cloud or TypeDB Core, then:
+
+[,rust]
+----
+let query = "match
+            $u isa user, has email $e;
+            get
+            $u, $e;";
+let databases = DatabaseManager::new(driver);
+let db = databases.get("sample_db")?;
+let session = Session::new(db, SessionType::Data)?;
+let tx = session.transaction(TransactionType::Read)?;
+tx.query().get(&query)?;
+tx.commit().resolve()?;
+----
+--
+
+Python::
++
+--
+Follow the xref:manual::connecting/connection.adoc[connection guide]
+to connect the `driver` to TypeDB Cloud or TypeDB Core, then:
+
+[,python]
+----
+query = """
+        match
+        $u isa user, has email $e;
+        get
+        $u, $e;
+        """
+with driver.session("sample_db", SessionType.DATA) as session:
+    with session.transaction(TransactionType.READ) as transaction:
+        transaction.query.get(query)
+        transaction.commit()
+----
+--
+
+Java::
++
+--
+Follow the xref:manual::connecting/connection.adoc[connection guide]
+to connect the `driver` to TypeDB Cloud or TypeDB Core, then:
+
+[,java]
+----
+try (TypeDBSession session = driver.session("sample_db", TypeDBSession.Type.DATA)) {
+    try (TypeDBTransaction Transaction = session.transaction(TypeDBTransaction.Type.READ)) {
+        Transaction.query().get("insert $u isa user, has name 'Alice', has email 'alice@vaticle.com';");
+        Transaction.commit();
+    }
+}
+----
+--
+
+Node.js::
++
+--
+Follow the xref:manual::connecting/connection.adoc[connection guide]
+to connect the `driver` to TypeDB Cloud or TypeDB Core, then:
+
+[,js]
+----
+let query = `
+            match
+            $u isa user, has email $e;
+            get
+            $u, $e;
+            `;
+
+session = await driver.session("sample_db", SessionType.DATA);
+transaction = await session.transaction(TransactionType.READ);
+let iterator = transaction.query.get(query);
+let answers = await iterator.collect();
+k = 0;
+for (let i = 0; i < answers.length; i++) {
+    k++;
+    console.log("JSON #" + k + ": " + JSON.stringify(answers[i], null, 4));
+}
+----
+--
+
+C++::
++
+--
+Follow the xref:manual::connecting/connection.adoc[connection guide]
+to connect the `driver` to TypeDB Cloud or TypeDB Core, then:
+
+[,cpp]
+----
+TypeDB::Options options;
+    {
+        auto session = driver.session("sample_db", TypeDB::SessionType::DATA, options);
+        auto tx = session.transaction(TypeDB::TransactionType::READ, options);
+        (void) tx.query.define("insert $u isa user, has name 'Alice', has email 'alice@vaticle.com';", options);
+        tx.commit();
+    }
+----
+--
+====
+
+== Response interpretation
+
+A Get query returns all concept that were matched by the `match` clause and filtered by the `get` clause.
+
+The response is a Stream/Iterator with a ConceptMap object for every solution of a `match` clause pattern.
+A concept is returned as a special object with methods relevant to its type.
+
+There are modifiers that can be applied to a Get query that can change its output format:
+
+* Grouping returns a Stream/Iterator of ConceptMapGroup objects.
+* Aggregation returns Promise of a Value.
+* Grouping and aggregation return a Stream/Iterator of ValueGroup object.
+
+See respective drivers API reference for relevant methods to work with these objects.
+
+.Driver API reference
+[cols-3]
+--
+.xref:drivers::rust/api-reference.adoc[Rust]
+[.clickable]
+****
+
+****
+
+.xref:drivers::python/api-reference.adoc[Python]
+[.clickable]
+****
+
+****
+
+.xref:drivers::java/api-reference.adoc[Java]
+[.clickable]
+****
+
+****
+
+.xref:drivers::nodejs/api-reference.adoc[Node.js]
+[.clickable]
+****
+
+****
+
+.xref:drivers::cpp/api-reference.adoc[C++]
+[.clickable]
+****
+
+****
+--
+
+== Learn more
+
+[cols-2]
+--
+.xref:typeql::data/get.adoc[]
+[.clickable]
+****
+Learn more about Get queries in TypeQL: syntax, behaviour, and query examples.
+****
+
+.xref:manual::writing/overview.adoc[]
+[.clickable]
+****
+Learn how to write some new data to a database to read.
+****
+
+.xref:typedb::developing/read.adoc[Reading data curriculum]
+[.clickable]
+****
+* xref:typedb::developing/read.adoc[Fetch queries]
+* xref:typedb::developing/read.adoc[Subqueries]
+* xref:typedb::developing/read.adoc[Aggregations]
+* xref:typedb::developing/read.adoc[Match clause semantics]
+* xref:typedb::developing/read.adoc[Organizing results]
+****
+--

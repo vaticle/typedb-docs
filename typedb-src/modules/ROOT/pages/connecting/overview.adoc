@@ -121,8 +121,8 @@ const driver = await TypeDB.coreDriver("127.0.0.1:1729");
 ----
 const driver = await TypeDB.cloudDriver("127.0.0.1:1729", new TypeDBCredential("admin","password"));
 ----
-For a more comprehensive code example, see the xref:typedb::tutorials/sample-app.adoc[] page.
 --
+For a more comprehensive code example, see the xref:typedb::tutorials/sample-app.adoc[] page.
 ====
 
 To send a query, TypeDB Client must connect to TypeDB, open a session, and open a transaction first.
@@ -351,7 +351,7 @@ A type of session to send a query can be selected with a switch of a toggle in t
 For more information on how to do it with different TypeDB Clients, see the documentation:
 
 * xref:connecting/studio.adoc#_transaction_control[TypeDB Studio]
-* xref:connecting/console.adoc#_database_management_commands[TypeDB Console]
+* xref:connecting/console.adoc#_server_level[TypeDB Console]
 * TypeDB drivers:
 ** xref:drivers:ROOT:rust/api-reference.adoc#_session_header[Rust],
 ** xref:drivers:ROOT:python/api-reference.adoc#_session_header[Python],
@@ -460,7 +460,7 @@ TypeDB Studio lets you control the current transaction through its GUI.
 For more information on how to do it with different Clients, see the documentation:
 
 * xref:connecting/studio.adoc#_transaction_control[TypeDB Studio]
-* xref:connecting/console.adoc#_transaction_querying_commands[TypeDB Console]
+* xref:connecting/console.adoc#_transaction_level[TypeDB Console]
 * TypeDB drivers:
 ** xref:drivers:ROOT:rust/api-reference.adoc#_transaction_header[Rust],
 ** xref:drivers:ROOT:python/api-reference.adoc#_transaction_header[Python],

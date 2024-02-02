@@ -1,3 +1,0 @@
-// Guides
-
-include::home::partial$nav-full.adoc[]

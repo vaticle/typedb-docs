@@ -22,7 +22,7 @@ TypeDB drivers are available for some of the most popular programming languages:
 ****
 //image:home::rust.png[width=20%]
 * xref:rust/overview.adoc[Overview] -- Get started with TypeDB in Rust
-* Tutorial -- _coming soon_
+* xref:rust/tutorial.adoc[Tutorial] -- Learn how to use the Rust driver
 * xref:rust/api-reference.adoc[API reference] for the Rust driver
 ****
 
@@ -51,6 +51,15 @@ TypeDB drivers are available for some of the most popular programming languages:
 * xref:nodejs/overview.adoc[Overview] -- Get started with TypeDB in Node.js
 * xref:nodejs/tutorial.adoc[Tutorial] -- Learn how to use the Node.js driver
 * xref:nodejs/api-reference.adoc[API reference] for the Node.js driver
+****
+
+.xref:drivers::cpp/overview.adoc[C++]
+[.clickable]
+****
+//image:home::cpp.png[width=20%]
+* xref:cpp/overview.adoc[Overview] -- Get started with TypeDB in C++
+//* xref:cpp/tutorial.adoc[Tutorial] -- Learn how to use the C++ driver
+* xref:cpp/api-reference.adoc[API reference] for the C++ driver
 ****
 --
 

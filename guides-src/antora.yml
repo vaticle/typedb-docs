@@ -1,9 +1,0 @@
-name: guides
-title: Guides
-version: 2.x
-asciidoc:
-  attributes:
-    latest-version: 2.26.3@
-nav:
-- modules/ROOT/nav.adoc
-start_page: guides::overview.adoc
