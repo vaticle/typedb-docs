@@ -2,21 +2,21 @@
 :tabs-sync-option:
 :experimental:
 
-TypeDB uses transactions for all database queries to provide xref:typedb::basics/acid.adoc[ACID guarantees].
-Two transaction types exist: `read` and `write`.
-Read transactions, while faster and supporting inference, do not permit alterations to the database.
+All queries to a TypeDB database are performed through transactions.
+TypeDB transactions provide full xref:home::acid.adoc[ACID guarantees] up to snapshot isolation.
+There are two types of transactions: `read` and `write`.
+Read transactions are read-only, faster, and support inference.
 
-This guide covers opening a transaction and other transaction management operations with Studio,
-Console, or one of the drivers.
+This guide covers transaction control and best practices with Studio, Console, or one of the drivers.
 Studio provides automated transaction control, so you don't need to open transactions manually.
 
 To open a transaction, you need an open session.
-For more information on how to open a session, see the xref:manual::connecting/session.adoc[] page.
+Make sure to open a transaction using instructions from the xref:manual::connecting/session.adoc[] page.
 
 == Open a new transaction
 
 To open a transaction, you need to select a transaction type and use an open session.
-Optionally, you can set transaction options to alter values by default.
+Optionally, you can set transaction options.
 
 [tabs]
 ====
@@ -26,7 +26,7 @@ Studio::
 Studio controls transactions automatically when you run a query.
 
 You can select a transaction type for queries with a `write`/`read` selector in the top toolbar:
-image:manual::icons/transaction-write.png[session type selector].
+image:manual::icons/transaction-write.png[transaction type selector].
 For the transaction type selector to be active, you need to connect Studio to TypeDB
 and select a database from a drop-down list in the top toolbar.
 --
@@ -34,18 +34,20 @@ and select a database from a drop-down list in the top toolbar.
 Console::
 +
 --
-Use the `transaction` keyword with the database name, xref:manual::connecting/session.adoc[session] type,
+Use the `transaction` keyword with a database name, xref:manual::connecting/session.adoc[session] type,
 and transaction type, for example:
 
 .Open a transaction
 [,bash]
 ----
-transaction db1 schema write
+transaction sample_db schema write
 ----
+
+Where `sample_db` is the name of the database.
 --
 ====
 
-xref:manual::installing/drivers.adoc[TypeDB drivers]
+xref:drivers::overview.adoc[TypeDB drivers]
 provide the most flexible approach to managing transactions via native API by manually opening them:
 
 [tabs]
@@ -56,7 +58,7 @@ Rust::
 .Open a transaction
 [,rust]
 ----
-let tx = session.transaction(TransactionType::Write)?;
+let transaction = session.transaction(TransactionType::Write)?;
 ----
 --
 
@@ -66,7 +68,7 @@ Python::
 .Open a transaction
 [,python]
 ----
-tx = session.transaction(TransactionType.WRITE)
+transaction = session.transaction(TransactionType.WRITE)
 ----
 --
 
@@ -76,7 +78,7 @@ Java::
 .Open a transaction
 [,java]
 ----
-TypeDBTransaction tx = session.transaction(TypeDBTransaction.Type.WRITE);
+TypeDBTransaction transaction = session.transaction(TypeDBTransaction.Type.WRITE);
 ----
 --
 
@@ -86,7 +88,7 @@ Node.js::
 .Open a transaction
 [,js]
 ----
-tx = await session.transaction(TransactionType.WRITE);
+transaction = await session.transaction(TransactionType.WRITE);
 ----
 --
 
@@ -96,24 +98,15 @@ C++::
 .Open a transaction
 [,cpp]
 ----
-auto tx = session.transaction(TypeDB::TransactionType::WRITE, options);
+auto transaction = session.transaction(TypeDB::TransactionType::WRITE, options);
 ----
 --
 ====
 
-To see how to control transaction further, see <<_transaction_control,below>>.
-
-After connecting to a server, opening a
-xref:connecting/session.adoc[session] and a xref:manual::connecting/transaction.adoc[transaction],
-see how to xref:manual::defining/overview.adoc[Define a schema] of a database.
-
-[#_transaction_control]
-== Transaction control
-
 An open transaction can be <<_close_a_transaction,closed>>, <<_commit_a_transaction,committed>>, or even rolled back.
 
 [#_close_a_transaction]
-=== Close a transaction
+== Close a transaction
 
 Closing transaction doesn't save any changes made within the transaction.
 
@@ -143,7 +136,7 @@ close
 --
 ====
 
-To programmatically close a transaction, use xref:manual::installing/drivers.adoc[TypeDB drivers]:
+To programmatically close a transaction, use xref:drivers::overview.adoc[TypeDB drivers]:
 
 [tabs]
 ====
@@ -158,7 +151,7 @@ use the xref:drivers::rust/api-reference.adoc#_struct_Transaction_force_close__[
 .Close a transaction
 [,rust]
 ----
-tx.force_close()
+transaction.force_close()
 ----
 --
 
@@ -172,7 +165,7 @@ to explicitly close a transaction:
 .Close a transaction
 [,python]
 ----
-tx.close()
+transaction.close()
 ----
 --
 
@@ -186,7 +179,7 @@ xref:drivers::java/api-reference.adoc#_TypeDBTransaction_close__[close] method t
 .Close a transaction
 [,java]
 ----
-tx.close()
+transaction.close()
 ----
 --
 
@@ -199,7 +192,7 @@ to explicitly close a transaction:
 .Close a transaction
 [,js]
 ----
-tx.close();
+transaction.close();
 ----
 --
 
@@ -214,13 +207,13 @@ use the xref:drivers::cpp/api-reference.adoc#_void_TypeDBTransactionclose[close]
 .Close a transaction
 [,cpp]
 ----
-tx.close();
+transaction.close();
 ----
 --
 ====
 
 [#_commit_a_transaction]
-=== Commit a transaction
+== Commit a transaction
 
 Committing a transaction validates and applies changes to the database.
 A successful commit persists all changes made within a transaction and then closes the transaction.
@@ -253,7 +246,7 @@ commit
 --
 ====
 
-To programmatically commit a transaction, use xref:manual::installing/drivers.adoc[TypeDB drivers]:
+To programmatically commit a transaction, use xref:drivers::overview.adoc[TypeDB drivers]:
 
 [tabs]
 ====
@@ -266,7 +259,7 @@ use the xref:drivers::rust/api-reference.adoc#_struct_Transaction_commit__[commi
 .Commit a transaction
 [,rust]
 ----
-tx.commit();
+transaction.commit();
 ----
 --
 
@@ -278,7 +271,7 @@ To commit a transaction, use the xref:drivers::python/api-reference.adoc#_TypeDB
 .Commit a transaction
 [,python]
 ----
-tx.commit()
+transaction.commit()
 ----
 --
 
@@ -290,7 +283,7 @@ To commit a transaction, use the xref:drivers::java/api-reference.adoc#_TypeDBTr
 .Commit a transaction
 [,java]
 ----
-tx.commit();
+transaction.commit();
 ----
 --
 
@@ -302,7 +295,7 @@ To commit a transaction, use the xref:drivers::nodejs/api-reference.adoc#_TypeDB
 .Commit a transaction
 [,js]
 ----
-tx.commit();
+transaction.commit();
 ----
 --
 
@@ -314,7 +307,72 @@ To commit a transaction, use the xref:drivers::cpp/api-reference.adoc#_void_Type
 .Commit a transaction
 [,cpp]
 ----
-tx.commit();
+transaction.commit();
 ----
 --
 ====
+
+== Transaction management
+
+TypeDB transactions use snapshot isolation and optimistic concurrency control to support concurrent,
+lock-free read/write transactions.
+For more information, see the xref:home::acid.adoc[ACID guarantees] page.
+
+TypeDB transactions have a duration limit.
+By default, it’s 5 minutes.
+The default value can be changed with Client options.
+//Transaction time limit is intended to encourage short-lived transactions,
+//prevent memory leaks caused by transactions that will not be completed and terminate unresponsive transactions.
+
+Avoid long-running transactions, which can result in conflicts and resource contention.
+A good principle to follow is for logically coherent queries to be grouped into a transaction.
+
+== Query types and sessions/transactions
+
+All types of sessions and transactions allow for Get and Fetch queries.
+Other query types are bound to `write` transactions and a proper session type.
+See the table below:
+
+.Session and transaction types
+[cols="^.^2,^.^2,^.^2"]
+[options="header"]
+|===
+|Transaction types
+|Possible query types +
+for a `schema` session
+|Possible query types +
+for a `data` session
+
+| `write` transaction
+| xref:manual::defining/define.adoc[Define] +
+xref:manual::defining/undefine.adoc[Undefine] +
+xref:manual::reading/fetch.adoc[Fetch] +
+xref:manual::reading/get.adoc[Get]
+| xref:manual::writing/insert.adoc[Insert] +
+xref:manual::writing/delete.adoc[Delete] +
+xref:manual::writing/update.adoc[Update] +
+xref:manual::reading/fetch.adoc[Fetch] +
+xref:manual::reading/get.adoc[Get]
+| `read` transaction
+| xref:manual::reading/fetch.adoc[Fetch] +
+xref:manual::reading/get.adoc[Get]
+| xref:manual::reading/fetch.adoc[Fetch] +
+xref:manual::reading/get.adoc[Get]
+|===
+
+== Learn more
+
+[cols-2]
+--
+.xref:manual::defining/overview.adoc[]
+[.clickable]
+****
+See how to define a schema for your database.
+****
+
+.xref:manual::writing/overview.adoc[]
+[.clickable]
+****
+See how to write data into TypeDB database.
+****
+--

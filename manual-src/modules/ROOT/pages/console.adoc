@@ -9,14 +9,13 @@
 // tag::body[]
 [.float-group]
 --
-//image::home::cloud-hero.png[TypeDB Cloud hero image, role="framed right", width = 75%, window=_blank, link=https://cloud.typedb.com/]
 image::drivers::console.png[TypeDB Console hero image, role="right", width = 50%, window=_blank, link=self]
-//#todo Add floating right for the image -- role="framed right"]
+
   +
 TypeDB Console is a standalone TypeDB client with a command line interface (CLI).
 
 It is the default client distributed with TypeDB, but it can also be installed separately.
-For a standalone installation, see the xref:manual::installing/console.adoc[Install] page.
+For a standalone installation, see the xref:home:ROOT:install/console.adoc[Install] page.
 --
 
 [cols-2]
@@ -27,7 +26,7 @@ For a standalone installation, see the xref:manual::installing/console.adoc[Inst
 The GitHub repository with the source code and release notes.
 ****
 
-.xref:manual::installing/console.adoc[Install]
+.xref:home::install/console.adoc[Install]
 [.clickable]
 ****
 See the TypeDB Console installation guide.
@@ -47,7 +46,7 @@ See the Console's downloadable packages.
 
 TypeDB can connect to both TypeDB Cloud and TypeDB Core.
 Running TypeDB Console initiates a network connection to a TypeDB server.
-//By default, it tries to connect to a TypeDB Core server at the address `localhost:1729`.
+By default, it tries to connect to a TypeDB Core server at the address `localhost:1729`.
 Use command line arguments to set connection parameters:
 
 [tabs]
@@ -67,7 +66,7 @@ You will be prompted for a password.
 [NOTE]
 =====
 On your first login,
-xref:typedb::managing/user-management.adoc#_first_login[change the password] for the `admin` account.
+xref:manual::configuring/users.adoc#_first_login[change the password] for the `admin` account.
 A TypeDB Cloud deployment will refuse queries until the password is changed from its default value.
 =====
 // end::cloud-psw[]
@@ -83,12 +82,12 @@ typedb console --core=<server-address>
 ----
 
 By default, TypeDB Console connects to a local TypeDB Core server with the `localhost:1729` address.
-To connect to a different address use the `--core` argument followed by server IP address and port,
+The `--core` argument is used to set the TypeDB Core server IP address and port to connect to,
 for example, `10.0.0.5:1729`.
 --
 ====
 
-As a result, you should get a welcome message from TypeDB Console followed by a command line prompt.
+As a result, you get a welcome message from TypeDB Console followed by a command line prompt.
 
 [,bash]
 ----
@@ -544,7 +543,7 @@ The following flags can be passed in the `transaction` command as transaction op
 
 [,bash]
 ----
-transaction db1 data read --infer true
+transaction sample_db data read --infer true
 ----
 
 .Transaction options

@@ -10,14 +10,14 @@ User management features are available in TypeDB Cloud only.
 
 You can use TypeDB Console or TypeDB driver API for user management.
 
-Assuming TypeDB Console is xref:home::install.adoc#_console[installed], to connect to TypeDB Cloud:
+Assuming TypeDB Console is xref:home::install/console.adoc[installed], to connect to TypeDB Cloud:
 
 [,bash]
 ----
 typedb console --cloud=<server-address> --username=<username> --password --tls-enabled=true
 ----
 
-For more information on how to use TypeDB Console, see the xref:connecting/console.adoc[] page.
+For more information on how to use TypeDB Console, see the xref:manual::console.adoc[] page.
 
 For more information on user management with TypeDB driver API,
 see the xref:drivers::python/api-reference.adoc#_UserManager[Python],

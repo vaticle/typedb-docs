@@ -1,10 +1,11 @@
 = Define query
 :tabs-sync-option:
 :experimental:
+:scores: __
 
 A Define query is used to define the schema of a database.
 
-This page assumes you've already followed instructions from the xref:connecting/database.adoc[] page.
+This page assumes you've already followed instructions from the xref:connecting/overview.adoc[] section pages.
 Here, you'll see how to use a Define query to define types and rules in a database schema using Studio,
 Console, or one of the drivers.
 For an alternative way of changing your schema, see the xref:manual::defining/schema-editing.adoc[] page.
@@ -26,14 +27,23 @@ Then use the steps below:
 //Follow the instructions from the xref:connecting/connection.adoc[] page to connect to TypeDB:
 //page to connect Studio to TypeDB and select a project folder, then:
 
-. Use a drop-down list in the top toolbar to select a database with the name `sample_db`.
+. Use a drop-down list in the top toolbar to select a database.
 . Switch to `schema` session and `write` transaction types.
 . Open a new tab and insert or type in a Define query, for example:
 +
 .TypeQL Define query
 [,typeql]
 ----
-define user sub entity;
+define
+
+email sub attribute, value string;
+name sub attribute, value string;
+friendship sub relation, relates friend;
+user sub entity,
+    owns email @key,
+    owns name,
+    plays friendship:friend;
+admin sub user;
 ----
 . Run the query by clicking the btn:[Run query] button (image:home::studio-icons/run.png[run]).
 . Commit the changes by clicking the btn:[Commit query] button (image:home::studio-icons/commit.png[Commit]).
@@ -45,7 +55,7 @@ Console::
 Follow the xref:manual::connecting/connection.adoc[] guide to connect to TypeDB.
 Then use the steps below:
 
-. Open a session and transaction:
+. Open a `schema` session and `write` transaction to the selected database (e.g., `sample_db`):
 +
 [,bash]
 ----
@@ -53,9 +63,17 @@ transaction sample_db schema write
 ----
 . Send the Define query:
 +
-[,bash]
+[,typeql]
 ----
-define user sub entity;
+define
+email sub attribute, value string;
+name sub attribute, value string;
+friendship sub relation, relates friend;
+user sub entity,
+    owns email @key,
+    owns name,
+    plays friendship:friend;
+admin sub user;
 ----
 +
 Push btn:[Enter] twice to send the query.
@@ -68,7 +86,7 @@ commit
 --
 ====
 
-To send a Define query programmatically, use xref:manual::installing/drivers.adoc[drivers]:
+To send a Define query programmatically, use xref:drivers::overview.adoc[drivers]:
 
 [tabs]
 ====
@@ -76,17 +94,15 @@ Rust::
 +
 --
 Follow the xref:manual::connecting/connection.adoc[connection guide]
-to connect the `driver` to TypeDB Cloud or TypeDB Core, then:
+to connect the `driver` to TypeDB Cloud or TypeDB Core, then open a `schema` session to the selected database,
+open a `write` transaction, and use the
+xref:drivers::rust/api-reference.adoc#_struct_QueryManager_define__[`transaction.query().define()`]
+method:
 
-[,rust]
+[,rust,indent=0]
 ----
-let query = "define user sub entity;";
-let databases = DatabaseManager::new(driver);
-let db = databases.get("sample_db")?;
-let session = Session::new(db, SessionType::Schema)?;
-let tx = session.transaction(TransactionType::Write)?;
-tx.query().define(&query).resolve()?;
-tx.commit().resolve()?;
+include::manual::partial$rust-manual-code.rs[tags=databases,indent=8]
+include::manual::partial$rust-manual-code.rs[tags=define]
 ----
 --
 
@@ -94,14 +110,14 @@ Python::
 +
 --
 Follow the xref:manual::connecting/connection.adoc[connection guide]
-to connect the `driver` to TypeDB Cloud or TypeDB Core, then:
+to connect the `driver` to TypeDB Cloud or TypeDB Core, then open a `schema` session to the selected database,
+open a `write` transaction, and use the
+xref:drivers::python/api-reference.adoc#_QueryManager_define{scores}query_str__options_TypeDBOptions[`transaction.query.define()`]
+method:
 
-[,python]
+[,python, indent=0]
 ----
-with driver.session("sample_db", SessionType.SCHEMA) as session:
-    with session.transaction(TransactionType.WRITE) as transaction:
-        transaction.query.define("define user sub entity;")
-        transaction.commit()
+include::manual::partial$python-manual-code.py[tags=define]
 ----
 --
 
@@ -109,16 +125,14 @@ Java::
 +
 --
 Follow the xref:manual::connecting/connection.adoc[connection guide]
-to connect the `driver` to TypeDB Cloud or TypeDB Core, then:
+to connect the `driver` to TypeDB Cloud or TypeDB Core, then open a `schema` session to the selected database,
+open a `write` transaction, and use the
+xref:drivers::java/api-reference.adoc#_QueryManager_define__com_vaticle_typeql_lang_query_TypeQLDefine[`transaction.query.define()`]
+method:
 
-[,java]
+[,java,indent=0]
 ----
-try (TypeDBSession session = driver.session("sample_db", TypeDBSession.Type.SCHEMA)) {
-    try (TypeDBTransaction Transaction = session.transaction(TypeDBTransaction.Type.WRITE)) {
-        Transaction.query().define("define user sub entity;");
-        Transaction.commit();
-    }
-}
+include::manual::partial$java-manual-code.java[tags=define]
 ----
 --
 
@@ -126,14 +140,14 @@ Node.js::
 +
 --
 Follow the xref:manual::connecting/connection.adoc[connection guide]
-to connect the `driver` to TypeDB Cloud or TypeDB Core, then:
+to connect the `driver` to TypeDB Cloud or TypeDB Core, then open a `schema` session to the selected database,
+open a `write` transaction, and use the
+xref:drivers::nodejs/api-reference.adoc#_QueryManager_define{scores}query_string__options_TypeDBOptions[`transaction.query.define()`]
+method:
 
-[,js]
+[,js,indent=0]
 ----
-session = await driver.session("sample_db", SessionType.SCHEMA);
-transaction = await session.transaction(TransactionType.WRITE);
-await transaction.query.define("define user sub entity;");
-await transaction.commit();
+include::manual::partial$nodejs-manual-code.js[tags=define]
 ----
 --
 
@@ -141,26 +155,25 @@ C++::
 +
 --
 Follow the xref:manual::connecting/connection.adoc[connection guide]
-to connect the `driver` to TypeDB Cloud or TypeDB Core, then:
+to connect the `driver` to TypeDB Cloud or TypeDB Core, then open a `schema` session to the selected database,
+open a `write` transaction, and use the
+xref:drivers::cpp/api-reference.adoc#_VoidFuture_TypeDBQueryManagerdefine_const_stdstring_query_const_Options_options_Options_const[`transaction.query.define()`]
+method:
 
-[,cpp]
+[,cpp,indent=0]
 ----
-TypeDB::Options options;
-    {
-        auto session = driver.session("sample_db", TypeDB::SessionType::SCHEMA, options);
-        auto tx = session.transaction(TypeDB::TransactionType::WRITE, options);
-        tx.query.define("define user sub entity;", options).get();
-        tx.commit();
-    }
+include::manual::partial$cpp-manual-code.cpp[tags=options,indent=8]
+include::manual::partial$cpp-manual-code.cpp[tags=define]
 ----
 --
 ====
 
 == Response interpretation
 
-A Delete query returns a Promise of an empty response.
+A Define query returns a Promise of an empty response.
 This promise can be resolved when the query is finished executing, but it doesn't contain any useful information.
 
+////
 [#_schema_example]
 == Schema example
 
@@ -181,9 +194,7 @@ user sub entity,
     plays friendship:friend;
 admin sub user;
 ----
-
-A schema can also include rules for rule-based inference.
-For more information on rule definition, see the xref:reading/infer.adoc[] page.
+////
 
 == Learn more
 
@@ -201,14 +212,9 @@ Learn more about Define queries in TypeQL: syntax, behaviour, and query examples
 Learn how to write some data to a database with the schema you just defined.
 ****
 
-.xref:typedb::developing/defining-schema.adoc[Designing schema curriculum]
+.xref:learn::4-designing-schemas/4-designing-schemas.adoc[Designing schema curriculum]
 [.clickable]
 ****
-* xref:typedb::developing/defining-schema.adoc[Conceptual modelling]
-* xref:typedb::developing/defining-schema.adoc[Defining entities]
-* xref:typedb::developing/defining-schema.adoc[Defining relations]
-* xref:typedb::developing/defining-schema.adoc[Defining attributes]
-* xref:typedb::developing/defining-schema.adoc[Defining owners and roleplayers]
-* xref:typedb::developing/defining-schema.adoc[The bookstore example]
+Check out the Designing schema section of our TypeDB Learning course.
 ****
 --

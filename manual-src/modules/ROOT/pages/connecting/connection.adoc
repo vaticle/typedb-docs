@@ -3,8 +3,8 @@
 :experimental:
 
 TypeDB uses a gRPC-based protocol for external communications, including queries.
-Various TypeDB clients, such as Studio with a GUI, Console with a CLI,
-and language-specific drivers with native APIs, have been developed to implement this protocol.
+TypeDB clients, like Studio and Console, as well as language-specific drivers with native APIs,
+have been developed to implement this protocol.
 
 This guide covers connecting to
 <<_connect_to_typedb_cloud,TypeDB Cloud>> or
@@ -53,7 +53,7 @@ typedb console --core=<server-address>
 --
 ====
 
-For programmatic access, use one of the TypeDB xref:manual::installing/drivers.adoc[drivers] via native API:
+For programmatic access, use one of the TypeDB xref:drivers::overview.adoc[drivers] via native API:
 
 .Drivers
 [tabs]
@@ -74,11 +74,11 @@ Python::
 +
 --
 .Connect to TypeDB Core
-[,python]
+[,python,indent=0]
 ----
 driver = TypeDB.core_driver("127.0.0.1:1729")
 ----
-
+//include::manual::partial$python-manual-code.py[tags=driver]
 Where `127.0.0.1:1729` is the address and port to connect to.
 --
 
@@ -136,7 +136,7 @@ For your first connection, use the following default user credentials:
 
 [IMPORTANT]
 =====
-Make sure to xref:typedb::managing/user-management.adoc#_first_login[change the password]
+Make sure to xref:manual::configuring/users.adoc#_first_login[change the password]
 for the `admin` account on your first login.
 A TypeDB Cloud deployment will deny all other operations until the password is changed from its default value.
 =====
@@ -174,11 +174,11 @@ typedb console --cloud=<server-address> --username=<username> --password --tls-e
 You will be prompted for a password.
 
 On your first login,
-xref:typedb::managing/user-management.adoc#_first_login[change the password] for the `admin` account.
+xref:manual::configuring/users.adoc#_first_login[change the password] for the `admin` account.
 --
 ====
 
-For programmatic access, use one of the TypeDB xref:manual::installing/drivers.adoc[drivers] via native API:
+For programmatic access, use one of the TypeDB xref:drivers::overview.adoc[drivers] via native API:
 
 .Drivers
 [tabs]
@@ -244,8 +244,20 @@ Where `127.0.0.1:1729` is the address and port to connect to.
 --
 ====
 
-After connecting to TypeDB Cloud and
-xref:typedb::managing/user-management.adoc#_first_login[changing the default password] for the `admin` account,
-see how to xref:connecting/database.adoc[create a database] and manage
-xref:connecting/session.adoc[sessions] and
-xref:connecting/transaction.adoc[transactions].
+== Learn more
+
+[cols-2]
+--
+.xref:manual::connecting/database.adoc[]
+[.clickable]
+****
+See how to create a new database in TypeDB.
+
+****
+
+.xref:manual::connecting/session.adoc[]
+[.clickable]
+****
+See how to manage sessions in TypeDB.
+****
+--

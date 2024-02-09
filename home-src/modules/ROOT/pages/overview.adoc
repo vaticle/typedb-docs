@@ -19,7 +19,7 @@ released as TypeDB 3.0, along with preliminary benchmarks of TypeDB.
 
 [cols-3]
 --
-.xref:home::install.adoc[]
+.xref:home::install/overview.adoc[]
 [.clickable]
 ****
 Setup and run TypeDB environment and tools.
@@ -38,54 +38,122 @@ Try the features of TypeDB with these top queries.
 ****
 --
 
-== TypeDB
+== Learn
 
-TypeDB is a polymorphic database with a conceptual data model,
-a strong subtyping system,
-a symbolic reasoning engine.
+An end-to-end learning experience for TypeDB and TypeQL.
+Through the lens of a sample bookstore database, you'll learn how to build a database schema,
+manage data, and interpret query results.
 
 [cols-3]
 --
-.xref:typedb::overview.adoc[]
+.xref:learn::overview.adoc[]
 [.clickable]
 ****
-An overview of the TypeDB documentation.
+A high-level overview of the TypeDB learning course.
 ****
 
-.xref:typedb::basics/data-model.adoc[Basics]
+.xref:learn::1-why-typedb/1-why-typedb.adoc[]
 [.clickable]
 ****
-Essentials to learn before practicing TypeDB.
+Introduction to TypeDB and TypeQL capabilities and main principles.
 ****
 
-[#_basics]
-.xref:typedb::connecting/overview.adoc[]
+.xref:learn::2-learning-environment-setup/2-learning-environment-setup.adoc[]
 [.clickable]
 ****
-How to connect to TypeDB with different clients.
+Setup an environment to run queries with TypeDB.
+//xref:learn::2-learning-environment-setup/2.1-deploy-sample-database.adoc[] +
+//xref:learn::2-learning-environment-setup/2.2-get-started-with-typedb-studio.adoc[]
 ****
 
-[#_developing]
-.xref:typedb::developing/creating-database.adoc[Developing with TypeDB]
+.xref:learn::3-running-your-first-queries/3-running-your-first-queries.adoc[]
 [.clickable]
 ****
-How to develop an application with TypeDB.
+Try TypeDB with some simple queries and learn by doing so.
+//xref:learn::3-running-your-first-queries/3.1-retrieving-attributes-of-entities.adoc[] +
+//xref:learn::3-running-your-first-queries/3.2-retrieving-attributes-of-relations.adoc[] +
+//xref:learn::3-running-your-first-queries/3.3-retrieving-types-of-data-instances.adoc[]
 ****
 
-[#_managing]
-.xref:typedb::managing/configuration.adoc[Managing TypeDB]
+.xref:learn::4-designing-schemas/4-designing-schemas.adoc[]
 [.clickable]
 ****
-Configuration and management of deployments.
+Discover conceptual data modelling and learn about TypeDB database schema design principles.
+////
+xref:learn::4-designing-schemas/4.1-conceptual-modeling.adoc[] +
+xref:learn::4-designing-schemas/4.2-the-bookstore-model.adoc[] +
+xref:learn::4-designing-schemas/4.3-defining-entity-types.adoc[] +
+xref:learn::4-designing-schemas/4.4-defining-relation-types.adoc[] +
+xref:learn::4-designing-schemas/4.5-defining-attribute-types.adoc[] +
+xref:learn::4-designing-schemas/4.6-defining-owners-and-roleplayers.adoc[] +
+xref:learn::4-designing-schemas/4.7-the-bookstore-schema.adoc[]
+////
 ****
 
-[#_tutorials]
-.xref:typedb::tutorials/iam-schema.adoc[Tutorials]
+.xref:learn::5-pattern-based-querying/5-pattern-based-querying.adoc[]
 [.clickable]
 ****
-Tutorials to learn TypeDB and migrate data.
+Explore the power of pattern matching in TypeQL.
+////
+xref:learn::5-pattern-based-querying/5.1-patterns-as-constraints.adoc[] +
+xref:learn::5-pattern-based-querying/5.2-basic-data-patterns.adoc[] +
+xref:learn::5-pattern-based-querying/5.3-polymorphic-data-patterns.adoc[] +
+xref:learn::5-pattern-based-querying/5.4-value-comparisons.adoc[] +
+xref:learn::5-pattern-based-querying/5.5-pattern-logic.adoc[] +
+xref:learn::5-pattern-based-querying/5.6-arithmetic-expressions.adoc[] +
+xref:learn::5-pattern-based-querying/5.7-type-patterns.adoc[] +
+xref:learn::5-pattern-based-querying/5.8-semantics-of-solution-spaces.adoc[]
+////
 ****
 --
+
+== Manual
+
+TypeDB Manual consists of practice-oriented guides for configuring environment and developing with TypeDB.
+
+[cols-2]
+--
+.xref:manual::studio.adoc[]
+[.clickable]
+****
+TypeDB Studio manual:
+prepare for work, query, control transactions, use Type Editor, Type Browser, and Graph Visualization.
+****
+.xref:manual::console.adoc[]
+[.clickable]
+****
+TypeDB Console manual: how to connect to TypeDB, use interactive and non-interactive modes, and scripting.
+****
+.xref:manual::connecting/overview.adoc[]
+[.clickable]
+****
+Connecting to TypeDB Core and Cloud with Studio, Console, and drivers: network connection, database management,
+opening sessions and transaction.
+****
+.xref:manual::defining/overview.adoc[]
+[.clickable]
+****
+Defining a database schema with Define and Define queries, as well as modifying schema using driver APIs and Studio.
+****
+.xref:manual::writing/overview.adoc[]
+[.clickable]
+****
+Writing data to a TypeDB database with Insert, Delete, and Update queries.
+****
+.xref:manual::reading/overview.adoc[]
+[.clickable]
+****
+Reading data from a TypeDB database with Get and Fetch queries. Using rule-based inference.
+****
+.xref:manual::configuring/overview.adoc[]
+[.clickable]
+****
+TypeDB server configuration and maintaining: config file, CLI arguments, logs, DB export and import, upgrading versions,
+user management.
+****
+--
+
+
 
 == TypeDB drivers
 
@@ -94,35 +162,35 @@ See the xref:drivers::overview.adoc[] page or select an environment below:
 
 [cols-3]
 --
-.xref:drivers::rust/overview.adoc[Rust]
+.image:home::rust.png[width=30] xref:drivers::rust/overview.adoc[Rust]
 [.clickable]
 ****
 Add via cargo to use the Rust driver API.
 //image::home::rust.png[width=30%,role=framed]
 ****
 
-.xref:drivers::python/overview.adoc[Python]
+.image:home::python.png[width=30] xref:drivers::python/overview.adoc[Python]
 [.clickable]
 ****
 Install via pip to use the Python driver API.
 //image::python.png[width=30%,role=framed]
 ****
 
-.xref:drivers::java/overview.adoc[Java]
+.image:home::java.png[width=30] xref:drivers::java/overview.adoc[Java]
 [.clickable]
 ****
 Add to a Maven project to use the Java driver API.
 //image::java.png[width=30%,role=framed]
 ****
 
-.xref:drivers::nodejs/overview.adoc[Node.js]
+.image:home::nodejs.png[width=30] xref:drivers::nodejs/overview.adoc[Node.js]
 [.clickable]
 ****
 Install via NPM to use the Node.js driver API.
 //image::nodejs.png[width=30%,role=framed]
 ****
 
-.xref:drivers::cpp/overview.adoc[C++]
+.image:home::cpp.png[width=30] xref:drivers::cpp/overview.adoc[C++]
 [.clickable]
 ****
 Import as a library with a header file.
