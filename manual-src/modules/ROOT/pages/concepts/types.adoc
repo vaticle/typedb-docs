@@ -1,0 +1,208 @@
+= Schema objects
+
+Driver APIs provide a set of methods to programmatically retrieve and manipulate types in a TypeDB database.
+There are two ways to get a stateful object representing a type in a TypeDB database: a Get query and an API call.
+
+For manipulating rules in a schema, see the <<_get_a_rule_object>> section below.
+
+== Get a type object with a Get query
+
+To get a type from a Get query, you need to match a type from a database with a schema pattern.
+
+.Get query example for matching types
+[,typeql]
+----
+match
+$x sub entity;
+get $x;
+----
+
+The above example matches all entity types in a database (as subtypes of the `entity` root type).
+
+Get query response includes ConceptMap stream/Iterable.
+To get a type object, you need to collect stream/iterable items and retrieve concept from a concept map.
+For instructions on how to send a get query, see the
+xref:manual::reading/get.adoc#_how_to_send_a_get_query[Get query] page.
+
+== Get a type object with an API methods
+
+The Concepts class (or ConceptManager) of any driver provides methods to work with concepts in a TypeDB database,
+including types.
+
+=== Get a type by its label and root type
+
+Retrieve a stateful object of any type with one of the root-type specific methods
+by using the types label (name) as an argument.
+
+[tabs]
+====
+Rust::
++
+--
+
+--
+
+Python::
++
+--
+
+xref:drivers::python/api-reference.adoc#_ConceptManager_get_entity_type__label_str[`get_entity_type()`] +
+xref:drivers::python/api-reference.adoc#_ConceptManager_get_relation_type__label_str[`get_relation_type()`] +
+xref:drivers::python/api-reference.adoc#_ConceptManager_get_attribute_type__label_str[`get_attribute_type()`]
+
+--
+
+Java::
++
+--
+
+--
+
+Node.js::
++
+--
+
+--
+
+C++::
++
+--
+
+--
+====
+
+=== Get root type and traverse type hierarchy
+
+Retrieve stateful objects for root types with the following methods.
+
+[tabs]
+====
+Rust::
++
+--
+
+--
+
+Python::
++
+--
+
+xref:drivers::python/api-reference.adoc#_ConceptManager_get_root_entity_type__[`get_root_entity_type()`] +
+xref:drivers::python/api-reference.adoc#_ConceptManager_get_root_relation_type__[`get_root_relation_type()`] +
+xref:drivers::python/api-reference.adoc#_ConceptManager_get_root_attribute_type__[`get_root_attribute_type()`]
+
+--
+
+Java::
++
+--
+
+--
+
+Node.js::
++
+--
+
+--
+
+C++::
++
+--
+
+--
+====
+
+Then you can retrieve all subtypes and find the required type.
+
+[tabs]
+====
+Rust::
++
+--
+
+--
+
+Python::
++
+--
+
+xref:drivers::python/api-reference.adoc#_ConceptManager_get_root_entity_type__[`get_root_entity_type()`] +
+xref:drivers::python/api-reference.adoc#_ConceptManager_get_root_relation_type__[`get_root_relation_type()`] +
+xref:drivers::python/api-reference.adoc#_ConceptManager_get_root_attribute_type__[`get_root_attribute_type()`]
+
+--
+
+Java::
++
+--
+
+--
+
+Node.js::
++
+--
+
+--
+
+C++::
++
+--
+
+--
+====
+
+
+== Example of type manipulation
+
+[,python,indent=0]
+----
+include::manual::partial$python-manual-code.py[tags=schema-api]
+----
+
+For more information about driver API methods, see the API reference of the relevant driver:
+
+include::manual::reading/get.adoc[tags=drivers-api]
+
+[#_get_a_rule_object]
+== Get a rule object
+
+Use the following methods to retrieve and manipulate rile objects:
+
+[tabs]
+====
+Rust::
++
+--
+
+--
+
+Python::
++
+--
+
+xref:drivers::python/api-reference.adoc#_LogicManager_get_rules__[`get_rules()`] -- retrieve all rules from the schema. +
+xref:drivers::python/api-reference.adoc#_LogicManager_get_rule__label_str[`get_rule()`] -- retrieve a stateful object of a rule by its label. +
+xref:drivers::python/api-reference.adoc#_LogicManager_put_rule__label_str__when_str__then_str[`put_rule()`] -- Create new or update existing rule with the label.
+
+For more information on properties of a rule object,
+see the xref:drivers::python/api-reference.adoc#_Rule[Rule object] section of API reference.
+--
+
+Java::
++
+--
+
+--
+
+Node.js::
++
+--
+
+--
+
+C++::
++
+--
+
+--
+====
