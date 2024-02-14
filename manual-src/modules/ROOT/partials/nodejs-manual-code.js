@@ -3,14 +3,14 @@ const { TypeDB } = require("typedb-driver/TypeDB");
 const { SessionType } = require("typedb-driver/api/connection/TypeDBSession");
 const { TransactionType } = require("typedb-driver/api/connection/TypeDBTransaction");
 const { TypeDBOptions } = require("typedb-driver/api/connection/TypeDBOptions");
+const { Concept } = require("typedb-driver/api/concept/Concept");
 // end::import[]
 async function main() {
-    const DB_NAME = "iam";
-    const SERVER_ADDR = "127.0.0.1:1729";
+    const DB_NAME = "sample_db";
 
     console.log("TypeDB Manual sample code");
     // tag::driver[]
-    const driver = await TypeDB.coreDriver(SERVER_ADDR);
+    const driver = await TypeDB.coreDriver("127.0.0.1:1729");
     // end::driver[]
     // tag::list-db[]
     let dbs = await driver.databases.all();
@@ -159,10 +159,8 @@ async function main() {
                                 $u: name, email;
                                 `;
             let response = await transaction.query.fetch(fetch_query).collect();
-            k = 0;
             for(let i = 0; i < response.length; i++) {
-                k++;
-                console.log("User #" + k + ": " + JSON.stringify(response[i], null, 4));
+                console.log("User #" + (i + 1) + ": " + JSON.stringify(response[i], null, 4));
             }
         }
         finally {if (transaction.isOpen()) {await transaction.close()};}
@@ -181,10 +179,8 @@ async function main() {
                                 $e;
                                 `;
             let response = await transaction.query.get(get_query).collect();
-            k = 0;
             for(let i = 0; i < response.length; i++) {
-                k++;
-                console.log("Email #" + k + ": " + response[i].get("e").value);
+                console.log("Email #" + (i + 1) + ": " + response[i].get("e").value);
             }
         }
         finally {if (transaction.isOpen()) {await transaction.close()};}
@@ -226,16 +222,65 @@ async function main() {
                                 $u: name, email;
                                 `;
             let response = await transaction.query.fetch(fetch_query).collect();
-            k = 0;
             for(let i = 0; i < response.length; i++) {
-                k++;
-                console.log("User #" + k + ": " + JSON.stringify(response[i], null, 4));
+                console.log("User #" + (i + 1) + ": " + JSON.stringify(response[i], null, 4));
             }
         }
         finally {if (transaction.isOpen()) {await transaction.close()};}
     }
     finally {await session?.close();}
     // end::infer-fetch[]
+    // tag::types-editing[]
+    try {
+        session = await driver.session(DB_NAME, SessionType.SCHEMA);
+        try {
+            transaction = await session.transaction(TransactionType.WRITE);
+            let tag = await transaction.concepts.putAttributeType("tag", Concept.ValueType.STRING);
+            let rootEntity = await transaction.concepts.getRootEntityType();
+            let entites = await rootEntity.getSubtypes(transaction, Concept.Transitivity.EXPLICIT);
+            await entites.forEach(entity => entity.setOwns(transaction, tag));
+            await transaction.commit();
+        }
+        finally {if (transaction.isOpen()) {await transaction.close()};}
+    }
+    finally {await session?.close();}
+    // end::types-editing[]
+    // tag::types-api[]
+    try {
+        session = await driver.session(DB_NAME, SessionType.SCHEMA);
+        try {
+            transaction = await session.transaction(TransactionType.WRITE);
+            let user = await transaction.concepts.getEntityType("user");
+            let admin = await transaction.concepts.putEntityType("admin");
+            await admin.setSupertype(transaction, user);
+            let rootEntity = await transaction.concepts.getRootEntityType();
+            let subtypes = await rootEntity.getSubtypes(transaction, Concept.Transitivity.TRANSITIVE);
+            await subtypes.forEach(subtype => console.log(subtype.label.toString()));
+            await transaction.commit();
+        }
+        finally {if (transaction.isOpen()) {await transaction.close()};}
+    }
+    finally {await session?.close();}
+    // end::types-api[]
+    // tag::rules-api[]
+    try {
+        session = await driver.session(DB_NAME, SessionType.SCHEMA);
+        try {
+            transaction = await session.transaction(TransactionType.WRITE);
+            await transaction.logic.getRules().forEach(rule => {
+                console.log("Rule label: " + rule.label);
+                console.log("  Condition: " + rule.when);
+                console.log("  Conclusion: " + rule.then);
+            });
+            let new_rule = await transaction.logic.putRule("Employee","{$u isa user, has email $e; $e contains '@vaticle.com';}","$u has name 'Employee'");
+            console.log((await transaction.logic.getRule("Employee")).label);
+            await new_rule.delete(transaction);
+            await transaction.commit();
+        }
+        finally {if (transaction.isOpen()) {await transaction.close()};}
+    }
+    finally {await session?.close();}
+    // end::rules-api[]
 };
 
 main();

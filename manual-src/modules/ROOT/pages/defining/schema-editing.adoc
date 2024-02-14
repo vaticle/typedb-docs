@@ -30,29 +30,9 @@ Rust::
 +
 --
 .{code-caption}
-[,rust]
+[,rust, indent=0]
 ----
-use typedb_driver::{
-    concept::{Transitivity, ValueType}, transaction::concept::api::{EntityTypeAPI, ThingTypeAPI}, Connection, DatabaseManager, Error, Promise, Session, SessionType, TransactionType
-};
-
-fn main() -> Result<(), Error> {
-    let driver = Connection::new_core("127.0.0.1:1729")?;
-    let databases = DatabaseManager::new(driver);
-    Ok({
-        let session = Session::new(databases.get("schema-api-db")?, SessionType::Schema)?;
-        let tx = session.transaction(TransactionType::Write)?;
-        let tag = tx.concept().put_attribute_type("tag".to_owned(),ValueType::String).resolve()?;
-        let entities = tx.concept().get_entity_type("entity".to_owned()).resolve().unwrap().unwrap().get_subtypes(&tx, Transitivity::Explicit).unwrap();
-        for res in entities {
-            let mut entity = res.unwrap();
-            if !{entity.is_abstract()} {
-                _ = entity.set_owns(&tx, tag.clone(),None,vec![]).resolve();
-            }
-        }
-        tx.commit().resolve()?;
-    })
-}
+include::manual::partial$rust-manual-code.rs[tags=types-editing]
 ----
 
 For more details about these and other API methods, see the xref:drivers::rust/api-reference.adoc[API reference].
@@ -62,20 +42,9 @@ Python::
 +
 --
 .{code-caption}
-[,python]
+[,python, indent=0]
 ----
-from typedb.driver import TypeDB, SessionType, TransactionType, ValueType, Transitivity
-
-with TypeDB.core_driver("127.0.0.1:1729") as driver:
-    with driver.session("sample_db", SessionType.SCHEMA) as session:
-        with session.transaction(TransactionType.WRITE) as transaction:
-            tag = transaction.concepts.put_attribute_type("tag", ValueType.STRING).resolve()
-            entities = transaction.concepts.get_root_entity_type().get_subtypes(transaction, Transitivity.EXPLICIT)
-            for entity in entities:
-                print(entity.get_label())
-                if not entity.is_abstract():
-                    entity.set_owns(transaction, tag).resolve()
-            transaction.commit()
+include::manual::partial$python-manual-code.py[tags=types-editing]
 ----
 
 For more details about these and other API methods, see the xref:drivers::python/api-reference.adoc[API reference].
@@ -85,35 +54,9 @@ Java::
 +
 --
 .{code-caption}
-[,java]
+[,java, indent=0]
 ----
-package org.example;
-
-import com.vaticle.typedb.driver.api.TypeDBDriver;
-import com.vaticle.typedb.driver.api.TypeDBSession;
-import com.vaticle.typedb.driver.api.TypeDBTransaction;
-import com.vaticle.typedb.driver.TypeDB;
-import com.vaticle.typedb.driver.api.concept.Concept;
-import com.vaticle.typedb.driver.api.concept.type.AttributeType;
-import com.vaticle.typedb.driver.api.concept.value.Value;
-
-public class Main {
-    public static void main(String[] args) {
-        TypeDBDriver driver = TypeDB.coreDriver("0.0.0.0:1729");
-        try (TypeDBSession session = driver.session("sample_db", TypeDBSession.Type.SCHEMA)) {
-            try (TypeDBTransaction writeTransaction = session.transaction(TypeDBTransaction.Type.WRITE)) {
-                AttributeType tag = writeTransaction.concepts().putAttributeType("tag", Value.Type.STRING).resolve();
-                writeTransaction.concepts().getRootEntityType().getSubtypes(writeTransaction, Concept.Transitivity.EXPLICIT).forEach(result -> {
-                    if (! result.isAbstract()) {
-                        result.setOwns(writeTransaction,tag).resolve();
-                    }
-                });
-                writeTransaction.commit();
-            }
-        }
-        driver.close();
-    }
-}
+include::manual::partial$java-manual-code.java[tags=types-editing]
 ----
 
 For more details about these and other API methods, see the xref:drivers::java/api-reference.adoc[API reference].
@@ -123,32 +66,9 @@ Node.js::
 +
 --
 .{code-caption}
-[,js]
+[,js,indent=0]
 ----
-const { TypeDB } = require("typedb-driver/TypeDB");
-const { SessionType } = require("typedb-driver/api/connection/TypeDBSession");
-const { TransactionType } = require("typedb-driver/api/connection/TypeDBTransaction");
-const { Concept } = require("typedb-driver/api/concept/Concept");
-
-async function main() {
-    const driver = await TypeDB.coreDriver("127.0.0.1:1729");
-    try {
-        session = await driver.session("sample_db", SessionType.SCHEMA);
-        try {
-            transaction = await session.transaction(TransactionType.WRITE);
-            let tag = await transaction.concepts.putAttributeType("tag", Concept.ValueType.STRING);
-            let rootEntity = await transaction.concepts.getRootEntityType();
-            let entites = await rootEntity.getSubtypes(transaction, Concept.Transitivity.EXPLICIT);
-            await entites.forEach(entity => entity.setOwns(transaction, tag));
-            await transaction.commit();
-        }
-        catch(e) {console.log(e);}
-        finally {if (transaction.isOpen()) {await transaction.close()};}
-    }
-    catch(e) { console.log(e);}
-    finally {await session?.close();}
-}
-main();
+include::manual::partial$nodejs-manual-code.js[tags=types-editing]
 ----
 
 For more details about these and other API methods, see the xref:drivers::nodejs/api-reference.adoc[API reference].
@@ -158,31 +78,9 @@ C++::
 +
 --
 .{code-caption}
-[,cpp]
+[,cpp,indent=0]
 ----
-#include <iostream>
-#include <typedb_driver.hpp>
-
-int main() {
-    try {
-        TypeDB::Driver driver = TypeDB::Driver::coreDriver("127.0.0.1:1729");
-        TypeDB::Options options;
-        {
-            auto session = driver.session("sample_db", TypeDB::SessionType::SCHEMA, options);
-            auto tx = session.transaction(TypeDB::TransactionType::WRITE, options);
-            auto tag = tx.concepts.putAttributeType("tag", TypeDB::ValueType::STRING).get();
-            auto root_entity = tx.concepts.getRootEntityType();
-            auto entities = root_entity -> getSubtypes(tx, TypeDB::Transitivity::EXPLICIT);
-            for (auto& entity : entities) {
-                    if (!(entity->isAbstract())) {
-                        (void) entity->setOwns(tx, tag.get());
-                    }
-                }
-            tx.commit();
-        }
-    } catch (TypeDB::DriverException e ) {return 2;}
-    return 0;
-}
+include::manual::partial$cpp-manual-code.cpp[tags=types-editing]
 ----
 
 For more details about these and other API methods, see the xref:drivers::cpp/api-reference.adoc[API reference].
