@@ -65,7 +65,7 @@ Java::
 .Example
 [,java]
 ----
-
+List<? extends Entity> users = Transaction.concepts().getEntityType("user").resolve().getInstances(Transaction).toList();
 ----
 For more information,
 see the xref:drivers::java/api-reference.adoc#_ConceptManager[ConceptManager class] methods.
@@ -77,7 +77,7 @@ Node.js::
 .Example
 [,js]
 ----
-
+let users = await (await transaction.concepts.getEntityType("user")).getInstances(transaction).collect();
 ----
 For more information,
 see the xref:drivers::nodejs/api-reference.adoc#_ConceptManager[ConceptManager class] methods.
@@ -89,7 +89,7 @@ C++::
 .Example
 [,cpp]
 ----
-
+auto users = transaction.concepts.getEntityType("user").get().get()->getInstances(transaction);
 ----
 For more information,
 see the xref:drivers::cpp/api-reference.adoc#_ConceptManager[ConceptManager class] methods.
@@ -134,7 +134,7 @@ Java::
 .Example
 [,java]
 ----
-
+List<? extends Attribute> attributes = user.getHas(Transaction, annotations).toList();
 ----
 For more information,
 see the xref:drivers::java/api-reference.adoc#_data_header[Data class] methods.
@@ -146,7 +146,7 @@ Node.js::
 .Example
 [,js]
 ----
-
+let attributes = user.getHas(transaction);
 ----
 For more information,
 see the xref:drivers::nodejs/api-reference.adoc#_data_header[Data class] methods.
@@ -158,7 +158,7 @@ C++::
 .Example
 [,cpp]
 ----
-
+auto attributes = user.get()->getHas(transaction);
 ----
 For more information,
 see the xref:drivers::cpp/api-reference.adoc#_data_header[Data class] methods.
@@ -202,7 +202,7 @@ Java::
 .Example
 [,java]
 ----
-
+Entity new_user = Transaction.concepts().getEntityType("user").resolve().create(Transaction).resolve();
 ----
 For more information,
 see the xref:drivers::java/api-reference.adoc#_EntityType[EntityType class] methods.
@@ -214,7 +214,7 @@ Node.js::
 .Example
 [,js]
 ----
-
+let newUser = await (await transaction.concepts.getEntityType("user")).create(transaction);
 ----
 For more information,
 see the xref:drivers::nodejs/api-reference.adoc#_EntityType[EntityType class] methods.
@@ -226,7 +226,7 @@ C++::
 .Example
 [,cpp]
 ----
-
+auto newUser = transaction.concepts.getEntityType("user").get().get()->create(transaction).get();
 ----
 For more information,
 see the xref:drivers::cpp/api-reference.adoc#_EntityType[EntityType class] methods.
@@ -271,7 +271,7 @@ Java::
 .Example
 [,java]
 ----
-
+new_user.delete(Transaction).resolve();
 ----
 For more information,
 see the xref:drivers::java/api-reference.adoc#_EntityType[EntityType class] methods.
@@ -283,7 +283,7 @@ Node.js::
 .Example
 [,js]
 ----
-
+await newUser.delete(transaction);
 ----
 For more information,
 see the xref:drivers::nodejs/api-reference.adoc#_EntityType[EntityType class] methods.
@@ -295,7 +295,7 @@ C++::
 .Example
 [,cpp]
 ----
-
+newUser.get()->deleteThing(transaction).get();
 ----
 For more information,
 see the xref:drivers::cpp/api-reference.adoc#_EntityType[EntityType class] methods.
@@ -336,9 +336,9 @@ Java::
 +
 --
 .Example
-[,java]
+[,java,indent=0]
 ----
-
+include::manual::partial$java-manual-code.java[tags=data-api]
 ----
 For more information,
 see the xref:drivers::java/api-reference.adoc#_data_header[Data class] methods.
@@ -348,9 +348,9 @@ Node.js::
 +
 --
 .Example
-[,js]
+[,js,indent=0]
 ----
-
+include::manual::partial$nodejs-manual-code.js[tags=data-api]
 ----
 For more information,
 see the xref:drivers::nodejs/api-reference.adoc#_data_header[Data class] methods.
@@ -362,7 +362,7 @@ C++::
 .Example
 [,cpp]
 ----
-
+include::manual::partial$cpp-manual-code.cpp[tags=data-api]
 ----
 For more information,
 see the xref:drivers::cpp/api-reference.adoc#_data_header[Data class] methods.
