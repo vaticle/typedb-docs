@@ -25,9 +25,8 @@ Studio::
 --
 Studio controls transactions automatically when you run a query.
 
-You can select a session type for queries with a `schema`/`data` selector in the top toolbar:
-image:manual::icons/session-schema.png[session type selector].
-For the session type selector to be active, you need to connect Studio to TypeDB
+Use the Session type switch at the top toolbar to select the type of session to use to send a query.
+For the selector to be active, you need to connect Studio to TypeDB server
 and select a database from a drop-down list in the top toolbar.
 --
 
@@ -41,7 +40,7 @@ You choose a session type when you open a xref:manual::connecting/transaction.ad
 ====
 
 xref:drivers::overview.adoc[TypeDB drivers]
-provide the most flexible approach to managing sessions via native API:
+provide manual session control via native API:
 
 [tabs]
 ====
@@ -49,9 +48,9 @@ Rust::
 +
 --
 .Open a session
-[,rust]
+[,rust,indent=0]
 ----
-let session = Session::new(databases.get(DB_NAME)?, SessionType::Schema)?;
+include::manual::partial$rust-manual-code.rs[tag=session_open]
 ----
 
 Where `DB_NAME` is the name of the database.
@@ -63,7 +62,7 @@ Python::
 .Open a session
 [,python,indent=0]
 ----
-session = driver.session(DB_NAME, SessionType.SCHEMA)
+include::manual::partial$python-manual-code.py[tag=session_open]
 ----
 
 Where `driver` is an instance of a driver, connected to TypeDB, and `DB_NAME` is the name of the database.
@@ -73,9 +72,9 @@ Java::
 +
 --
 .Open a session
-[,java]
+[,java,indent=0]
 ----
-TypeDBSession session = driver.session("sample_db", TypeDBSession.Type.SCHEMA);
+include::manual::partial$java-manual-code.java[tag=session_open]
 ----
 
 Where `driver` is an instance of a driver, connected to TypeDB, and `DB_NAME` is the name of the database.
@@ -85,9 +84,9 @@ Node.js::
 +
 --
 .Open a session
-[,js]
+[,js,indent=0]
 ----
-let session = await driver.session("sample_db", SessionType.SCHEMA);
+include::manual::partial$nodejs-manual-code.js[tag=session_open]
 ----
 
 Where `driver` is an instance of a driver, connected to TypeDB, and `DB_NAME` is the name of the database.
@@ -109,8 +108,6 @@ Where `driver` is an instance of a driver, connected to TypeDB, and `DB_NAME` is
 After connecting to a server and opening a
 session, see how to xref:connecting/transaction.adoc[open a transaction].
 
-To see how to close an open session, see <<_close_a_session,below>>.
-
 [#_close_a_session]
 == Close a session
 
@@ -129,9 +126,9 @@ To explicitly close a session,
 use the xref:drivers::rust/api-reference.adoc#_struct_Session_force_close__[force_close] method:
 
 .Close a session
-[,rust]
+[,rust,indent=0]
 ----
-session.force_close();
+include::manual::partial$rust-manual-code.rs[tag=session_close]
 ----
 --
 
@@ -142,9 +139,9 @@ Use a https://peps.python.org/pep-0343/[context manager] to close a session when
 or use the xref:drivers::python/api-reference.adoc#_TypeDBSession_close__[close] method to explicitly close a session:
 
 .Close a session
-[,python]
+[,python,indent=0]
 ----
-session.close()
+include::manual::partial$python-manual-code.py[tag=session_close]
 ----
 --
 
@@ -156,9 +153,9 @@ to close a session when it's longer needed, or use the
 xref:drivers::java/api-reference.adoc#_TypeDBSession_close__[close] method to explicitly close a session:
 
 .Close a session
-[,java]
+[,java,indent=0]
 ----
-session.close();
+include::manual::partial$java-manual-code.java[tag=session_close]
 ----
 --
 
@@ -168,9 +165,9 @@ Node.js::
 Use the xref:drivers::java/api-reference.adoc#_TypeDBSession_close__[close] method to explicitly close a session:
 
 .Close a session
-[,js]
+[,js,indent=0]
 ----
-session.close();
+include::manual::partial$nodejs-manual-code.js[tag=session_close]
 ----
 --
 
@@ -192,18 +189,21 @@ session.close();
 
 == Session management
 //best practices?
+//A good principle to follow is for logically coherent transactions to be grouped into a session.
+//Avoid long-running sessions because of possible network failures.
+
+=== Session timeout
 
 Any TypeDB Client automatically exchanges internal signals with TypeDB server to keep a session alive when it’s open.
-If server doesn't receive this signal for a period of time bigger than the timeout (by default, 30 secs)
+If a TypeDB server doesn't receive this signal for a period of time bigger than the timeout (default: 30 seconds)
 it forcibly closes the session due to inactivity.
 
-Only one Schema session can be open at any time.
-An open Schema session blocks all attempt to open a `write` transaction in any `data` session.
+=== Schema session blocks
+
+Only one *Schema session* can be open at any time.
+An open Schema session *blocks* all attempt to open a `write` transaction in any `data` session.
 For more information on these limitations, see the
 xref:home::acid.adoc#_schema_integrity[Schema integrity enforcement] section on the xref:home::acid.adoc[] page.
-
-Avoid long-running sessions because of possible network failures.
-A good principle to follow is for logically coherent transactions to be grouped into a session.
 
 == Learn more
 

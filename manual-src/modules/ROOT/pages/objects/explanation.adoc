@@ -12,7 +12,7 @@ This page assumes you've already followed instructions from the xref:manual::rea
 To get an explanation on infered data, you need to infer some data with a Get query.
 If the `explain` transaction option is enabled,
 the response to the query includes an Explainables object as a part of every ConceptMap.
-We will use the Explainables object <<_explain_query_,later>> to get explanations.
+We will use the Explainables object <<_explain_query,later>> to get explanations.
 
 [tabs]
 ====
@@ -36,11 +36,9 @@ Python::
 +
 --
 .Example
-[,python]
+[,python,indent=0]
 ----
-response = transaction.query.get(get_query)
-for ConceptMap in response:
-    explainable_relations = ConceptMap.explainables().relations()
+include::manual::partial$python-manual-code.py[tag=explainables]
 ----
 For more information,
 see the xref:drivers::python/api-reference.adoc#_Explainables[Explainables] and
@@ -95,10 +93,13 @@ xref:drivers::nodejs/api-reference.adoc#_Explainable[Explainable] classes.
 --
 ====
 
-[#_explain_query_]
+[#_explain_query]
 == Explain query
 
-To get explanation(s), use an explain query, that takes an explainable object as an argument:
+An Explain query is a special type of query that can be sent with driver API to get explanations.
+It is the only type of query that doesn't use TypeQL.
+Instead, it uses an explainable object as an argument.
+See an example below.
 
 [tabs]
 ====
@@ -121,10 +122,9 @@ Python::
 +
 --
 .Example
-[,python]
+[,python,indent=0]
 ----
-for explainable in explainable_relations:
-    explain_iterator = transaction.query.explain(explainable_relations[explainable])
+include::manual::partial$python-manual-code.py[tag=explain]
 ----
 For more information, see the
 xref:drivers::python/api-reference.adoc#_QueryManager_explain__explainable_ConceptMap_Explainable__options_TypeDBOptions__None[Explain query]
@@ -215,15 +215,9 @@ Python::
 +
 --
 .Example
-[,python]
+[,python,indent=0]
 ----
-for explanation in explain_iterator:
-    print("Rule: ", explanation.rule().label)
-    print("Condition: ", explanation.condition())
-    print("Conclusion: ", explanation.conclusion())
-    print("Variable mapping: ")
-    for var in explanation.query_variables():
-        print(f"  Query variable {var} maps to the rule variable {explanation.query_variable_mapping(var)}")
+include::manual::partial$python-manual-code.py[tag=explanation]
 ----
 For more information,
 see the xref:drivers::python/api-reference.adoc#_Explanation[Explanation class] methods.
@@ -288,6 +282,16 @@ see the xref:drivers::cpp/api-reference.adoc#_Explanation[Explanation class] met
 ====
 
 == Full example
+
+See below a comprehensive example of using explanation of inferred results.
+In this example we get all names of a user, matched by its email containing substring `alice`.
+There should be only one such user in the database so far, and it should have only one name,
+but according to the `users` rule, it should have an additional infered name: 'User`.
+So, we turn on inference, retrieve both names, and proceed to retrieve explainables for both names.
+Since only one name is infered, we can only have one explainable.
+So we iterate through explainables and send an Explain query to retrieve an explanation.
+We then print the information from the explanation object, including rule label, condition, conclusion,
+and variable mapping between the query and the rule.
 
 [tabs]
 ====
@@ -364,10 +368,10 @@ see the xref:drivers::cpp/api-reference.adoc#_Explanation[Explanation class] met
 Learn more about how to use inference in TypeDB.
 ****
 
-.xref:learn::8-reasoning-over-data/8-reasoning-over-data.adoc[]
+.xref:learn::3-reading-data/3.3-fetching-inferred-data.adoc[]
 [.clickable]
 ****
-Check out the Reasoning over data section of our TypeDB Learning course.
+Check out the Fetching inferred data page of our TypeDB Learning course.
 ****
 --
 
