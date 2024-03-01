@@ -10,10 +10,10 @@ with TypeDB.core_driver("localhost:1729") as driver:
     for db in driver.databases.all():
         print(db.name)
     # end::list-db[]
-    # tag::delete-db[]
     if driver.databases.contains(DB_NAME):
+        # tag::delete-db[]
         driver.databases.get(DB_NAME).delete()
-    # end::delete-db[]
+        # end::delete-db[]
     # tag::create-db[]
     driver.databases.create(DB_NAME)
     # end::create-db[]
@@ -136,8 +136,8 @@ with TypeDB.core_driver("localhost:1729") as driver:
                             $u: name, email;
                             """
             response = tx.query.fetch(fetch_query)
-            for i, JSON in enumerate(response):
-                print(f"User #{i + 1}: {JSON}")
+            for i, JSON in enumerate(response, start=1):
+                print(f"User #{i}: {JSON}")
     # end::fetch[]
     # tag::get[]
     with driver.session(DB_NAME, SessionType.DATA) as session:
@@ -149,9 +149,9 @@ with TypeDB.core_driver("localhost:1729") as driver:
                         $e;
                         """
             response = tx.query.get(get_query)
-            for i, concept_map in enumerate(response):
+            for i, concept_map in enumerate(response, start=1):
                 email = concept_map.get("e").as_attribute().get_value()
-                print(f"Email #{i + 1}: {email}")
+                print(f"Email #{i}: {email}")
     # end::get[]
     # tag::infer-rule[]
     with driver.session(DB_NAME, SessionType.SCHEMA) as session:
@@ -178,8 +178,8 @@ with TypeDB.core_driver("localhost:1729") as driver:
                             $u: name, email;
                             """
             response = tx.query.fetch(fetch_query)
-            for i, JSON in enumerate(response):
-                print(f"User #{i + 1}: {JSON}")
+            for i, JSON in enumerate(response, start=1):
+                print(f"User #{i}: {JSON}")
     # end::infer-fetch[]
     # tag::types-editing[]
     with driver.session(DB_NAME, SessionType.SCHEMA) as session:
@@ -195,9 +195,9 @@ with TypeDB.core_driver("localhost:1729") as driver:
     # tag::types-api[]
     with driver.session(DB_NAME, SessionType.SCHEMA) as session:
         with session.transaction(TransactionType.WRITE) as tx:
-            user = tx.concepts.get_entity_type("user").resolve()
-            admin = tx.concepts.put_entity_type("admin").resolve()
-            admin.set_supertype(tx, user)
+            user_type = tx.concepts.get_entity_type("user").resolve()
+            admin_type = tx.concepts.put_entity_type("admin").resolve()
+            admin_type.set_supertype(tx, user_type)
             root_entity = tx.concepts.get_root_entity_type()
             subtypes = list(root_entity.get_subtypes(tx, Transitivity.TRANSITIVE))
             for subtype in subtypes:
@@ -208,16 +208,16 @@ with TypeDB.core_driver("localhost:1729") as driver:
     with driver.session(DB_NAME, SessionType.SCHEMA) as session:
         with session.transaction(TransactionType.WRITE) as tx:
             # tag::get_type[]
-            user = tx.concepts.get_entity_type("user").resolve()
+            user_type = tx.concepts.get_entity_type("user").resolve()
             # end::get_type[]
             # tag::add_type[]
-            admin = tx.concepts.put_entity_type("admin").resolve()
+            admin_type = tx.concepts.put_entity_type("admin").resolve()
             # end::add_type[]
             # tag::set_supertype[]
-            admin.set_supertype(tx, user)
+            admin_type.set_supertype(tx, user_type)
             # end::set_supertype[]
             # tag::get_instances[]
-            users = tx.concepts.get_entity_type("user").resolve().get_instances(tx)
+            users = user_type.get_instances(tx)
             # end::get_instances[]
             for user in users:
                 # tag::get_has[]
@@ -234,14 +234,15 @@ with TypeDB.core_driver("localhost:1729") as driver:
         with session.transaction(TransactionType.WRITE) as tx:
             rules = tx.logic.get_rules()
             for rule in rules:
-                print("Rule label:", rule.label)
-                print("  Condition:", rule.when)
-                print("  Conclusion:", rule.then)
+                print(rule.label)
+                print(rule.when)
+                print(rule.then)
             new_rule = tx.logic.put_rule("Employee",
                                          "{$u isa user, has email $e; $e contains '@vaticle.com';}",
                                          "$u has name 'Employee'").resolve()
-            print(tx.logic.get_rule("Employee").resolve().label)
             new_rule.delete(tx).resolve()
+            old_rule = tx.logic.get_rule("users").resolve()
+            print(old_rule.label)
             tx.commit()
     # end::rules-api[]
     with driver.session(DB_NAME, SessionType.SCHEMA) as session:
@@ -249,9 +250,9 @@ with TypeDB.core_driver("localhost:1729") as driver:
             # tag::get_rules[]
             rules = tx.logic.get_rules()
             for rule in rules:
-                print("Rule label:", rule.label)
-                print("  Condition:", rule.when)
-                print("  Conclusion:", rule.then)
+                print(rule.label)
+                print(rule.when)
+                print(rule.then)
             # end::get_rules[]
             # tag::put_rule[]
             new_rule = tx.logic.put_rule("Employee",
@@ -259,9 +260,9 @@ with TypeDB.core_driver("localhost:1729") as driver:
                                          "$u has name 'Employee'").resolve()
             # end::put_rule[]
             # tag::get_rule[]
-            rule = tx.logic.get_rule("Employee").resolve()
+            old_rule = tx.logic.get_rule("users").resolve()
             # end::get_rule[]
-            print(rule.label)
+            print(old_rule.label)
             # tag::delete_rule[]
             new_rule.delete(tx).resolve()
             # end::delete_rule[]
@@ -290,13 +291,13 @@ with TypeDB.core_driver("localhost:1729") as driver:
                         $u, $n;
                         """
             response = tx.query.get(get_query)
-            for i, ConceptMap in enumerate(response):
+            for i, ConceptMap in enumerate(response, start=1):
                 name = ConceptMap.get("n").as_attribute().get_value()
-                print(f"Name #{i + 1}: {name}")
+                print(f"Name #{i}: {name}")
                 explainable_relations = ConceptMap.explainables().relations()
                 for var, explainable in explainable_relations:
                     print("Explained variable:", explainable)
-                    print("Explainable object:", explainable_relations[explainable])  # ???
+                    print("Explainable object:", explainable_relations[explainable])
                     print("Explainable part of query:", explainable_relations[explainable].conjunction())
                     explain_iterator = tx.query.explain(explainable)
                     for explanation in explain_iterator:
@@ -321,11 +322,11 @@ with TypeDB.core_driver("localhost:1729") as driver:
                         """
             # tag::explainables[]
             response = tx.query.get(get_query)
-            for i, ConceptMap in enumerate(response):
+            for i, ConceptMap in enumerate(response, start=1):
                 explainable_relations = ConceptMap.explainables().relations()
             # end::explainables[]
                 name = ConceptMap.get("n").as_attribute().get_value()
-                print(f"Name #{i + 1}: {name}")
+                print(f"Name #{i}: {name}")
                 # tag::explain[]
                 for var, explainable in explainable_relations:
                     explain_iterator = tx.query.explain(explainable)

@@ -5,6 +5,7 @@ import com.vaticle.typedb.driver.TypeDB;
 import com.vaticle.typedb.driver.api.*;
 import com.vaticle.typedb.driver.api.answer.ConceptMap;
 import com.vaticle.typedb.driver.api.concept.Concept;
+import com.vaticle.typedb.driver.api.concept.thing.Attribute;
 import com.vaticle.typedb.driver.api.concept.thing.Entity;
 import com.vaticle.typedb.driver.api.concept.type.AttributeType;
 import com.vaticle.typedb.driver.api.concept.type.EntityType;
@@ -31,11 +32,11 @@ public class Main {
         // tag::list-db[]
         driver.databases().all().forEach( result -> System.out.println(result.name()));
         // end::list-db[]
-        // tag::delete-db[]
         if (driver.databases().contains(DB_NAME)) {
+            // tag::delete-db[]
             driver.databases().get(DB_NAME).delete();
+            // end::delete-db[]
         }
-        // end::delete-db[]
         // tag::create-db[]
         driver.databases().create(DB_NAME);
         // end::create-db[]
@@ -44,16 +45,18 @@ public class Main {
         }
 
         try {
+            /*
             // tag::connect_core[]
-            TypeDBDriver coreDriver = TypeDB.coreDriver("127.0.0.1:1729");
+            TypeDBDriver driver = TypeDB.coreDriver("127.0.0.1:1729");
             // end::connect_core[]
             try {
                 // tag::connect_cloud[]
-                TypeDBDriver cloudDriver = TypeDB.cloudDriver("127.0.0.1:1729", new TypeDBCredential("admin", "password", true ));
+                TypeDBDriver driver = TypeDB.cloudDriver("127.0.0.1:1729", new TypeDBCredential("admin", "password", true ));
                 // end::connect_cloud[]
             } catch (Exception ignored) {
 
             }
+            */
             // tag::session_open[]
             TypeDBSession session = driver.session(DB_NAME, TypeDBSession.Type.SCHEMA);
             // end::session_open[]
@@ -248,9 +251,9 @@ public class Main {
         // tag::types-api[]
         try (TypeDBSession session = driver.session(DB_NAME, TypeDBSession.Type.SCHEMA)) {
             try (TypeDBTransaction tx = session.transaction(TypeDBTransaction.Type.WRITE)) {
-                EntityType user = tx.concepts().getEntityType("user").resolve();
-                EntityType admin = tx.concepts().putEntityType("admin").resolve();
-                admin.setSupertype(tx, user).resolve();
+                EntityType userType = tx.concepts().getEntityType("user").resolve();
+                EntityType adminType = tx.concepts().putEntityType("admin").resolve();
+                adminType.setSupertype(tx, userType).resolve();
                 EntityType root_entity = tx.concepts().getRootEntityType();
                 root_entity.getSubtypes(tx, Concept.Transitivity.TRANSITIVE).forEach(result -> System.out.println(result.getLabel().name()));
                 tx.commit();
@@ -263,10 +266,10 @@ public class Main {
                 EntityType userType = tx.concepts().getEntityType("user").resolve();
                 // end::get_type[]
                 // tag::add_type[]
-                EntityType admin = tx.concepts().putEntityType("admin").resolve();
+                EntityType adminType = tx.concepts().putEntityType("admin").resolve();
                 // end::add_type[]
                 // tag::set_supertype[]
-                admin.setSupertype(tx, userType).resolve();
+                adminType.setSupertype(tx, userType).resolve();
                 // end::set_supertype[]
 
                 // tag::get_instances[]
@@ -276,9 +279,11 @@ public class Main {
                 users.forEach(user -> {
                     System.out.println("User");
                     // tag::get_has[]
-                    user.getHas(tx, annotations).forEach(attribute ->
-                        System.out.println(attribute.getType().getLabel().toString()+ ": " + attribute.getValue().toString()));
+                    Stream<? extends Attribute> attributes = user.getHas(tx, annotations);
                     // end::get_has[]
+                    attributes.forEach(attribute ->
+                        System.out.println(attribute.getType().getLabel().toString()+ ": " + attribute.getValue().toString())
+                    );
                 });
                 // tag::create[]
                 Entity new_user = tx.concepts().getEntityType("user").resolve().create(tx).resolve();
@@ -292,14 +297,16 @@ public class Main {
         // tag::rules-api[]
         try (TypeDBSession session = driver.session(DB_NAME, TypeDBSession.Type.SCHEMA)) {
             try (TypeDBTransaction tx = session.transaction(TypeDBTransaction.Type.WRITE)) {
-                Rule oldRule = tx.logic().getRule("users").resolve();
-                System.out.println("Rule label: " + oldRule.getLabel());
-                System.out.println("  Condition: " + oldRule.getWhen().toString());
-                System.out.println("  Conclusion: " + oldRule.getThen().toString());
+                tx.logic().getRules().forEach(result -> {
+                    System.out.println(result.getLabel());
+                    System.out.println(result.getWhen().toString());
+                    System.out.println(result.getThen().toString());
+                });
                 Pattern condition = TypeQL.parsePattern("{$u isa user, has email $e; $e contains '@vaticle.com';}");
                 Pattern conclusion = TypeQL.parsePattern("$u has name 'Employee'");
                 Rule newRule = tx.logic().putRule("Employee", condition, conclusion).resolve();
-                tx.logic().getRules().forEach(result -> System.out.println(result.getLabel()));
+                Rule oldRule = tx.logic().getRule("users").resolve();
+                System.out.println(oldRule.getLabel());
                 newRule.delete(tx).resolve();
                 tx.commit();
             }
@@ -310,16 +317,17 @@ public class Main {
                 // tag::get_rule[]
                 Rule oldRule = tx.logic().getRule("users").resolve();
                 // end::get_rule[]
-                System.out.println("Rule label: " + oldRule.getLabel());
-                System.out.println("  Condition: " + oldRule.getWhen().toString());
-                System.out.println("  Conclusion: " + oldRule.getThen().toString());
                 // tag::put_rule[]
                 Pattern condition = TypeQL.parsePattern("{$u isa user, has email $e; $e contains '@vaticle.com';}");
                 Pattern conclusion = TypeQL.parsePattern("$u has name 'Employee'");
                 Rule newRule = tx.logic().putRule("Employee", condition, conclusion).resolve();
                 // end::put_rule[]
                 // tag::get_rules[]
-                tx.logic().getRules().forEach(result -> System.out.println(result.getLabel()));
+                tx.logic().getRules().forEach(result -> {
+                    System.out.println(result.getLabel());
+                    System.out.println(result.getWhen().toString());
+                    System.out.println(result.getThen().toString());
+                });
                 // end::get_rules[]
                 // tag::delete_rule[]
                 newRule.delete(tx).resolve();
@@ -334,8 +342,10 @@ public class Main {
                 EntityType userType = tx.concepts().getEntityType("user").resolve();
                 userType.getInstances(tx).forEach(user -> {
                     System.out.println("User");
-                    user.getHas(tx, annotations).forEach(attribute ->
-                        System.out.println(attribute.getType().getLabel().toString()+ ": " + attribute.getValue().toString()));
+                    Stream<? extends Attribute> attributes = user.getHas(tx, annotations);
+                    attributes.forEach(attribute ->
+                        System.out.println(attribute.getType().getLabel().toString()+ ": " + attribute.getValue().toString())
+                    );
                 });
                 Entity new_user = tx.concepts().getEntityType("user").resolve().create(tx).resolve();
                 new_user.delete(tx).resolve();
@@ -388,11 +398,13 @@ public class Main {
                 int[] ctr = new int[1];
                 // tag::explainables[]
                 Stream<ConceptMap> response = tx.query().get(getQuery);
-                // end::explainables[]
                 response.forEach(result -> {
+                // end::explainables[]
                     String name = result.get("n").asAttribute().getValue().toString();
                     System.out.println("Email #" + (++ctr[0]) + ": " + name);
+                    // tag::explainables[]
                     Stream<Pair<String, ConceptMap.Explainable>> explainable_relations = result.explainables().relations();
+                    // end::explainables[]
                     // tag::explain[]
                     explainable_relations.forEach(explainable -> {
                         Stream<Explanation> explain_iterator = tx.query().explain(explainable.second());
@@ -409,8 +421,12 @@ public class Main {
                                 System.out.println("Query variable " + var + "maps to the rule variable " + explanation.queryVariableMapping(var)));
                         });
                         // end::explanation[]
+                    // tag::explain[]
                     });
+                    // end::explain[]
+                // tag::explainables[]
                 });
+                // end::explainables[]
             }
         }
         driver.close();

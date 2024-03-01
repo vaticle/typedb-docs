@@ -1,11 +1,11 @@
 .Learn
 
-* xref:learn::course-overview.adoc[]
+* xref:learn::course-overview.adoc[Course Overview]
 
 * xref:learn::1-why-typedb/1-why-typedb.adoc[Why TypeDB]
 
 * xref:learn::2-environment-setup/2-environment-setup.adoc[Environment setup]
-** xref:learn::2-environment-setup/2.1-deploy-sample-database.adoc[Deploy sample database]
+** xref:learn::2-environment-setup/2.1-sample-deployment.adoc[Sample deployment]
 ** xref:learn::2-environment-setup/2.2-using-typedb-studio.adoc[Using TypeDB Studio]
 
 * xref:learn::3-reading-data/3-reading-data.adoc[Reading data]
@@ -29,10 +29,10 @@
 ** xref:learn::5-defining-schemas/5.4-defining-rules.adoc[Defining rules]
 ** xref:learn::5-defining-schemas/5.5-schema-validation.adoc[Schema validation]
 
-* xref:learn::6-building-applications/6-building-applications.adoc[Building applications]
-** xref:learn::6-building-applications/6.1-managing-databases-and-sessions.adoc[Managing databases and sessions]
-** xref:learn::6-building-applications/6.2-working-with-transactions.adoc[Working with transactions]
-** xref:learn::6-building-applications/6.3-executing-queries.adoc[Executing queries]
-** xref:learn::6-building-applications/6.4-processing-results.adoc[Processing results]
-
 * xref:learn::course-summary.adoc[]
+
+// * xref:learn::6-building-applications/6-building-applications.adoc[Building applications]
+// ** xref:learn::6-building-applications/6.1-managing-databases-and-sessions.adoc[Managing databases and sessions]
+// ** xref:learn::6-building-applications/6.2-working-with-transactions.adoc[Working with transactions]
+// ** xref:learn::6-building-applications/6.3-executing-queries.adoc[Executing queries]
+// ** xref:learn::6-building-applications/6.4-processing-results.adoc[Processing results]
