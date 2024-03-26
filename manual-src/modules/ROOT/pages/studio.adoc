@@ -1,9 +1,11 @@
 = TypeDB Studio
 :keywords: typedb, client, studio, visualizer, IDE, editor, purple
-//:page-aliases: clients::studio.adoc
+:page-aliases: clients::studio.adoc, typedb::connecting/studio.adoc
 :pageTitle: TypeDB Studio
 :summary: TypeDB Studio documentation.
 :experimental:
+
+== About TypeDB Studio
 
 [.float-group]
 --
@@ -33,7 +35,7 @@ See the TypeDB Studio installation guide.
 ****
 --
 
-== Setup
+== Setting up
 
 To prepare TypeDB Studio for work, you need to complete the following steps:
 
@@ -137,7 +139,6 @@ and move it from the hidden folder.
 [#_run_a_query]
 === Run a query
 
-.Studio text editor with a query and log output of running the query
 image::drivers::studio/project-schema-committed.png[Commit the Transaction,role="right",width = 50%,link=self]
 
 Select a session type (image:manual::icons/session-data.png[])
@@ -334,7 +335,7 @@ image::drivers::studio/type-browser.png[Type browser, role=right framed, width=5
 
 Type Browser panel gives you a full overview of the type hierarchy for the currently selected database.
 
-In an empty database, there are only three xref:typeql::schema/overview.adoc#_types[root types] shown in the panel.
+In an empty database, there are only three xref:typeql::concepts/types.adoc#_type_hierarchy[root types] shown in the panel.
 
 In a database with a schema,
 all types displayed in the exact hierarchy they were created (subtypes inside their supertypes).
@@ -403,7 +404,7 @@ then clicking the btn:[Confirm] button.
 In some cases, the btn:[Delete] option and button can be unavailable.
 That means there are some conditions that prevent you from deleting this type.
 For example,
-we can't xref:typeql::schema/undefine.adoc#_undefine_a_type_with_a_subtype[delete a type that has a subtype].
+we can't xref:typeql::queries/undefine.adoc#_undefine_a_type_with_a_subtype[delete a type that has a subtype].
 // end::type-editor[]
 
 == Settings
@@ -432,21 +433,28 @@ Default value: *On*.
 [#_version_compatibility]
 == Version Compatibility
 
+// tag::latest-compatibility[]
 [cols="^.^2,^.^1,^.^2,^.^2"]
 |===
-| TypeDB Studio | Protocol encoding version | TypeDB Core | TypeDB Cloud
+| TypeDB Studio +
+(release notes) | Protocol encoding version | TypeDB Core | TypeDB Cloud
 
-| 2.26.0
+| https://github.com/vaticle/typedb-studio/releases/tag/2.27.0-rc0[2.27.0-rc0]
 | 3
-| 2.26.3
-| 2.26.0
+| 2.27.0
+| 2.27.0
 
-| 2.25.11
+| https://github.com/vaticle/typedb-studio/releases/tag/2.26.6[2.26.6]
+| 3
+| 2.26.6
+| 2.26.6
+
+| https://github.com/vaticle/typedb-studio/releases/tag/2.25.11[2.25.11]
 | 3
 | 2.25.7
 | 2.25.7
 
-| 2.24.15
+| https://github.com/vaticle/typedb-studio/releases/tag/2.24.15[2.24.15]
 | 2
 | 2.24.17
 | 2.24.17
@@ -460,9 +468,20 @@ Default value: *On*.
 | N/A
 | 2.14.1 to 2.17.0
 | 2.14.1 to 2.17.0
+|===
+// end::latest-compatibility[]
+// tag::older-compatibility[]
+.See older versions
+[%collapsible]
+====
+[cols="^.^2,^.^1,^.^2,^.^2"]
+|===
+| TypeDB Studio | Protocol encoding version | TypeDB Core | TypeDB Cloud
 
 | 2.11.0
 | N/A
 | 2.11.1
 | 2.11.1 to 2.11.2
 |===
+====
+// end::older-compatibility[]
