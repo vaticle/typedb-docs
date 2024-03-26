@@ -119,7 +119,7 @@ See also
 ----
  
  
-  ITypeDBDriver::Session(string, SessionType, TypeDBOptions);
+ITypeDBDriver::Session(string, SessionType, TypeDBOptions);
 ---- 
 
 
@@ -142,7 +142,7 @@ Opens a communication tunnel (session) to the given database on the running Type
 
 [caption=""]
 .Input parameters
-[cols="~,~,~"]
+[cols=",,"]
 [options="header"]
 |===
 |Name |Description |Type

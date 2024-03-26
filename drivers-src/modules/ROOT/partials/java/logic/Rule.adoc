@@ -1,26 +1,35 @@
 [#_Rule]
 === Rule
 
-*Package*: `com.vaticle.typedb.driver.api.logic`
-
 Rules are a part of schema and define embedded logic. The reasoning engine uses rules as a set of logic to infer new data. A rule consists of a condition and a conclusion, and is uniquely identified by a label.
 
+[caption=""]
+.Fields
+// tag::properties[]
+[cols=",,"]
+[options="header"]
+|===
+|Name |Type |Description
+a| `label` a| `string` a| The unique label of the rule.
+a| `then` a| `string` a| The single statement that constitutes the ‘then’ of the rule.
+a| `when` a| `string` a| The statements that constitute the ‘when’ of the rule.
+|===
+// end::properties[]
+
 // tag::methods[]
-[#_Rule_delete__TypeDBTransaction]
+[#_Rule_delete__transaction_TypeDBTransaction]
 ==== delete
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-Promise<java.lang.Void> delete​(TypeDBTransaction transaction)
+delete(transaction): Promise<void>
 ----
 
-Deletes this rule. 
-
+Deletes this rule.
 
 [caption=""]
 .Input parameters
-[cols="~,~,~"]
+[cols=",,"]
 [options="header"]
 |===
 |Name |Description |Type
@@ -29,75 +38,28 @@ a| `transaction` a| The current ``Transaction`` a| `TypeDBTransaction`
 
 [caption=""]
 .Returns
-`Promise<java.lang.Void>`
+`Promise<void>`
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-rule.delete(transaction).resolve();
-----
-
-[#_Rule_getLabel__]
-==== getLabel
-
-[source,java]
-----
-@CheckReturnValue
-java.lang.String getLabel()
+rule.delete(transaction)
 ----
 
-Retrieves the unique label of the rule.
-
-[caption=""]
-.Returns
-`java.lang.String`
-
-[#_Rule_getThen__]
-==== getThen
-
-[source,java]
-----
-@CheckReturnValue
-com.vaticle.typeql.lang.pattern.Pattern getThen()
-----
-
-The single statement that constitutes the ‘then’ of the rule.
-
-[caption=""]
-.Returns
-`com.vaticle.typeql.lang.pattern.Pattern`
-
-[#_Rule_getWhen__]
-==== getWhen
-
-[source,java]
-----
-@CheckReturnValue
-com.vaticle.typeql.lang.pattern.Pattern getWhen()
-----
-
-The statements that constitute the ‘when’ of the rule.
-
-[caption=""]
-.Returns
-`com.vaticle.typeql.lang.pattern.Pattern`
-
-[#_Rule_isDeleted__TypeDBTransaction]
+[#_Rule_isDeleted__transaction_TypeDBTransaction]
 ==== isDeleted
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-Promise<java.lang.Boolean> isDeleted​(TypeDBTransaction transaction)
+isDeleted(transaction): Promise<boolean>
 ----
 
-Check if this rule has been deleted. 
-
+Check if this rule has been deleted.
 
 [caption=""]
 .Input parameters
-[cols="~,~,~"]
+[cols=",,"]
 [options="header"]
 |===
 |Name |Description |Type
@@ -106,47 +68,44 @@ a| `transaction` a| The current ``Transaction`` a| `TypeDBTransaction`
 
 [caption=""]
 .Returns
-`Promise<java.lang.Boolean>`
+`Promise<boolean>`
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-rule.isDeleted(transaction).resolve();
+rule.isDeleted(transaction)
 ----
 
-[#_Rule_setLabel__TypeDBTransaction__java_lang_String]
+[#_Rule_setLabel__transaction_TypeDBTransaction__label_string]
 ==== setLabel
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-Promise<java.lang.Void> setLabel​(TypeDBTransaction transaction,
-                                 java.lang.String label)
+setLabel(transaction, label): Promise<void>
 ----
 
-Renames the label of the rule. The new label must remain unique. 
-
+Renames the label of the rule. The new label must remain unique.
 
 [caption=""]
 .Input parameters
-[cols="~,~,~"]
+[cols=",,"]
 [options="header"]
 |===
 |Name |Description |Type
 a| `transaction` a| The current ``Transaction`` a| `TypeDBTransaction`
-a| `label` a| The new label to be given to the rule a| `java.lang.String`
+a| `label` a|  a| `string`
 |===
 
 [caption=""]
 .Returns
-`Promise<java.lang.Void>`
+`Promise<void>`
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-rule.setLabel(transaction, newLabel).resolve();
+rule.setLabel(transaction, newLabel)
 ----
 
 // end::methods[]

@@ -6,10 +6,12 @@
 * `Clone`
 * `Debug`
 
+Represents invalid schema constructs discovered during schema validation.
+
 [caption=""]
 .Fields
 // tag::properties[]
-[cols="~,~,~"]
+[cols=",,"]
 [options="header"]
 |===
 |Name |Type |Description

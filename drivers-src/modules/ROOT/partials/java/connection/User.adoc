@@ -1,64 +1,51 @@
 [#_User]
 === User
 
-*Package*: `com.vaticle.typedb.driver.api.user`
-
-TypeDB user information
-
-// tag::methods[]
-[#_User_passwordExpirySeconds__]
-==== passwordExpirySeconds
-
-[source,java]
-----
-java.util.Optional<java.lang.Long> passwordExpirySeconds()
-----
-
-Returns the number of seconds remaining till this user’s current password expires.
+``User`` class
 
 [caption=""]
-.Returns
-`java.util.Optional<java.lang.Long>`
+.Fields
+// tag::properties[]
+[cols=",,"]
+[options="header"]
+|===
+|Name |Type |Description
+a| `passwordExpirySeconds` a| `number` a| The number of seconds remaining till this user’s current password expires.
+a| `username` a| `string` a| The name of this user.
+|===
+// end::properties[]
 
-[#_User_passwordUpdate__java_lang_String__java_lang_String]
+// tag::methods[]
+[#_User_passwordUpdate__oldPassword_string__newPassword_string]
 ==== passwordUpdate
 
-[source,java]
+[source,nodejs]
 ----
-void passwordUpdate​(java.lang.String passwordOld,
-                    java.lang.String passwordNew)
+passwordUpdate(oldPassword, newPassword): Promise<void>
 ----
 
-Updates the password for this user.
+Updates the user's password.
 
 [caption=""]
 .Input parameters
-[cols="~,~,~"]
+[cols=",,"]
 [options="header"]
 |===
 |Name |Description |Type
-a| `passwordOld` a| The current password of this user a| `java.lang.String`
-a| `passwordNew` a| The new password a| `java.lang.String`
+a| `oldPassword` a| Old password a| `string`
+a| `newPassword` a| New password a| `string`
 |===
 
 [caption=""]
 .Returns
-`void`
-
-[#_User_username__]
-==== username
-
-[source,java]
-----
-@CheckReturnValue
-java.lang.String username()
-----
-
-Returns the name of this user.
+`Promise<void>`
 
 [caption=""]
-.Returns
-`java.lang.String`
+.Code examples
+[source,nodejs]
+----
+user.passwordUpdate("oldpassword", "nEwp@ssw0rd");
+----
 
 // end::methods[]
 

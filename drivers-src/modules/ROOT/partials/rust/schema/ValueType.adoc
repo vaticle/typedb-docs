@@ -1,10 +1,12 @@
 [#_enum_ValueType]
 === ValueType
 
+Represents the type of primitive value is held by a Value or Attribute.
+
 [caption=""]
 .Enum variants
 // tag::enum_constants[]
-[cols="~"]
+[cols=""]
 [options="header"]
 |===
 |Variant

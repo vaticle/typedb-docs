@@ -1,30 +1,26 @@
 [#_LogicManager]
 === LogicManager
 
-*Package*: `com.vaticle.typedb.driver.api.logic`
-
 Provides methods for manipulating rules in the database.
 
 // tag::methods[]
-[#_LogicManager_getRule__java_lang_String]
+[#_LogicManager_getRule__label_string]
 ==== getRule
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-Promise<Rule> getRule​(java.lang.String label)
+getRule(label): Promise<Rule>
 ----
 
-Retrieves the Rule that has the given label. 
-
+Retrieves the Rule that has the given label.
 
 [caption=""]
 .Input parameters
-[cols="~,~,~"]
+[cols=",,"]
 [options="header"]
 |===
 |Name |Description |Type
-a| `label` a| The label of the Rule to create or retrieve a| `java.lang.String`
+a| `label` a| The label of the Rule to create or retrieve a| `string`
 |===
 
 [caption=""]
@@ -33,57 +29,51 @@ a| `label` a| The label of the Rule to create or retrieve a| `java.lang.String`
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-transaction.logic().getRule(label).resolve();
+transaction.logic.getRule(label)
 ----
 
 [#_LogicManager_getRules__]
 ==== getRules
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-java.util.stream.Stream<? extends Rule> getRules()
+getRules(): Stream<Rule>
 ----
 
-Retrieves all rules. 
-
+Retrieves all rules.
 
 [caption=""]
 .Returns
-`java.util.stream.Stream<? extends Rule>`
+`Stream<Rule>`
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-transaction.logic().getRules()
+transaction.logic.getRules()
 ----
 
-[#_LogicManager_putRule__java_lang_String__com_vaticle_typeql_lang_pattern_Pattern__com_vaticle_typeql_lang_pattern_Pattern]
+[#_LogicManager_putRule__label_string__when_string__then_string]
 ==== putRule
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-Promise<Rule> putRule​(java.lang.String label,
-                      com.vaticle.typeql.lang.pattern.Pattern when,
-                      com.vaticle.typeql.lang.pattern.Pattern then)
+putRule(label, when, then): Promise<Rule>
 ----
 
-Creates a new Rule if none exists with the given label, or replaces the existing one. 
-
+Creates a new Rule if none exists with the given label, or replaces the existing one.
 
 [caption=""]
 .Input parameters
-[cols="~,~,~"]
+[cols=",,"]
 [options="header"]
 |===
 |Name |Description |Type
-a| `label` a| The label of the Rule to create or replace a| `java.lang.String`
-a| `when` a| The when body of the rule to create a| `com.vaticle.typeql.lang.pattern.Pattern`
-a| `then` a| The then body of the rule to create a| `com.vaticle.typeql.lang.pattern.Pattern`
+a| `label` a| The label of the Rule to create or replace a| `string`
+a| `when` a| The when body of the rule to create a| `string`
+a| `then` a| The then body of the rule to create a| `string`
 |===
 
 [caption=""]
@@ -92,9 +82,9 @@ a| `then` a| The then body of the rule to create a| `com.vaticle.typeql.lang.pat
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-transaction.logic().putRule(label, when, then).resolve();
+transaction.logic.putRule(label, when, then)
 ----
 
 // end::methods[]

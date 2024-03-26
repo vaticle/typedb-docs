@@ -1,20 +1,19 @@
 [#_Value]
 === Value
 
-*Package*: `com.vaticle.typedb.driver.api.concept.value`
-
-*Superinterfaces:*
+*Supertypes:*
 
 * `Concept`
 
 [caption=""]
 .Fields
 // tag::properties[]
-[cols="~,~,~"]
+[cols=",,"]
 [options="header"]
 |===
 |Name |Type |Description
-a| `ISO_LOCAL_DATE_TIME_MILLIS` a| `static java.time.format.DateTimeFormatter` a| 
+a| `value` a| `string` a| Retrieves the value which this value concept holds.
+a| `valueType` a| `ValueType` a| The ValueType of this value concept
 |===
 // end::properties[]
 
@@ -22,13 +21,12 @@ a| `ISO_LOCAL_DATE_TIME_MILLIS` a| `static java.time.format.DateTimeFormatter` a
 [#_Value_asAttribute__]
 ==== asAttribute
 
-[source,java]
+[source,nodejs]
 ----
-default Attribute asAttribute()
+asAttribute(): Attribute
 ----
 
-Casts the concept to ``Attribute``. 
-
+Casts the concept to ``Attribute``.
 
 [caption=""]
 .Returns
@@ -36,21 +34,20 @@ Casts the concept to ``Attribute``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.asAttribute();
+concept.asAttribute()
 ----
 
 [#_Value_asAttributeType__]
 ==== asAttributeType
 
-[source,java]
+[source,nodejs]
 ----
-default AttributeType asAttributeType()
+asAttributeType(): AttributeType
 ----
 
-Casts the concept to ``AttributeType``. 
-
+Casts the concept to ``AttributeType``.
 
 [caption=""]
 .Returns
@@ -58,21 +55,20 @@ Casts the concept to ``AttributeType``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.asAttributeType();
+concept.asAttributeType()
 ----
 
 [#_Value_asBoolean__]
 ==== asBoolean
 
-[source,java]
+[source,nodejs]
 ----
-boolean asBoolean()
+asBoolean(): boolean
 ----
 
-Returns a ``boolean`` value of this value concept. If the value has another type, raises an exception. 
-
+Returns a ``boolean`` value of this value concept. If the value has another type, raises an exception.
 
 [caption=""]
 .Returns
@@ -80,65 +76,62 @@ Returns a ``boolean`` value of this value concept. If the value has another type
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-value.asBoolean();
+value.asBoolean()
 ----
 
 [#_Value_asDateTime__]
 ==== asDateTime
 
-[source,java]
+[source,nodejs]
 ----
-java.time.LocalDateTime asDateTime()
+asDateTime(): Date
 ----
 
-Returns a ``datetime`` value of this value concept. If the value has another type, raises an exception. 
-
+Returns a ``datetime`` value of this value concept. If the value has another type, raises an exception.
 
 [caption=""]
 .Returns
-`java.time.LocalDateTime`
+`Date`
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-value.asDatetime();
+value.asDatetime()
 ----
 
 [#_Value_asDouble__]
 ==== asDouble
 
-[source,java]
+[source,nodejs]
 ----
-double asDouble()
+asDouble(): number
 ----
 
-Returns a ``double`` value of this value concept. If the value has another type, raises an exception. 
-
+Returns a ``number`` value of this value concept. If the value has another type, raises an exception.
 
 [caption=""]
 .Returns
-`double`
+`number`
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-value.asDouble();
+value.asDouble()
 ----
 
 [#_Value_asEntity__]
 ==== asEntity
 
-[source,java]
+[source,nodejs]
 ----
-default Entity asEntity()
+asEntity(): Entity
 ----
 
-Casts the concept to ``Entity``. 
-
+Casts the concept to ``Entity``.
 
 [caption=""]
 .Returns
@@ -146,21 +139,20 @@ Casts the concept to ``Entity``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.asEntity();
+concept.asEntity()
 ----
 
 [#_Value_asEntityType__]
 ==== asEntityType
 
-[source,java]
+[source,nodejs]
 ----
-default EntityType asEntityType()
+asEntityType(): EntityType
 ----
 
-Casts the concept to ``EntityType``. 
-
+Casts the concept to ``EntityType``.
 
 [caption=""]
 .Returns
@@ -168,43 +160,41 @@ Casts the concept to ``EntityType``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.asEntityType();
+concept.asEntityType()
 ----
 
 [#_Value_asLong__]
 ==== asLong
 
-[source,java]
+[source,nodejs]
 ----
-long asLong()
+asLong(): number
 ----
 
-Returns a ``long`` value of this value concept. If the value has another type, raises an exception. 
-
+Returns a ``number`` value of this value concept. If the value has another type, raises an exception.
 
 [caption=""]
 .Returns
-`long`
+`number`
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-value.asLong();
+value.asLong()
 ----
 
 [#_Value_asRelation__]
 ==== asRelation
 
-[source,java]
+[source,nodejs]
 ----
-default Relation asRelation()
+asRelation(): Relation
 ----
 
-Casts the concept to ``Relation``. 
-
+Casts the concept to ``Relation``.
 
 [caption=""]
 .Returns
@@ -212,21 +202,20 @@ Casts the concept to ``Relation``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.asRelation();
+concept.asRelation()
 ----
 
 [#_Value_asRelationType__]
 ==== asRelationType
 
-[source,java]
+[source,nodejs]
 ----
-default RelationType asRelationType()
+asRelationType(): RelationType
 ----
 
-Casts the concept to ``RelationType``. 
-
+Casts the concept to ``RelationType``.
 
 [caption=""]
 .Returns
@@ -234,21 +223,20 @@ Casts the concept to ``RelationType``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.asRelationType();
+concept.asRelationType()
 ----
 
 [#_Value_asRoleType__]
 ==== asRoleType
 
-[source,java]
+[source,nodejs]
 ----
-default RoleType asRoleType()
+asRoleType(): RoleType
 ----
 
-Casts the concept to ``RoleType``. 
-
+Casts the concept to ``RoleType``.
 
 [caption=""]
 .Returns
@@ -256,43 +244,41 @@ Casts the concept to ``RoleType``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.asRoleType();
+concept.asRoleType()
 ----
 
 [#_Value_asString__]
 ==== asString
 
-[source,java]
+[source,nodejs]
 ----
-java.lang.String asString()
+asString(): string
 ----
 
-Returns a ``string`` value of this value concept. If the value has another type, raises an exception. 
-
+Returns a ``string`` value of this value concept. If the value has another type, raises an exception.
 
 [caption=""]
 .Returns
-`java.lang.String`
+`string`
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-value.asString();
+value.asString()
 ----
 
 [#_Value_asThing__]
 ==== asThing
 
-[source,java]
+[source,nodejs]
 ----
-default Thing asThing()
+asThing(): Thing
 ----
 
-Casts the concept to ``Thing``. 
-
+Casts the concept to ``Thing``.
 
 [caption=""]
 .Returns
@@ -300,21 +286,20 @@ Casts the concept to ``Thing``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.asThing();
+concept.asThing()
 ----
 
 [#_Value_asThingType__]
 ==== asThingType
 
-[source,java]
+[source,nodejs]
 ----
-default ThingType asThingType()
+asThingType(): ThingType
 ----
 
-Casts the concept to ``ThingType``. 
-
+Casts the concept to ``ThingType``.
 
 [caption=""]
 .Returns
@@ -322,21 +307,20 @@ Casts the concept to ``ThingType``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.asThingType();
+concept.asThingType()
 ----
 
 [#_Value_asType__]
 ==== asType
 
-[source,java]
+[source,nodejs]
 ----
-default Type asType()
+asType(): Type
 ----
 
-Casts the concept to ``Type``. 
-
+Casts the concept to ``Type``.
 
 [caption=""]
 .Returns
@@ -344,43 +328,20 @@ Casts the concept to ``Type``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.asType();
-----
-
-[#_Value_asUntyped__]
-==== asUntyped
-
-[source,java]
-----
-java.lang.Object asUntyped()
-----
-
-Returns an untyped ``Object`` value of this value concept. This is useful for value equality or printing without having to switch on the actual contained value. 
-
-
-[caption=""]
-.Returns
-`java.lang.Object`
-
-[caption=""]
-.Code examples
-[source,java]
-----
-value.asUntyped();
+concept.asType()
 ----
 
 [#_Value_asValue__]
 ==== asValue
 
-[source,java]
+[source,nodejs]
 ----
-default Value asValue()
+asValue(): Value
 ----
 
-Casts the concept to ``Value``. 
-
+Casts the concept to ``Value``.
 
 [caption=""]
 .Returns
@@ -388,44 +349,43 @@ Casts the concept to ``Value``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.asValue();
-----
-
-[#_Value_getType__]
-==== getType
-
-[source,java]
-----
-Value.Type getType()
+concept.asValue()
 ----
 
-Retrieves the ``Value.Type`` of this value concept. 
+[#_Value_equals__concept_Concept]
+==== equals
 
+[source,nodejs]
+----
+equals(concept): boolean
+----
+
+Checks if this concept is equal to the argument ``concept``.
+
+[caption=""]
+.Input parameters
+[cols=",,"]
+[options="header"]
+|===
+|Name |Description |Type
+a| `concept` a| The concept to compare to. a| `Concept`
+|===
 
 [caption=""]
 .Returns
-`Value.Type`
-
-[caption=""]
-.Code examples
-[source,java]
-----
-value.getType()
-----
+`boolean`
 
 [#_Value_isAttribute__]
 ==== isAttribute
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-default boolean isAttribute()
+isAttribute(): boolean
 ----
 
-Checks if the concept is an ``Attribute``. 
-
+Checks if the concept is an ``Attribute``.
 
 [caption=""]
 .Returns
@@ -433,22 +393,20 @@ Checks if the concept is an ``Attribute``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.isAttribute();
+concept.isAttribute()
 ----
 
 [#_Value_isAttributeType__]
 ==== isAttributeType
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-default boolean isAttributeType()
+isAttributeType(): boolean
 ----
 
-Checks if the concept is an ``AttributeType``. 
-
+Checks if the concept is an ``AttributeType``.
 
 [caption=""]
 .Returns
@@ -456,21 +414,20 @@ Checks if the concept is an ``AttributeType``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.isAttributeType();
+concept.isAttributeType()
 ----
 
 [#_Value_isBoolean__]
 ==== isBoolean
 
-[source,java]
+[source,nodejs]
 ----
-boolean isBoolean()
+isBoolean(): boolean
 ----
 
-Returns ``True`` if the value which this value concept holds is of type ``boolean``. Otherwise, returns ``false``. 
-
+Returns ``True`` if the value which this value concept holds is of type ``boolean``. Otherwise, returns ``False``.
 
 [caption=""]
 .Returns
@@ -478,7 +435,7 @@ Returns ``True`` if the value which this value concept holds is of type ``boolea
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
 value.isBoolean()
 ----
@@ -486,13 +443,12 @@ value.isBoolean()
 [#_Value_isDateTime__]
 ==== isDateTime
 
-[source,java]
+[source,nodejs]
 ----
-boolean isDateTime()
+isDateTime(): boolean
 ----
 
-Returns ``True`` if the value which this value concept holds is of type ``datetime``. Otherwise, returns ``false``. 
-
+Returns ``True`` if the value which this value concept holds is of type ``datetime``. Otherwise, returns ``False``.
 
 [caption=""]
 .Returns
@@ -500,21 +456,20 @@ Returns ``True`` if the value which this value concept holds is of type ``dateti
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-value.isDatetime();
+value.isDatetime()
 ----
 
 [#_Value_isDouble__]
 ==== isDouble
 
-[source,java]
+[source,nodejs]
 ----
-boolean isDouble()
+isDouble(): boolean
 ----
 
-Returns ``True`` if the value which this value concept holds is of type ``double``. Otherwise, returns ``false``. 
-
+Returns ``True`` if the value which this value concept holds is of type ``double``. Otherwise, returns ``False``.
 
 [caption=""]
 .Returns
@@ -522,22 +477,20 @@ Returns ``True`` if the value which this value concept holds is of type ``double
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-value.isDouble();
+value.isDouble()
 ----
 
 [#_Value_isEntity__]
 ==== isEntity
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-default boolean isEntity()
+isEntity(): boolean
 ----
 
-Checks if the concept is an ``Entity``. 
-
+Checks if the concept is an ``Entity``.
 
 [caption=""]
 .Returns
@@ -545,22 +498,20 @@ Checks if the concept is an ``Entity``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.isEntity();
+concept.isEntity()
 ----
 
 [#_Value_isEntityType__]
 ==== isEntityType
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-default boolean isEntityType()
+isEntityType(): boolean
 ----
 
-Checks if the concept is an ``EntityType``. 
-
+Checks if the concept is an ``EntityType``.
 
 [caption=""]
 .Returns
@@ -568,21 +519,20 @@ Checks if the concept is an ``EntityType``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.isEntityType();
+concept.isEntityType()
 ----
 
 [#_Value_isLong__]
 ==== isLong
 
-[source,java]
+[source,nodejs]
 ----
-boolean isLong()
+isLong(): boolean
 ----
 
-Returns ``True`` if the value which this value concept holds is of type ``long``. Otherwise, returns ``false``. 
-
+Returns ``True`` if the value which this value concept holds is of type ``long``. Otherwise, returns ``False``.
 
 [caption=""]
 .Returns
@@ -590,22 +540,20 @@ Returns ``True`` if the value which this value concept holds is of type ``long``
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-value.isLong();
+value.isLong()
 ----
 
 [#_Value_isRelation__]
 ==== isRelation
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-default boolean isRelation()
+isRelation(): boolean
 ----
 
-Checks if the concept is a ``Relation``. 
-
+Checks if the concept is a ``Relation``.
 
 [caption=""]
 .Returns
@@ -613,22 +561,20 @@ Checks if the concept is a ``Relation``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.isRelation();
+concept.isRelation()
 ----
 
 [#_Value_isRelationType__]
 ==== isRelationType
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-default boolean isRelationType()
+isRelationType(): boolean
 ----
 
-Checks if the concept is a ``RelationType``. 
-
+Checks if the concept is a ``RelationType``.
 
 [caption=""]
 .Returns
@@ -636,22 +582,20 @@ Checks if the concept is a ``RelationType``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.isRelationType();
+concept.isRelationType()
 ----
 
 [#_Value_isRoleType__]
 ==== isRoleType
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-default boolean isRoleType()
+isRoleType(): boolean
 ----
 
-Checks if the concept is a ``RoleType``. 
-
+Checks if the concept is a ``RoleType``.
 
 [caption=""]
 .Returns
@@ -659,21 +603,20 @@ Checks if the concept is a ``RoleType``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.isRoleType();
+concept.isRoleType()
 ----
 
 [#_Value_isString__]
 ==== isString
 
-[source,java]
+[source,nodejs]
 ----
-boolean isString()
+isString(): boolean
 ----
 
-Returns ``True`` if the value which this value concept holds is of type ``string``. Otherwise, returns ``false``. 
-
+Returns ``True`` if the value which this value concept holds is of type ``string``. Otherwise, returns ``False``.
 
 [caption=""]
 .Returns
@@ -681,22 +624,20 @@ Returns ``True`` if the value which this value concept holds is of type ``string
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-value.isString();
+value.isString()
 ----
 
 [#_Value_isThing__]
 ==== isThing
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-default boolean isThing()
+isThing(): boolean
 ----
 
-Checks if the concept is a ``Thing``. 
-
+Checks if the concept is a ``Thing``.
 
 [caption=""]
 .Returns
@@ -704,22 +645,20 @@ Checks if the concept is a ``Thing``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.isThing();
+concept.isThing()
 ----
 
 [#_Value_isThingType__]
 ==== isThingType
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-default boolean isThingType()
+isThingType(): boolean
 ----
 
-Checks if the concept is a ``ThingType``. 
-
+Checks if the concept is a ``ThingType``.
 
 [caption=""]
 .Returns
@@ -727,22 +666,20 @@ Checks if the concept is a ``ThingType``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.isThingType();
+concept.isThingType()
 ----
 
 [#_Value_isType__]
 ==== isType
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-default boolean isType()
+isType(): boolean
 ----
 
-Checks if the concept is a ``Type``. 
-
+Checks if the concept is a ``Type``.
 
 [caption=""]
 .Returns
@@ -750,21 +687,20 @@ Checks if the concept is a ``Type``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.isType();
+concept.isType()
 ----
 
 [#_Value_isValue__]
 ==== isValue
 
-[source,java]
+[source,nodejs]
 ----
-default boolean isValue()
+isValue(): boolean
 ----
 
-Checks if the concept is a ``Value``. 
-
+Checks if the concept is a ``Value``.
 
 [caption=""]
 .Returns
@@ -772,9 +708,9 @@ Checks if the concept is a ``Value``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.isValue();
+concept.isValue()
 ----
 
 // end::methods[]

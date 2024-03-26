@@ -1,130 +1,70 @@
 [#_TypeDB]
 === TypeDB
 
-*Package*: `com.vaticle.typedb.driver`
-
 [caption=""]
-.Fields
-// tag::properties[]
-[cols="~,~,~"]
+.Namespace variables
+// tag::enum_constants[]
+[cols=""]
 [options="header"]
 |===
-|Name |Type |Description
-a| `DEFAULT_ADDRESS` a| `static java.lang.String` a| 
+|Name
+a| `DEFAULT_ADDRESS`
 |===
-// end::properties[]
+// end::enum_constants[]
 
 // tag::methods[]
-[#_TypeDB_TypeDB__]
-==== TypeDB
-
-[source,java]
-----
-public TypeDB()
-----
-
-
-
-[caption=""]
-.Returns
-`public`
-
-[#_TypeDB_cloudDriver__java_lang_String__TypeDBCredential]
+[#_TypeDB_cloudDriver__addresses_string__string____credential_TypeDBCredential]
 ==== cloudDriver
 
-[source,java]
+[source,nodejs]
 ----
-public static TypeDBDriver cloudDriver​(java.lang.String address,
-                                       TypeDBCredential credential)
+cloudDriver(addresses, credential): Promise<TypeDBDriver>
 ----
 
-Open a TypeDB Driver to a TypeDB Cloud server available at the provided address, using the provided credential. 
-
+Creates a connection to TypeDB Cloud, authenticating with the provided credentials.
 
 [caption=""]
 .Input parameters
-[cols="~,~,~"]
+[cols=",,"]
 [options="header"]
 |===
 |Name |Description |Type
-a| `address` a| The address of the TypeDB server a| `java.lang.String`
-a| `credential` a| The credential to connect with a| `TypeDBCredential`
+a| `addresses` a| List of addresses of the individual TypeDB Cloud servers. As long one specified address is provided, the driver will discover the other addresses from that server. a| `string \| string[]`
+a| `credential` a| The credentials to log in, and encryption settings. See ``TypeDBCredential``
+Examples
+``const driver = TypeDB.cloudDriver(["127.0.0.1:11729"], new TypeDBCredential(username, password));
+``Copy a| `TypeDBCredential`
 |===
 
 [caption=""]
 .Returns
-`public static TypeDBDriver`
+`Promise<TypeDBDriver>`
 
-[caption=""]
-.Code examples
-[source,java]
-----
-TypeDB.cloudDriver(address, credential);
-----
-
-[#_TypeDB_cloudDriver__java_util_Set_java_lang_String___TypeDBCredential]
-==== cloudDriver
-
-[source,java]
-----
-public static TypeDBDriver cloudDriver​(java.util.Set<java.lang.String> addresses,
-                                       TypeDBCredential credential)
-----
-
-Open a TypeDB Driver to TypeDB Cloud server(s) available at the provided addresses, using the provided credential. 
-
-
-[caption=""]
-.Input parameters
-[cols="~,~,~"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `addresses` a| The address(es) of the TypeDB server(s) a| `java.util.Set<java.lang.String>`
-a| `credential` a| The credential to connect with a| `TypeDBCredential`
-|===
-
-[caption=""]
-.Returns
-`public static TypeDBDriver`
-
-[caption=""]
-.Code examples
-[source,java]
-----
-TypeDB.cloudDriver(addresses, credential);
-----
-
-[#_TypeDB_coreDriver__java_lang_String]
+[#_TypeDB_coreDriver__address_string__DEFAULT_ADDRESS]
 ==== coreDriver
 
-[source,java]
+[source,nodejs]
 ----
-public static TypeDBDriver coreDriver​(java.lang.String address)
+coreDriver(address?): Promise<TypeDBDriver>
 ----
 
-Open a TypeDB Driver to a TypeDB Core server available at the provided address. 
-
+Creates a connection to TypeDB.
 
 [caption=""]
 .Input parameters
-[cols="~,~,~"]
+[cols=",,"]
 [options="header"]
 |===
 |Name |Description |Type
-a| `address` a| The address of the TypeDB server a| `java.lang.String`
+a| `address` a| Address of the TypeDB server.
+Examples
+``const driver = TypeDB.coreDriver("127.0.0.1:11729");
+``Copy a| `string = DEFAULT_ADDRESS`
 |===
 
 [caption=""]
 .Returns
-`public static TypeDBDriver`
-
-[caption=""]
-.Code examples
-[source,java]
-----
-TypeDB.coreDriver(address);
-----
+`Promise<TypeDBDriver>`
 
 // end::methods[]
 

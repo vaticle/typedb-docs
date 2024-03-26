@@ -1,61 +1,49 @@
 [#_TypeDBDriver]
 === TypeDBDriver
 
-*Package*: `com.vaticle.typedb.driver.api`
-
-*Superinterfaces:*
-
-* `java.lang.AutoCloseable`
+[caption=""]
+.Fields
+// tag::properties[]
+[cols=",,"]
+[options="header"]
+|===
+|Name |Type |Description
+a| `databases` a| `DatabaseManager` a| The DatabaseManager for this connection, providing access to database management methods.
+a| `users` a| `UserManager` a| The UserManager instance for this connection, providing access to user management methods. Only for TypeDB Cloud.
+|===
+// end::properties[]
 
 // tag::methods[]
 [#_TypeDBDriver_close__]
 ==== close
 
-[source,java]
+[source,nodejs]
 ----
-void close()
+close(): Promise<void>
 ----
 
-Closes the driver. Before instantiating a new driver, the driver that’s currently open should first be closed. 
-
+Closes the driver. Before instantiating a new driver, the driver that’s currently open should first be closed.
 
 [caption=""]
 .Returns
-`void`
+`Promise<void>`
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
 driver.close()
 ----
 
-[#_TypeDBDriver_databases__]
-==== databases
-
-[source,java]
-----
-@CheckReturnValue
-DatabaseManager databases()
-----
-
-The ``DatabaseManager`` for this connection, providing access to database management methods.
-
-[caption=""]
-.Returns
-`DatabaseManager`
-
 [#_TypeDBDriver_isOpen__]
 ==== isOpen
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-boolean isOpen()
+isOpen(): boolean
 ----
 
-Checks whether this connection is presently open. 
-
+Checks whether this connection is presently open.
 
 [caption=""]
 .Returns
@@ -63,103 +51,55 @@ Checks whether this connection is presently open.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-driver.isOpen();
+driver.isOpen()
 ----
 
-[#_TypeDBDriver_session__java_lang_String__TypeDBSession_Type]
+[#_TypeDBDriver_session__database_string__type_SessionType__options_TypeDBOptions]
 ==== session
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-TypeDBSession session​(java.lang.String database,
-                      TypeDBSession.Type type)
+session(database, type, options?): Promise<TypeDBSession>
 ----
 
-Opens a session to the given database with default options.
-
-
-See also: <<#_session_java_lang_String_com_vaticle_typedb_driver_api_TypeDBSession_Type_com_vaticle_typedb_driver_api_TypeDBOptions,``session(String, TypeDBSession.Type, TypeDBOptions)``>>
-
-
-[caption=""]
-.Returns
-`TypeDBSession`
-
-[#_TypeDBDriver_session__java_lang_String__TypeDBSession_Type__TypeDBOptions]
-==== session
-
-[source,java]
-----
-@CheckReturnValue
-TypeDBSession session​(java.lang.String database,
-                      TypeDBSession.Type type,
-                      TypeDBOptions options)
-----
-
-Opens a communication tunnel (session) to the given database on the running TypeDB server. For more information on the methods, available with sessions, see the ``TypeDBSession`` section. 
 
 
 [caption=""]
 .Input parameters
-[cols="~,~,~"]
+[cols=",,"]
 [options="header"]
 |===
 |Name |Description |Type
-a| `database` a| The name of the database with which the session connects a| `java.lang.String`
-a| `type` a| The type of session to be created (DATA or SCHEMA) a| `TypeDBSession.Type`
-a| `options` a| ``TypeDBOptions`` for the session a| `TypeDBOptions`
+a| `database` a|  a| `string`
+a| `type` a|  a| `SessionType`
+a| `options` a|  a| `TypeDBOptions`
 |===
 
 [caption=""]
 .Returns
-`TypeDBSession`
-
-[caption=""]
-.Code examples
-[source,java]
-----
-driver.session(database, sessionType, options);
-----
+`Promise<TypeDBSession>`
 
 [#_TypeDBDriver_user__]
 ==== user
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-User user()
+user(): Promise<User>
 ----
 
-The ``UserManager`` instance for this connection, providing access to user management methods. Only for TypeDB Cloud.
+Returns the logged-in user for the connection. Only for TypeDB Cloud.
 
 [caption=""]
 .Returns
-`User`
-
-[#_TypeDBDriver_users__]
-==== users
-
-[source,java]
-----
-@CheckReturnValue
-UserManager users()
-----
-
-Returns the logged-in user for the connection. Only for TypeDB Cloud. 
-
-
-[caption=""]
-.Returns
-`UserManager`
+`Promise<User>`
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-driver.user();
+driver.user()
 ----
 
 // end::methods[]

@@ -1,75 +1,58 @@
 [#_ConceptMap]
 === ConceptMap
 
-*Package*: `com.vaticle.typedb.driver.api.answer`
-
 Contains a mapping of variables to concepts.
+
+[caption=""]
+.Fields
+// tag::properties[]
+[cols=",,"]
+[options="header"]
+|===
+|Name |Type |Description
+a| `explainables` a| `Explainables` a| The Explainables object for this ConceptMap, exposing which of the concepts in this ConceptMap are explainable.
+|===
+// end::properties[]
 
 // tag::methods[]
 [#_ConceptMap_concepts__]
 ==== concepts
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-java.util.stream.Stream<Concept> concepts()
+concepts(): IterableIterator<Concept>
 ----
 
-Produces a stream over all concepts in this ``ConceptMap``. 
-
+Produces an iterator over all concepts in this ``ConceptMap``.
 
 [caption=""]
 .Returns
-`java.util.stream.Stream<Concept>`
+`IterableIterator<Concept>`
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-conceptMap.concepts();
-----
-
-[#_ConceptMap_explainables__]
-==== explainables
-
-[source,java]
-----
-ConceptMap.Explainables explainables()
+conceptMap.concepts()
 ----
 
-Gets the ``Explainables`` object for this ``ConceptMap``, exposing which of the concepts in this ``ConceptMap`` are explainable. 
-
-
-[caption=""]
-.Returns
-`ConceptMap.Explainables`
-
-[caption=""]
-.Code examples
-[source,java]
-----
-conceptMap.explainables();
-----
-
-[#_ConceptMap_get__java_lang_String]
+[#_ConceptMap_get__variable_string]
 ==== get
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-Concept get​(java.lang.String variable)
+get(variable): Concept
 ----
 
-Retrieves a concept for a given variable name. 
-
+Retrieves a concept for a given variable name.
 
 [caption=""]
 .Input parameters
-[cols="~,~,~"]
+[cols=",,"]
 [options="header"]
 |===
 |Name |Description |Type
-a| `variable` a| The string representation of a variable a| `java.lang.String`
+a| `variable` a| The string representation of a variable a| `string`
 |===
 
 [caption=""]
@@ -78,55 +61,51 @@ a| `variable` a| The string representation of a variable a| `java.lang.String`
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-conceptMap.get(variable);
+conceptMap.get(variable)
 ----
 
 [#_ConceptMap_map__]
 ==== map
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-java.util.Map<java.lang.String,​Concept> map()
+map(): Map<string, Concept>
 ----
 
-Returns the inner ``Map`` where keys are query variables, and values are concepts. 
-
+Returns the inner ``Map`` where keys are query variables, and values are concepts.
 
 [caption=""]
 .Returns
-`java.util.Map<java.lang.String,​Concept>`
+`Map<string, Concept>`
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-conceptMap.map();
+conceptMap.map()
 ----
 
 [#_ConceptMap_variables__]
 ==== variables
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-java.util.stream.Stream<java.lang.String> variables()
+variables(): IterableIterator<string>
 ----
 
-Produces a stream over all variables in this ``ConceptMap``. 
-
+Produces an iterator over all variables in this ``ConceptMap``.
 
 [caption=""]
 .Returns
-`java.util.stream.Stream<java.lang.String>`
+`IterableIterator<string>`
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-conceptMap.variables();
+conceptMap.variables()
 ----
 
 // end::methods[]

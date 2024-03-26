@@ -1,23 +1,33 @@
 [#_Type]
 === Type
 
-*Package*: `com.vaticle.typedb.driver.api.concept.type`
-
-*Superinterfaces:*
+*Supertypes:*
 
 * `Concept`
+
+[caption=""]
+.Fields
+// tag::properties[]
+[cols=",,"]
+[options="header"]
+|===
+|Name |Type |Description
+a| `abstract` a| `boolean` a| Whether the type is prevented from having data instances (i.e., abstract).
+a| `label` a| `Label` a| The unique label of the type.
+a| `root` a| `boolean` a| Whether the type is a root type.
+|===
+// end::properties[]
 
 // tag::methods[]
 [#_Type_asAttribute__]
 ==== asAttribute
 
-[source,java]
+[source,nodejs]
 ----
-default Attribute asAttribute()
+asAttribute(): Attribute
 ----
 
-Casts the concept to ``Attribute``. 
-
+Casts the concept to ``Attribute``.
 
 [caption=""]
 .Returns
@@ -25,21 +35,20 @@ Casts the concept to ``Attribute``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.asAttribute();
+concept.asAttribute()
 ----
 
 [#_Type_asAttributeType__]
 ==== asAttributeType
 
-[source,java]
+[source,nodejs]
 ----
-default AttributeType asAttributeType()
+asAttributeType(): AttributeType
 ----
 
-Casts the concept to ``AttributeType``. 
-
+Casts the concept to ``AttributeType``.
 
 [caption=""]
 .Returns
@@ -47,21 +56,20 @@ Casts the concept to ``AttributeType``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.asAttributeType();
+concept.asAttributeType()
 ----
 
 [#_Type_asEntity__]
 ==== asEntity
 
-[source,java]
+[source,nodejs]
 ----
-default Entity asEntity()
+asEntity(): Entity
 ----
 
-Casts the concept to ``Entity``. 
-
+Casts the concept to ``Entity``.
 
 [caption=""]
 .Returns
@@ -69,21 +77,20 @@ Casts the concept to ``Entity``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.asEntity();
+concept.asEntity()
 ----
 
 [#_Type_asEntityType__]
 ==== asEntityType
 
-[source,java]
+[source,nodejs]
 ----
-default EntityType asEntityType()
+asEntityType(): EntityType
 ----
 
-Casts the concept to ``EntityType``. 
-
+Casts the concept to ``EntityType``.
 
 [caption=""]
 .Returns
@@ -91,21 +98,20 @@ Casts the concept to ``EntityType``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.asEntityType();
+concept.asEntityType()
 ----
 
 [#_Type_asRelation__]
 ==== asRelation
 
-[source,java]
+[source,nodejs]
 ----
-default Relation asRelation()
+asRelation(): Relation
 ----
 
-Casts the concept to ``Relation``. 
-
+Casts the concept to ``Relation``.
 
 [caption=""]
 .Returns
@@ -113,21 +119,20 @@ Casts the concept to ``Relation``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.asRelation();
+concept.asRelation()
 ----
 
 [#_Type_asRelationType__]
 ==== asRelationType
 
-[source,java]
+[source,nodejs]
 ----
-default RelationType asRelationType()
+asRelationType(): RelationType
 ----
 
-Casts the concept to ``RelationType``. 
-
+Casts the concept to ``RelationType``.
 
 [caption=""]
 .Returns
@@ -135,21 +140,20 @@ Casts the concept to ``RelationType``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.asRelationType();
+concept.asRelationType()
 ----
 
 [#_Type_asRoleType__]
 ==== asRoleType
 
-[source,java]
+[source,nodejs]
 ----
-default RoleType asRoleType()
+asRoleType(): RoleType
 ----
 
-Casts the concept to ``RoleType``. 
-
+Casts the concept to ``RoleType``.
 
 [caption=""]
 .Returns
@@ -157,21 +161,20 @@ Casts the concept to ``RoleType``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.asRoleType();
+concept.asRoleType()
 ----
 
 [#_Type_asThing__]
 ==== asThing
 
-[source,java]
+[source,nodejs]
 ----
-default Thing asThing()
+asThing(): Thing
 ----
 
-Casts the concept to ``Thing``. 
-
+Casts the concept to ``Thing``.
 
 [caption=""]
 .Returns
@@ -179,21 +182,20 @@ Casts the concept to ``Thing``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.asThing();
+concept.asThing()
 ----
 
 [#_Type_asThingType__]
 ==== asThingType
 
-[source,java]
+[source,nodejs]
 ----
-default ThingType asThingType()
+asThingType(): ThingType
 ----
 
-Casts the concept to ``ThingType``. 
-
+Casts the concept to ``ThingType``.
 
 [caption=""]
 .Returns
@@ -201,22 +203,20 @@ Casts the concept to ``ThingType``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.asThingType();
+concept.asThingType()
 ----
 
 [#_Type_asType__]
 ==== asType
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-default Type asType()
+asType(): Type
 ----
 
-Casts the concept to ``Type``. 
-
+Casts the concept to ``Type``.
 
 [caption=""]
 .Returns
@@ -224,21 +224,20 @@ Casts the concept to ``Type``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.asType();
+concept.asType()
 ----
 
 [#_Type_asValue__]
 ==== asValue
 
-[source,java]
+[source,nodejs]
 ----
-default Value asValue()
+asValue(): Value
 ----
 
-Casts the concept to ``Value``. 
-
+Casts the concept to ``Value``.
 
 [caption=""]
 .Returns
@@ -246,26 +245,24 @@ Casts the concept to ``Value``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.asValue();
+concept.asValue()
 ----
 
-[#_Type_delete__TypeDBTransaction]
+[#_Type_delete__transaction_TypeDBTransaction]
 ==== delete
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-Promise<java.lang.Void> delete​(TypeDBTransaction transaction)
+delete(transaction): Promise<void>
 ----
 
-Deletes this type from the database. 
-
+Deletes this type from the database.
 
 [caption=""]
 .Input parameters
-[cols="~,~,~"]
+[cols=",,"]
 [options="header"]
 |===
 |Name |Description |Type
@@ -274,190 +271,168 @@ a| `transaction` a| The current transaction a| `TypeDBTransaction`
 
 [caption=""]
 .Returns
-`Promise<java.lang.Void>`
+`Promise<void>`
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-type.delete(transaction).resolve();
-----
-
-[#_Type_getLabel__]
-==== getLabel
-
-[source,java]
-----
-@CheckReturnValue
-Label getLabel()
+type.delete(transaction)
 ----
 
-Retrieves the unique label of the type. 
+[#_Type_equals__concept_Concept]
+==== equals
 
-
-[caption=""]
-.Returns
-`Label`
-
-[caption=""]
-.Code examples
-[source,java]
+[source,nodejs]
 ----
-type.getLabel();
+equals(concept): boolean
 ----
 
-[#_Type_getSubtypes__TypeDBTransaction]
-==== getSubtypes
-
-[source,java]
-----
-@CheckReturnValue
-java.util.stream.Stream<? extends Type> getSubtypes​(TypeDBTransaction transaction)
-----
-
-Retrieves all direct and indirect subtypes of the type. Equivalent to ``getSubtypes(transaction, Transitivity.TRANSITIVE)``
-
-
-See also: <<#_getSubtypes_com_vaticle_typedb_driver_api_TypeDBTransaction_com_vaticle_typedb_driver_api_concept_Concept_Transitivity,``getSubtypes(TypeDBTransaction, Transitivity)``>>
-
-
-[caption=""]
-.Returns
-`java.util.stream.Stream<? extends Type>`
-
-[#_Type_getSubtypes__TypeDBTransaction__Concept_Transitivity]
-==== getSubtypes
-
-[source,java]
-----
-@CheckReturnValue
-java.util.stream.Stream<? extends Type> getSubtypes​(TypeDBTransaction transaction,
-                                                    Concept.Transitivity transitivity)
-----
-
-Retrieves all direct and indirect (or direct only) subtypes of the type. 
-
+Checks if this concept is equal to the argument ``concept``.
 
 [caption=""]
 .Input parameters
-[cols="~,~,~"]
+[cols=",,"]
 [options="header"]
 |===
 |Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `transitivity` a| ``Transitivity.TRANSITIVE`` for direct and indirect subtypes, ``Transitivity.EXPLICIT`` for direct subtypes only a| `Concept.Transitivity`
+a| `concept` a| The concept to compare to. a| `Concept`
 |===
-
-[caption=""]
-.Returns
-`java.util.stream.Stream<? extends Type>`
-
-[caption=""]
-.Code examples
-[source,java]
-----
-type.getSubtypes(transaction);
- type.getSubtypes(transaction, Transitivity.EXPLICIT);
-----
-
-[#_Type_getSupertype__TypeDBTransaction]
-==== getSupertype
-
-[source,java]
-----
-@CheckReturnValue
-Promise<? extends Type> getSupertype​(TypeDBTransaction transaction)
-----
-
-Retrieves the most immediate supertype of the type. 
-
-
-[caption=""]
-.Input parameters
-[cols="~,~,~"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-|===
-
-[caption=""]
-.Returns
-`Promise<? extends Type>`
-
-[caption=""]
-.Code examples
-[source,java]
-----
-type.getSupertype(transaction).resolve();
-----
-
-[#_Type_getSupertypes__TypeDBTransaction]
-==== getSupertypes
-
-[source,java]
-----
-@CheckReturnValue
-java.util.stream.Stream<? extends Type> getSupertypes​(TypeDBTransaction transaction)
-----
-
-Retrieves all supertypes of the type. 
-
-
-[caption=""]
-.Input parameters
-[cols="~,~,~"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-|===
-
-[caption=""]
-.Returns
-`java.util.stream.Stream<? extends Type>`
-
-[caption=""]
-.Code examples
-[source,java]
-----
-type.getSupertypes(transaction);
-----
-
-[#_Type_isAbstract__]
-==== isAbstract
-
-[source,java]
-----
-@CheckReturnValue
-boolean isAbstract()
-----
-
-Checks if the type is prevented from having data instances (i.e., ``abstract``). 
-
 
 [caption=""]
 .Returns
 `boolean`
 
+[#_Type_getSubtypes__transaction_TypeDBTransaction]
+==== getSubtypes
+
+[source,nodejs]
+----
+getSubtypes(transaction): Stream<Type>
+----
+
+Retrieves all direct and indirect (or direct only) subtypes of the type.
+
+[caption=""]
+.Input parameters
+[cols=",,"]
+[options="header"]
+|===
+|Name |Description |Type
+a| `transaction` a| The current transaction a| `TypeDBTransaction`
+|===
+
+[caption=""]
+.Returns
+`Stream<Type>`
+
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-type.isAbstract();
+type.getSubtypes(transaction) type.getSubtypes(transaction, Transitivity.EXPLICIT)
+----
+
+[#_Type_getSubtypes__transaction_TypeDBTransaction__transitivity_Transitivity]
+==== getSubtypes
+
+[source,nodejs]
+----
+getSubtypes(transaction, transitivity): Stream<Type>
+----
+
+Retrieves all direct and indirect (or direct only) subtypes of the type.
+
+[caption=""]
+.Input parameters
+[cols=",,"]
+[options="header"]
+|===
+|Name |Description |Type
+a| `transaction` a| The current transaction a| `TypeDBTransaction`
+a| `transitivity` a| ``Transitivity.TRANSITIVE`` for direct and indirect subtypes, ``Transitivity.EXPLICIT`` for direct subtypes only a| `Transitivity`
+|===
+
+[caption=""]
+.Returns
+`Stream<Type>`
+
+[caption=""]
+.Code examples
+[source,nodejs]
+----
+type.getSubtypes(transaction) type.getSubtypes(transaction, Transitivity.EXPLICIT)
+----
+
+[#_Type_getSupertype__transaction_TypeDBTransaction]
+==== getSupertype
+
+[source,nodejs]
+----
+getSupertype(transaction): Promise<Type>
+----
+
+Retrieves the most immediate supertype of the type.
+
+[caption=""]
+.Input parameters
+[cols=",,"]
+[options="header"]
+|===
+|Name |Description |Type
+a| `transaction` a| The current transaction a| `TypeDBTransaction`
+|===
+
+[caption=""]
+.Returns
+`Promise<Type>`
+
+[caption=""]
+.Code examples
+[source,nodejs]
+----
+type.getSupertype(transaction)
+----
+
+[#_Type_getSupertypes__transaction_TypeDBTransaction]
+==== getSupertypes
+
+[source,nodejs]
+----
+getSupertypes(transaction): Stream<Type>
+----
+
+Retrieves all supertypes of the type.
+
+[caption=""]
+.Input parameters
+[cols=",,"]
+[options="header"]
+|===
+|Name |Description |Type
+a| `transaction` a| The current transaction a| `TypeDBTransaction`
+|===
+
+[caption=""]
+.Returns
+`Stream<Type>`
+
+[caption=""]
+.Code examples
+[source,nodejs]
+----
+type.getSupertypes(transaction)
 ----
 
 [#_Type_isAttribute__]
 ==== isAttribute
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-default boolean isAttribute()
+isAttribute(): boolean
 ----
 
-Checks if the concept is an ``Attribute``. 
-
+Checks if the concept is an ``Attribute``.
 
 [caption=""]
 .Returns
@@ -465,22 +440,20 @@ Checks if the concept is an ``Attribute``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.isAttribute();
+concept.isAttribute()
 ----
 
 [#_Type_isAttributeType__]
 ==== isAttributeType
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-default boolean isAttributeType()
+isAttributeType(): boolean
 ----
 
-Checks if the concept is an ``AttributeType``. 
-
+Checks if the concept is an ``AttributeType``.
 
 [caption=""]
 .Returns
@@ -488,26 +461,24 @@ Checks if the concept is an ``AttributeType``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.isAttributeType();
+concept.isAttributeType()
 ----
 
-[#_Type_isDeleted__TypeDBTransaction]
+[#_Type_isDeleted__transaction_TypeDBTransaction]
 ==== isDeleted
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-Promise<java.lang.Boolean> isDeleted​(TypeDBTransaction transaction)
+isDeleted(transaction): Promise<boolean>
 ----
 
-Check if the concept has been deleted 
-
+Check if the concept has been deleted
 
 [caption=""]
 .Input parameters
-[cols="~,~,~"]
+[cols=",,"]
 [options="header"]
 |===
 |Name |Description |Type
@@ -516,26 +487,17 @@ a| `transaction` a| The current transaction a| `TypeDBTransaction`
 
 [caption=""]
 .Returns
-`Promise<java.lang.Boolean>`
-
-[caption=""]
-.Code examples
-[source,java]
-----
-type.isDeleted(transaction).resolve();
-----
+`Promise<boolean>`
 
 [#_Type_isEntity__]
 ==== isEntity
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-default boolean isEntity()
+isEntity(): boolean
 ----
 
-Checks if the concept is an ``Entity``. 
-
+Checks if the concept is an ``Entity``.
 
 [caption=""]
 .Returns
@@ -543,22 +505,20 @@ Checks if the concept is an ``Entity``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.isEntity();
+concept.isEntity()
 ----
 
 [#_Type_isEntityType__]
 ==== isEntityType
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-default boolean isEntityType()
+isEntityType(): boolean
 ----
 
-Checks if the concept is an ``EntityType``. 
-
+Checks if the concept is an ``EntityType``.
 
 [caption=""]
 .Returns
@@ -566,22 +526,20 @@ Checks if the concept is an ``EntityType``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.isEntityType();
+concept.isEntityType()
 ----
 
 [#_Type_isRelation__]
 ==== isRelation
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-default boolean isRelation()
+isRelation(): boolean
 ----
 
-Checks if the concept is a ``Relation``. 
-
+Checks if the concept is a ``Relation``.
 
 [caption=""]
 .Returns
@@ -589,22 +547,20 @@ Checks if the concept is a ``Relation``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.isRelation();
+concept.isRelation()
 ----
 
 [#_Type_isRelationType__]
 ==== isRelationType
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-default boolean isRelationType()
+isRelationType(): boolean
 ----
 
-Checks if the concept is a ``RelationType``. 
-
+Checks if the concept is a ``RelationType``.
 
 [caption=""]
 .Returns
@@ -612,22 +568,20 @@ Checks if the concept is a ``RelationType``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.isRelationType();
+concept.isRelationType()
 ----
 
 [#_Type_isRoleType__]
 ==== isRoleType
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-default boolean isRoleType()
+isRoleType(): boolean
 ----
 
-Checks if the concept is a ``RoleType``. 
-
+Checks if the concept is a ``RoleType``.
 
 [caption=""]
 .Returns
@@ -635,45 +589,20 @@ Checks if the concept is a ``RoleType``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.isRoleType();
-----
-
-[#_Type_isRoot__]
-==== isRoot
-
-[source,java]
-----
-@CheckReturnValue
-boolean isRoot()
-----
-
-Checks if the type is a root type. 
-
-
-[caption=""]
-.Returns
-`boolean`
-
-[caption=""]
-.Code examples
-[source,java]
-----
-type.isRoot();
+concept.isRoleType()
 ----
 
 [#_Type_isThing__]
 ==== isThing
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-default boolean isThing()
+isThing(): boolean
 ----
 
-Checks if the concept is a ``Thing``. 
-
+Checks if the concept is a ``Thing``.
 
 [caption=""]
 .Returns
@@ -681,22 +610,20 @@ Checks if the concept is a ``Thing``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.isThing();
+concept.isThing()
 ----
 
 [#_Type_isThingType__]
 ==== isThingType
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-default boolean isThingType()
+isThingType(): boolean
 ----
 
-Checks if the concept is a ``ThingType``. 
-
+Checks if the concept is a ``ThingType``.
 
 [caption=""]
 .Returns
@@ -704,22 +631,20 @@ Checks if the concept is a ``ThingType``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.isThingType();
+concept.isThingType()
 ----
 
 [#_Type_isType__]
 ==== isType
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-default boolean isType()
+isType(): boolean
 ----
 
-Checks if the concept is a ``Type``. 
-
+Checks if the concept is a ``Type``.
 
 [caption=""]
 .Returns
@@ -727,22 +652,20 @@ Checks if the concept is a ``Type``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.isType();
+concept.isType()
 ----
 
 [#_Type_isValue__]
 ==== isValue
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-default boolean isValue()
+isValue(): boolean
 ----
 
-Checks if the concept is a ``Value``. 
-
+Checks if the concept is a ``Value``.
 
 [caption=""]
 .Returns
@@ -750,43 +673,40 @@ Checks if the concept is a ``Value``.
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-concept.isValue();
+concept.isValue()
 ----
 
-[#_Type_setLabel__TypeDBTransaction__java_lang_String]
+[#_Type_setLabel__transaction_TypeDBTransaction__label_string]
 ==== setLabel
 
-[source,java]
+[source,nodejs]
 ----
-@CheckReturnValue
-Promise<java.lang.Void> setLabel​(TypeDBTransaction transaction,
-                                 java.lang.String label)
+setLabel(transaction, label): Promise<void>
 ----
 
-Renames the label of the type. The new label must remain unique. 
-
+Renames the label of the type. The new label must remain unique.
 
 [caption=""]
 .Input parameters
-[cols="~,~,~"]
+[cols=",,"]
 [options="header"]
 |===
 |Name |Description |Type
 a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `label` a| The new ``Label`` to be given to the type. a| `java.lang.String`
+a| `label` a| The new ``Label`` to be given to the type. a| `string`
 |===
 
 [caption=""]
 .Returns
-`Promise<java.lang.Void>`
+`Promise<void>`
 
 [caption=""]
 .Code examples
-[source,java]
+[source,nodejs]
 ----
-type.setLabel(transaction, newLabel).resolve();
+type.setLabel(transaction, label)
 ----
 
 // end::methods[]

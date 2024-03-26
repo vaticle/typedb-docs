@@ -14,7 +14,7 @@ See also
 ----
  
  
-  Promise
+Promise
 ---- 
 
 
@@ -58,7 +58,7 @@ Promise constructor
 
 [caption=""]
 .Input parameters
-[cols="~,~,~"]
+[cols=",,"]
 [options="header"]
 |===
 |Name |Description |Type
