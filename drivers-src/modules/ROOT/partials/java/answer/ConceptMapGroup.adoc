@@ -1,17 +1,56 @@
 [#_ConceptMapGroup]
 === ConceptMapGroup
 
+*Package*: `com.vaticle.typedb.driver.api.answer`
+
 Contains an element of the group query result.
 
+// tag::methods[]
+[#_ConceptMapGroup_conceptMaps__]
+==== conceptMaps
+
+[source,java]
+----
+@CheckReturnValue
+java.util.stream.Stream<ConceptMap> conceptMaps()
+----
+
+Retrieves the ``ConceptMap``s of the group. 
+
+
 [caption=""]
-.Fields
-// tag::properties[]
-[cols=",,"]
-[options="header"]
-|===
-|Name |Type |Description
-a| `conceptMaps` a| `ConceptMap` a| The ConceptMaps of the group.
-a| `owner` a| `Concept` a| The concept that is the group owner.
-|===
-// end::properties[]
+.Returns
+`java.util.stream.Stream<ConceptMap>`
+
+[caption=""]
+.Code examples
+[source,java]
+----
+conceptMapGroup.conceptMaps();
+----
+
+[#_ConceptMapGroup_owner__]
+==== owner
+
+[source,java]
+----
+@CheckReturnValue
+Concept owner()
+----
+
+Retrieves the concept that is the group owner. 
+
+
+[caption=""]
+.Returns
+`Concept`
+
+[caption=""]
+.Code examples
+[source,java]
+----
+conceptMapGroup.owner();
+----
+
+// end::methods[]
 

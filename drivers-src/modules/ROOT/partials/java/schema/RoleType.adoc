@@ -1,33 +1,26 @@
 [#_RoleType]
 === RoleType
 
-*Supertypes:*
+*Package*: `com.vaticle.typedb.driver.api.concept.type`
 
+*Superinterfaces:*
+
+* `Concept`
 * `Type`
 
 Roles are special internal types used by relations. We can not create an instance of a role in a database. But we can set an instance of another type (role player) to play a role in a particular instance of a relation type. Roles allow a schema to enforce logical constraints on types of role players.
-
-[caption=""]
-.Namespace variables
-// tag::enum_constants[]
-[cols=""]
-[options="header"]
-|===
-|Name
-a| `NAME`
-|===
-// end::enum_constants[]
 
 // tag::methods[]
 [#_RoleType_asAttribute__]
 ==== asAttribute
 
-[source,nodejs]
+[source,java]
 ----
-asAttribute(): Attribute
+default Attribute asAttribute()
 ----
 
-Casts the concept to ``Attribute``.
+Casts the concept to ``Attribute``. 
+
 
 [caption=""]
 .Returns
@@ -35,20 +28,21 @@ Casts the concept to ``Attribute``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asAttribute()
+concept.asAttribute();
 ----
 
 [#_RoleType_asAttributeType__]
 ==== asAttributeType
 
-[source,nodejs]
+[source,java]
 ----
-asAttributeType(): AttributeType
+default AttributeType asAttributeType()
 ----
 
-Casts the concept to ``AttributeType``.
+Casts the concept to ``AttributeType``. 
+
 
 [caption=""]
 .Returns
@@ -56,20 +50,21 @@ Casts the concept to ``AttributeType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asAttributeType()
+concept.asAttributeType();
 ----
 
 [#_RoleType_asEntity__]
 ==== asEntity
 
-[source,nodejs]
+[source,java]
 ----
-asEntity(): Entity
+default Entity asEntity()
 ----
 
-Casts the concept to ``Entity``.
+Casts the concept to ``Entity``. 
+
 
 [caption=""]
 .Returns
@@ -77,20 +72,21 @@ Casts the concept to ``Entity``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asEntity()
+concept.asEntity();
 ----
 
 [#_RoleType_asEntityType__]
 ==== asEntityType
 
-[source,nodejs]
+[source,java]
 ----
-asEntityType(): EntityType
+default EntityType asEntityType()
 ----
 
-Casts the concept to ``EntityType``.
+Casts the concept to ``EntityType``. 
+
 
 [caption=""]
 .Returns
@@ -98,20 +94,21 @@ Casts the concept to ``EntityType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asEntityType()
+concept.asEntityType();
 ----
 
 [#_RoleType_asRelation__]
 ==== asRelation
 
-[source,nodejs]
+[source,java]
 ----
-asRelation(): Relation
+default Relation asRelation()
 ----
 
-Casts the concept to ``Relation``.
+Casts the concept to ``Relation``. 
+
 
 [caption=""]
 .Returns
@@ -119,20 +116,21 @@ Casts the concept to ``Relation``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asRelation()
+concept.asRelation();
 ----
 
 [#_RoleType_asRelationType__]
 ==== asRelationType
 
-[source,nodejs]
+[source,java]
 ----
-asRelationType(): RelationType
+default RelationType asRelationType()
 ----
 
-Casts the concept to ``RelationType``.
+Casts the concept to ``RelationType``. 
+
 
 [caption=""]
 .Returns
@@ -140,20 +138,22 @@ Casts the concept to ``RelationType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asRelationType()
+concept.asRelationType();
 ----
 
 [#_RoleType_asRoleType__]
 ==== asRoleType
 
-[source,nodejs]
+[source,java]
 ----
-asRoleType(): RoleType
+@CheckReturnValue
+default RoleType asRoleType()
 ----
 
-Casts the concept to ``RoleType``.
+Casts the concept to ``RoleType``. 
+
 
 [caption=""]
 .Returns
@@ -161,20 +161,21 @@ Casts the concept to ``RoleType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asRoleType()
+concept.asRoleType();
 ----
 
 [#_RoleType_asThing__]
 ==== asThing
 
-[source,nodejs]
+[source,java]
 ----
-asThing(): Thing
+default Thing asThing()
 ----
 
-Casts the concept to ``Thing``.
+Casts the concept to ``Thing``. 
+
 
 [caption=""]
 .Returns
@@ -182,20 +183,21 @@ Casts the concept to ``Thing``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asThing()
+concept.asThing();
 ----
 
 [#_RoleType_asThingType__]
 ==== asThingType
 
-[source,nodejs]
+[source,java]
 ----
-asThingType(): ThingType
+default ThingType asThingType()
 ----
 
-Casts the concept to ``ThingType``.
+Casts the concept to ``ThingType``. 
+
 
 [caption=""]
 .Returns
@@ -203,41 +205,21 @@ Casts the concept to ``ThingType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asThingType()
-----
-
-[#_RoleType_asType__]
-==== asType
-
-[source,nodejs]
-----
-asType(): Type
-----
-
-Casts the concept to ``Type``.
-
-[caption=""]
-.Returns
-`Type`
-
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-concept.asType()
+concept.asThingType();
 ----
 
 [#_RoleType_asValue__]
 ==== asValue
 
-[source,nodejs]
+[source,java]
 ----
-asValue(): Value
+default Value asValue()
 ----
 
-Casts the concept to ``Value``.
+Casts the concept to ``Value``. 
+
 
 [caption=""]
 .Returns
@@ -245,103 +227,42 @@ Casts the concept to ``Value``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asValue()
-----
-
-[#_RoleType_delete__transaction_TypeDBTransaction]
-==== delete
-
-[source,nodejs]
-----
-delete(transaction): Promise<void>
+concept.asValue();
 ----
 
-Deletes this type from the database.
-
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-|===
-
-[caption=""]
-.Returns
-`Promise<void>`
-
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-type.delete(transaction)
-----
-
-[#_RoleType_equals__concept_Concept]
-==== equals
-
-[source,nodejs]
-----
-equals(concept): boolean
-----
-
-Checks if this concept is equal to the argument ``concept``.
-
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `concept` a| The concept to compare to. a| `Concept`
-|===
-
-[caption=""]
-.Returns
-`boolean`
-
-[#_RoleType_getPlayerInstances__transaction_TypeDBTransaction]
+[#_RoleType_getPlayerInstances__TypeDBTransaction]
 ==== getPlayerInstances
 
-[source,nodejs]
+[source,java]
 ----
-getPlayerInstances(transaction): Stream<Thing>
+@CheckReturnValue
+java.util.stream.Stream<? extends Thing> getPlayerInstances​(TypeDBTransaction transaction)
 ----
 
 Retrieves the ``Thing`` instances that play this role.
 
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-|===
+
+See also: <<#_getPlayerInstances_com_vaticle_typedb_driver_api_TypeDBTransaction_com_vaticle_typedb_driver_api_concept_Concept_Transitivity,``getPlayerInstances(TypeDBTransaction, Transitivity)``>>
+
 
 [caption=""]
 .Returns
-`Stream<Thing>`
+`java.util.stream.Stream<? extends Thing>`
 
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-roleType.getPlayerInstances(transaction, transitivity)
-----
-
-[#_RoleType_getPlayerInstances__transaction_TypeDBTransaction__transitivity_Transitivity]
+[#_RoleType_getPlayerInstances__TypeDBTransaction__Concept_Transitivity]
 ==== getPlayerInstances
 
-[source,nodejs]
+[source,java]
 ----
-getPlayerInstances(transaction, transitivity): Stream<Thing>
+@CheckReturnValue
+java.util.stream.Stream<? extends Thing> getPlayerInstances​(TypeDBTransaction transaction,
+                                                            Concept.Transitivity transitivity)
 ----
 
-Retrieves the ``Thing`` instances that play this role.
+Retrieves the ``Thing`` instances that play this role. 
+
 
 [caption=""]
 .Input parameters
@@ -350,29 +271,51 @@ Retrieves the ``Thing`` instances that play this role.
 |===
 |Name |Description |Type
 a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `transitivity` a| ``Transitivity.TRANSITIVE`` for direct and indirect playing, ``Transitivity.EXPLICIT`` for direct playing only a| `Transitivity`
+a| `transitivity` a| ``Transitivity.TRANSITIVE`` for direct and indirect playing, ``Transitivity.EXPLICIT`` for direct playing only a| `Concept.Transitivity`
 |===
 
 [caption=""]
 .Returns
-`Stream<Thing>`
+`java.util.stream.Stream<? extends Thing>`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-roleType.getPlayerInstances(transaction, transitivity)
+roleType.getPlayerInstances(transaction, transitivity);
 ----
 
-[#_RoleType_getPlayerTypes__transaction_TypeDBTransaction]
+[#_RoleType_getPlayerTypes__TypeDBTransaction]
 ==== getPlayerTypes
 
-[source,nodejs]
+[source,java]
 ----
-getPlayerTypes(transaction): Stream<ThingType>
+@CheckReturnValue
+java.util.stream.Stream<? extends ThingType> getPlayerTypes​(TypeDBTransaction transaction)
 ----
 
-Retrieves the ``ThingType``s whose instances play this role.
+Retrieves the ``ThingType``s whose instances play this role. Equivalent to ``getPlayerTypes(transaction, Transitivity.TRANSITIVE)``.
+
+
+See also: <<#_getPlayerTypes_com_vaticle_typedb_driver_api_TypeDBTransaction_com_vaticle_typedb_driver_api_concept_Concept_Transitivity,``getPlayerTypes(TypeDBTransaction, Transitivity)``>>
+
+
+[caption=""]
+.Returns
+`java.util.stream.Stream<? extends ThingType>`
+
+[#_RoleType_getPlayerTypes__TypeDBTransaction__Concept_Transitivity]
+==== getPlayerTypes
+
+[source,java]
+----
+@CheckReturnValue
+java.util.stream.Stream<? extends ThingType> getPlayerTypes​(TypeDBTransaction transaction,
+                                                            Concept.Transitivity transitivity)
+----
+
+Retrieves the ``ThingType``s whose instances play this role. 
+
 
 [caption=""]
 .Input parameters
@@ -381,59 +324,51 @@ Retrieves the ``ThingType``s whose instances play this role.
 |===
 |Name |Description |Type
 a| `transaction` a| The current transaction a| `TypeDBTransaction`
+a| `transitivity` a| ``Transitivity.TRANSITIVE`` for direct and indirect playing, ``Transitivity.EXPLICIT`` for direct playing only a| `Concept.Transitivity`
 |===
 
 [caption=""]
 .Returns
-`Stream<ThingType>`
+`java.util.stream.Stream<? extends ThingType>`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
 roleType.getPlayerTypes(transaction, transitivity)
 ----
 
-[#_RoleType_getPlayerTypes__transaction_TypeDBTransaction__transitivity_Transitivity]
-==== getPlayerTypes
-
-[source,nodejs]
-----
-getPlayerTypes(transaction, transitivity): Stream<ThingType>
-----
-
-Retrieves the ``ThingType``s whose instances play this role.
-
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `transitivity` a| ``Transitivity.TRANSITIVE`` for direct and indirect playing, ``Transitivity.EXPLICIT`` for direct playing only a| `Transitivity`
-|===
-
-[caption=""]
-.Returns
-`Stream<ThingType>`
-
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-roleType.getPlayerTypes(transaction, transitivity)
-----
-
-[#_RoleType_getRelationInstances__transaction_TypeDBTransaction]
+[#_RoleType_getRelationInstances__TypeDBTransaction]
 ==== getRelationInstances
 
-[source,nodejs]
+[source,java]
 ----
-getRelationInstances(transaction): Stream<Relation>
+@CheckReturnValue
+java.util.stream.Stream<? extends Relation> getRelationInstances​(TypeDBTransaction transaction)
 ----
 
-Retrieves the ``Relation`` instances that this role is related to.
+Retrieves the ``Relation`` instances that this role is related to. Equivalent to ````getRelationInstances(transaction, Transitivity.TRANSITIVE)
+
+
+See also: <<#_getRelationInstances_com_vaticle_typedb_driver_api_TypeDBTransaction_com_vaticle_typedb_driver_api_concept_Concept_Transitivity,``getRelationInstances(TypeDBTransaction, Transitivity)``>>
+
+
+[caption=""]
+.Returns
+`java.util.stream.Stream<? extends Relation>`
+
+[#_RoleType_getRelationInstances__TypeDBTransaction__Concept_Transitivity]
+==== getRelationInstances
+
+[source,java]
+----
+@CheckReturnValue
+java.util.stream.Stream<? extends Relation> getRelationInstances​(TypeDBTransaction transaction,
+                                                                 Concept.Transitivity transitivity)
+----
+
+Retrieves the ``Relation`` instances that this role is related to. 
+
 
 [caption=""]
 .Input parameters
@@ -442,59 +377,31 @@ Retrieves the ``Relation`` instances that this role is related to.
 |===
 |Name |Description |Type
 a| `transaction` a| The current transaction a| `TypeDBTransaction`
+a| `transitivity` a| ``Transitivity.TRANSITIVE`` for direct and indirect relation, ``Transitivity.EXPLICIT`` for direct relation only a| `Concept.Transitivity`
 |===
 
 [caption=""]
 .Returns
-`Stream<Relation>`
+`java.util.stream.Stream<? extends Relation>`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
 roleType.getRelationInstances(transaction, transitivity)
 ----
 
-[#_RoleType_getRelationInstances__transaction_TypeDBTransaction__transitivity_Transitivity]
-==== getRelationInstances
-
-[source,nodejs]
-----
-getRelationInstances(transaction, transitivity): Stream<Relation>
-----
-
-Retrieves the ``Relation`` instances that this role is related to.
-
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `transitivity` a| ``Transitivity.TRANSITIVE`` for direct and indirect relation, ``Transitivity.EXPLICIT`` for direct relation only a| `Transitivity`
-|===
-
-[caption=""]
-.Returns
-`Stream<Relation>`
-
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-roleType.getRelationInstances(transaction, transitivity)
-----
-
-[#_RoleType_getRelationType__transaction_TypeDBTransaction]
+[#_RoleType_getRelationType__TypeDBTransaction]
 ==== getRelationType
 
-[source,nodejs]
+[source,java]
 ----
-getRelationType(transaction): Promise<RelationType>
+@CheckReturnValue
+Promise<? extends RelationType> getRelationType​(TypeDBTransaction transaction)
 ----
 
-Retrieves the ``RelationType`` that this role is directly related to.
+Retrieves the ``RelationType`` that this role is directly related to. 
+
 
 [caption=""]
 .Input parameters
@@ -507,24 +414,26 @@ a| `transaction` a| The current transaction a| `TypeDBTransaction`
 
 [caption=""]
 .Returns
-`Promise<RelationType>`
+`Promise<? extends RelationType>`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-roleType.getRelationType(transaction)
+roleType.getRelationType(transaction).resolve();
 ----
 
-[#_RoleType_getRelationTypes__transaction_TypeDBTransaction]
+[#_RoleType_getRelationTypes__TypeDBTransaction]
 ==== getRelationTypes
 
-[source,nodejs]
+[source,java]
 ----
-getRelationTypes(transaction): Stream<RelationType>
+@CheckReturnValue
+java.util.stream.Stream<? extends RelationType> getRelationTypes​(TypeDBTransaction transaction)
 ----
 
-Retrieves ``RelationType``s that this role is related to (directly or indirectly).
+Retrieves ``RelationType``s that this role is related to (directly or indirectly). 
+
 
 [caption=""]
 .Input parameters
@@ -537,24 +446,46 @@ a| `transaction` a| The current transaction a| `TypeDBTransaction`
 
 [caption=""]
 .Returns
-`Stream<RelationType>`
+`java.util.stream.Stream<? extends RelationType>`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-roleType.getRelationTypes(transaction)
+roleType.getRelationTypes(transaction);
 ----
 
-[#_RoleType_getSubtypes__transaction_TypeDBTransaction]
+[#_RoleType_getSubtypes__TypeDBTransaction]
 ==== getSubtypes
 
-[source,nodejs]
+[source,java]
 ----
-getSubtypes(transaction): Stream<RoleType>
+@CheckReturnValue
+java.util.stream.Stream<? extends RoleType> getSubtypes​(TypeDBTransaction transaction)
 ----
 
-Retrieves all direct and indirect (or direct only) subtypes of the type.
+Retrieves all direct and indirect subtypes of the ``RoleType``. Equivalent to ``getSubtypes(transaction, Transitivity.TRANSITIVE)``
+
+
+See also: <<#_getSubtypes_com_vaticle_typedb_driver_api_TypeDBTransaction_com_vaticle_typedb_driver_api_concept_Concept_Transitivity,``getSubtypes(TypeDBTransaction, Transitivity)``>>
+
+
+[caption=""]
+.Returns
+`java.util.stream.Stream<? extends RoleType>`
+
+[#_RoleType_getSubtypes__TypeDBTransaction__Concept_Transitivity]
+==== getSubtypes
+
+[source,java]
+----
+@CheckReturnValue
+java.util.stream.Stream<? extends RoleType> getSubtypes​(TypeDBTransaction transaction,
+                                                        Concept.Transitivity transitivity)
+----
+
+Retrieves all direct and indirect (or direct only) subtypes of the ``RoleType``. 
+
 
 [caption=""]
 .Input parameters
@@ -563,28 +494,31 @@ Retrieves all direct and indirect (or direct only) subtypes of the type.
 |===
 |Name |Description |Type
 a| `transaction` a| The current transaction a| `TypeDBTransaction`
+a| `transitivity` a| ``Transitivity.TRANSITIVE`` for direct and indirect subtypes, ``Transitivity.EXPLICIT`` for direct subtypes only a| `Concept.Transitivity`
 |===
 
 [caption=""]
 .Returns
-`Stream<RoleType>`
+`java.util.stream.Stream<? extends RoleType>`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-type.getSubtypes(transaction) type.getSubtypes(transaction, Transitivity.EXPLICIT)
+roleType.getSubtypes(transaction, transitivity);
 ----
 
-[#_RoleType_getSupertype__transaction_TypeDBTransaction]
+[#_RoleType_getSupertype__TypeDBTransaction]
 ==== getSupertype
 
-[source,nodejs]
+[source,java]
 ----
-getSupertype(transaction): Promise<RoleType>
+@CheckReturnValue
+Promise<? extends RoleType> getSupertype​(TypeDBTransaction transaction)
 ----
 
-Retrieves the most immediate supertype of the type.
+Retrieves the most immediate supertype of the ``RoleType``. 
+
 
 [caption=""]
 .Input parameters
@@ -597,24 +531,26 @@ a| `transaction` a| The current transaction a| `TypeDBTransaction`
 
 [caption=""]
 .Returns
-`Promise<RoleType>`
+`Promise<? extends RoleType>`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-type.getSupertype(transaction)
+roleType.getSupertype(transaction).resolve();
 ----
 
-[#_RoleType_getSupertypes__transaction_TypeDBTransaction]
+[#_RoleType_getSupertypes__TypeDBTransaction]
 ==== getSupertypes
 
-[source,nodejs]
+[source,java]
 ----
-getSupertypes(transaction): Stream<RoleType>
+@CheckReturnValue
+java.util.stream.Stream<? extends RoleType> getSupertypes​(TypeDBTransaction transaction)
 ----
 
-Retrieves all supertypes of the type.
+Retrieves all supertypes of the ``RoleType``. 
+
 
 [caption=""]
 .Input parameters
@@ -627,24 +563,26 @@ a| `transaction` a| The current transaction a| `TypeDBTransaction`
 
 [caption=""]
 .Returns
-`Stream<RoleType>`
+`java.util.stream.Stream<? extends RoleType>`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-type.getSupertypes(transaction)
+roleType.getSupertypes(transaction);
 ----
 
 [#_RoleType_isAttribute__]
 ==== isAttribute
 
-[source,nodejs]
+[source,java]
 ----
-isAttribute(): boolean
+@CheckReturnValue
+default boolean isAttribute()
 ----
 
-Checks if the concept is an ``Attribute``.
+Checks if the concept is an ``Attribute``. 
+
 
 [caption=""]
 .Returns
@@ -652,20 +590,22 @@ Checks if the concept is an ``Attribute``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isAttribute()
+concept.isAttribute();
 ----
 
 [#_RoleType_isAttributeType__]
 ==== isAttributeType
 
-[source,nodejs]
+[source,java]
 ----
-isAttributeType(): boolean
+@CheckReturnValue
+default boolean isAttributeType()
 ----
 
-Checks if the concept is an ``AttributeType``.
+Checks if the concept is an ``AttributeType``. 
+
 
 [caption=""]
 .Returns
@@ -673,43 +613,22 @@ Checks if the concept is an ``AttributeType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isAttributeType()
+concept.isAttributeType();
 ----
-
-[#_RoleType_isDeleted__transaction_TypeDBTransaction]
-==== isDeleted
-
-[source,nodejs]
-----
-isDeleted(transaction): Promise<boolean>
-----
-
-Check if the concept has been deleted
-
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-|===
-
-[caption=""]
-.Returns
-`Promise<boolean>`
 
 [#_RoleType_isEntity__]
 ==== isEntity
 
-[source,nodejs]
+[source,java]
 ----
-isEntity(): boolean
+@CheckReturnValue
+default boolean isEntity()
 ----
 
-Checks if the concept is an ``Entity``.
+Checks if the concept is an ``Entity``. 
+
 
 [caption=""]
 .Returns
@@ -717,20 +636,22 @@ Checks if the concept is an ``Entity``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isEntity()
+concept.isEntity();
 ----
 
 [#_RoleType_isEntityType__]
 ==== isEntityType
 
-[source,nodejs]
+[source,java]
 ----
-isEntityType(): boolean
+@CheckReturnValue
+default boolean isEntityType()
 ----
 
-Checks if the concept is an ``EntityType``.
+Checks if the concept is an ``EntityType``. 
+
 
 [caption=""]
 .Returns
@@ -738,20 +659,22 @@ Checks if the concept is an ``EntityType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isEntityType()
+concept.isEntityType();
 ----
 
 [#_RoleType_isRelation__]
 ==== isRelation
 
-[source,nodejs]
+[source,java]
 ----
-isRelation(): boolean
+@CheckReturnValue
+default boolean isRelation()
 ----
 
-Checks if the concept is a ``Relation``.
+Checks if the concept is a ``Relation``. 
+
 
 [caption=""]
 .Returns
@@ -759,20 +682,22 @@ Checks if the concept is a ``Relation``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isRelation()
+concept.isRelation();
 ----
 
 [#_RoleType_isRelationType__]
 ==== isRelationType
 
-[source,nodejs]
+[source,java]
 ----
-isRelationType(): boolean
+@CheckReturnValue
+default boolean isRelationType()
 ----
 
-Checks if the concept is a ``RelationType``.
+Checks if the concept is a ``RelationType``. 
+
 
 [caption=""]
 .Returns
@@ -780,20 +705,22 @@ Checks if the concept is a ``RelationType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isRelationType()
+concept.isRelationType();
 ----
 
 [#_RoleType_isRoleType__]
 ==== isRoleType
 
-[source,nodejs]
+[source,java]
 ----
-isRoleType(): boolean
+@CheckReturnValue
+default boolean isRoleType()
 ----
 
-Checks if the concept is a ``RoleType``.
+Checks if the concept is a ``RoleType``. 
+
 
 [caption=""]
 .Returns
@@ -801,20 +728,22 @@ Checks if the concept is a ``RoleType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isRoleType()
+concept.isRoleType();
 ----
 
 [#_RoleType_isThing__]
 ==== isThing
 
-[source,nodejs]
+[source,java]
 ----
-isThing(): boolean
+@CheckReturnValue
+default boolean isThing()
 ----
 
-Checks if the concept is a ``Thing``.
+Checks if the concept is a ``Thing``. 
+
 
 [caption=""]
 .Returns
@@ -822,20 +751,22 @@ Checks if the concept is a ``Thing``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isThing()
+concept.isThing();
 ----
 
 [#_RoleType_isThingType__]
 ==== isThingType
 
-[source,nodejs]
+[source,java]
 ----
-isThingType(): boolean
+@CheckReturnValue
+default boolean isThingType()
 ----
 
-Checks if the concept is a ``ThingType``.
+Checks if the concept is a ``ThingType``. 
+
 
 [caption=""]
 .Returns
@@ -843,41 +774,22 @@ Checks if the concept is a ``ThingType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isThingType()
-----
-
-[#_RoleType_isType__]
-==== isType
-
-[source,nodejs]
-----
-isType(): boolean
-----
-
-Checks if the concept is a ``Type``.
-
-[caption=""]
-.Returns
-`boolean`
-
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-concept.isType()
+concept.isThingType();
 ----
 
 [#_RoleType_isValue__]
 ==== isValue
 
-[source,nodejs]
+[source,java]
 ----
-isValue(): boolean
+@CheckReturnValue
+default boolean isValue()
 ----
 
-Checks if the concept is a ``Value``.
+Checks if the concept is a ``Value``. 
+
 
 [caption=""]
 .Returns
@@ -885,40 +797,9 @@ Checks if the concept is a ``Value``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isValue()
-----
-
-[#_RoleType_setLabel__transaction_TypeDBTransaction__label_string]
-==== setLabel
-
-[source,nodejs]
-----
-setLabel(transaction, label): Promise<void>
-----
-
-Renames the label of the type. The new label must remain unique.
-
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `label` a| The new ``Label`` to be given to the type. a| `string`
-|===
-
-[caption=""]
-.Returns
-`Promise<void>`
-
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-type.setLabel(transaction, label)
+concept.isValue();
 ----
 
 // end::methods[]

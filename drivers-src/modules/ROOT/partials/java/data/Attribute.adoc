@@ -1,37 +1,31 @@
 [#_Attribute]
 === Attribute
 
-*Supertypes:*
+*Package*: `com.vaticle.typedb.driver.api.concept.thing`
 
+*Superinterfaces:*
+
+* `Concept`
 * `Thing`
 
-Attribute is an instance of the attribute type and has a value. This value is fixed and unique for every given instance of the attribute type. Attributes can be uniquely addressed by their type and value.
 
-[caption=""]
-.Fields
-// tag::properties[]
-[cols=",,"]
-[options="header"]
-|===
-|Name |Type |Description
-a| `iid` a| `string` a| Retrieves the unique id of the Thing.
-a| `inferred` a| `boolean` a| Checks if this Thing is inferred by a [Reasoning Rule].
-a| `type` a| `AttributeType` a| The type which this Attribute belongs to.
-a| `value` a| `string` a| The value which the Attribute instance holds.
-a| `valueType` a| `ValueType` a| The type of the value which the Attribute instance holds.
-|===
-// end::properties[]
+
+Attribute is an instance of the attribute type and has a value. This value is fixed and unique for every given instance of the attribute type.
+
+Attributes can be uniquely addressed by their type and value.
 
 // tag::methods[]
 [#_Attribute_asAttribute__]
 ==== asAttribute
 
-[source,nodejs]
+[source,java]
 ----
-asAttribute(): Attribute
+@CheckReturnValue
+default Attribute asAttribute()
 ----
 
-Casts the concept to ``Attribute``.
+Casts the concept to ``Attribute``. 
+
 
 [caption=""]
 .Returns
@@ -39,20 +33,21 @@ Casts the concept to ``Attribute``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asAttribute()
+attribute.asAttribute();
 ----
 
 [#_Attribute_asAttributeType__]
 ==== asAttributeType
 
-[source,nodejs]
+[source,java]
 ----
-asAttributeType(): AttributeType
+default AttributeType asAttributeType()
 ----
 
-Casts the concept to ``AttributeType``.
+Casts the concept to ``AttributeType``. 
+
 
 [caption=""]
 .Returns
@@ -60,20 +55,21 @@ Casts the concept to ``AttributeType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asAttributeType()
+concept.asAttributeType();
 ----
 
 [#_Attribute_asEntity__]
 ==== asEntity
 
-[source,nodejs]
+[source,java]
 ----
-asEntity(): Entity
+default Entity asEntity()
 ----
 
-Casts the concept to ``Entity``.
+Casts the concept to ``Entity``. 
+
 
 [caption=""]
 .Returns
@@ -81,20 +77,21 @@ Casts the concept to ``Entity``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asEntity()
+concept.asEntity();
 ----
 
 [#_Attribute_asEntityType__]
 ==== asEntityType
 
-[source,nodejs]
+[source,java]
 ----
-asEntityType(): EntityType
+default EntityType asEntityType()
 ----
 
-Casts the concept to ``EntityType``.
+Casts the concept to ``EntityType``. 
+
 
 [caption=""]
 .Returns
@@ -102,20 +99,21 @@ Casts the concept to ``EntityType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asEntityType()
+concept.asEntityType();
 ----
 
 [#_Attribute_asRelation__]
 ==== asRelation
 
-[source,nodejs]
+[source,java]
 ----
-asRelation(): Relation
+default Relation asRelation()
 ----
 
-Casts the concept to ``Relation``.
+Casts the concept to ``Relation``. 
+
 
 [caption=""]
 .Returns
@@ -123,20 +121,21 @@ Casts the concept to ``Relation``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asRelation()
+concept.asRelation();
 ----
 
 [#_Attribute_asRelationType__]
 ==== asRelationType
 
-[source,nodejs]
+[source,java]
 ----
-asRelationType(): RelationType
+default RelationType asRelationType()
 ----
 
-Casts the concept to ``RelationType``.
+Casts the concept to ``RelationType``. 
+
 
 [caption=""]
 .Returns
@@ -144,20 +143,21 @@ Casts the concept to ``RelationType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asRelationType()
+concept.asRelationType();
 ----
 
 [#_Attribute_asRoleType__]
 ==== asRoleType
 
-[source,nodejs]
+[source,java]
 ----
-asRoleType(): RoleType
+default RoleType asRoleType()
 ----
 
-Casts the concept to ``RoleType``.
+Casts the concept to ``RoleType``. 
+
 
 [caption=""]
 .Returns
@@ -165,41 +165,21 @@ Casts the concept to ``RoleType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asRoleType()
-----
-
-[#_Attribute_asThing__]
-==== asThing
-
-[source,nodejs]
-----
-asThing(): Thing
-----
-
-Casts the concept to ``Thing``.
-
-[caption=""]
-.Returns
-`Thing`
-
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-concept.asThing()
+concept.asRoleType();
 ----
 
 [#_Attribute_asThingType__]
 ==== asThingType
 
-[source,nodejs]
+[source,java]
 ----
-asThingType(): ThingType
+default ThingType asThingType()
 ----
 
-Casts the concept to ``ThingType``.
+Casts the concept to ``ThingType``. 
+
 
 [caption=""]
 .Returns
@@ -207,20 +187,21 @@ Casts the concept to ``ThingType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asThingType()
+concept.asThingType();
 ----
 
 [#_Attribute_asType__]
 ==== asType
 
-[source,nodejs]
+[source,java]
 ----
-asType(): Type
+default Type asType()
 ----
 
-Casts the concept to ``Type``.
+Casts the concept to ``Type``. 
+
 
 [caption=""]
 .Returns
@@ -228,20 +209,21 @@ Casts the concept to ``Type``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asType()
+concept.asType();
 ----
 
 [#_Attribute_asValue__]
 ==== asValue
 
-[source,nodejs]
+[source,java]
 ----
-asValue(): Value
+default Value asValue()
 ----
 
-Casts the concept to ``Value``.
+Casts the concept to ``Value``. 
+
 
 [caption=""]
 .Returns
@@ -249,259 +231,22 @@ Casts the concept to ``Value``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asValue()
-----
-
-[#_Attribute_delete__transaction_TypeDBTransaction]
-==== delete
-
-[source,nodejs]
-----
-delete(transaction): Promise<void>
+concept.asValue();
 ----
 
-Deletes this ``Thing``.
-
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-|===
-
-[caption=""]
-.Returns
-`Promise<void>`
-
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-thing.delete(transaction)
-----
-
-[#_Attribute_equals__concept_Concept]
-==== equals
-
-[source,nodejs]
-----
-equals(concept): boolean
-----
-
-Checks if this concept is equal to the argument ``concept``.
-
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `concept` a| The concept to compare to. a| `Concept`
-|===
-
-[caption=""]
-.Returns
-`boolean`
-
-[#_Attribute_getHas__transaction_TypeDBTransaction]
-==== getHas
-
-[source,nodejs]
-----
-getHas(transaction): Stream<Attribute>
-----
-
-Retrieves the ``Attribute``s that this ``Thing`` owns. Optionally, filtered by an ``AttributeType`` or a list of ``AttributeType``s. Optionally, filtered by ``Annotation``s.
-
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-|===
-
-[caption=""]
-.Returns
-`Stream<Attribute>`
-
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-thing.getHas(transaction) thing.getHas(transaction, attributeType, [Annotation.KEY])
-----
-
-[#_Attribute_getHas__transaction_TypeDBTransaction__annotations_Annotation__]
-==== getHas
-
-[source,nodejs]
-----
-getHas(transaction, annotations): Stream<Attribute>
-----
-
-Retrieves the ``Attribute``s that this ``Thing`` owns. Optionally, filtered by an ``AttributeType`` or a list of ``AttributeType``s. Optionally, filtered by ``Annotation``s.
-
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `annotations` a| The ``AttributeType``s to filter the attributes by a| `Annotation[]`
-|===
-
-[caption=""]
-.Returns
-`Stream<Attribute>`
-
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-thing.getHas(transaction) thing.getHas(transaction, attributeType, [Annotation.KEY])
-----
-
-[#_Attribute_getHas__transaction_TypeDBTransaction__attributeType_AttributeType]
-==== getHas
-
-[source,nodejs]
-----
-getHas(transaction, attributeType): Stream<Attribute>
-----
-
-Retrieves the ``Attribute``s that this ``Thing`` owns. Optionally, filtered by an ``AttributeType`` or a list of ``AttributeType``s. Optionally, filtered by ``Annotation``s.
-
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `attributeType` a| The ``AttributeType``s to filter the attributes by a| `AttributeType`
-|===
-
-[caption=""]
-.Returns
-`Stream<Attribute>`
-
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-thing.getHas(transaction) thing.getHas(transaction, attributeType, [Annotation.KEY])
-----
-
-[#_Attribute_getHas__transaction_TypeDBTransaction__attributeTypes_AttributeType__]
-==== getHas
-
-[source,nodejs]
-----
-getHas(transaction, attributeTypes): Stream<Attribute>
-----
-
-Retrieves the ``Attribute``s that this ``Thing`` owns. Optionally, filtered by an ``AttributeType`` or a list of ``AttributeType``s. Optionally, filtered by ``Annotation``s.
-
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `attributeTypes` a| The ``AttributeType``s to filter the attributes by a| `AttributeType[]`
-|===
-
-[caption=""]
-.Returns
-`Stream<Attribute>`
-
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-thing.getHas(transaction) thing.getHas(transaction, attributeType, [Annotation.KEY])
-----
-
-[#_Attribute_getHas__transaction_TypeDBTransaction__attributeTypes_AttributeType____annotations_Annotation__]
-==== getHas
-
-[source,nodejs]
-----
-getHas(transaction, attributeTypes, annotations): Stream<Attribute>
-----
-
-Retrieves the ``Attribute``s that this ``Thing`` owns. Optionally, filtered by an ``AttributeType`` or a list of ``AttributeType``s. Optionally, filtered by ``Annotation``s.
-
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `attributeTypes` a| The ``AttributeType``s to filter the attributes by a| `AttributeType[]`
-a| `annotations` a| Only retrieve attributes with all given ``Annotation``s a| `Annotation[]`
-|===
-
-[caption=""]
-.Returns
-`Stream<Attribute>`
-
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-thing.getHas(transaction) thing.getHas(transaction, attributeType, [Annotation.KEY])
-----
-
-[#_Attribute_getOwners__transaction_TypeDBTransaction__ownerType_ThingType]
+[#_Attribute_getOwners__TypeDBTransaction]
 ==== getOwners
 
-[source,nodejs]
+[source,java]
 ----
-getOwners(transaction, ownerType?): Stream<Thing>
-----
-
-Retrieves the instances that own this ``Attribute``.
-
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `ownerType` a| If specified, filter results for only owners of the given type a| `ThingType`
-|===
-
-[caption=""]
-.Returns
-`Stream<Thing>`
-
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-attribute.getOwners(transaction) attribute.getOwners(transaction, ownerType)
+@CheckReturnValue
+java.util.stream.Stream<? extends Thing> getOwners​(TypeDBTransaction transaction)
 ----
 
-[#_Attribute_getPlaying__transaction_TypeDBTransaction]
-==== getPlaying
+Retrieves the instances that own this ``Attribute``. 
 
-[source,nodejs]
-----
-getPlaying(transaction): Stream<RoleType>
-----
-
-Retrieves the roles that this ``Thing`` is currently playing.
 
 [caption=""]
 .Input parameters
@@ -514,24 +259,27 @@ a| `transaction` a| The current transaction a| `TypeDBTransaction`
 
 [caption=""]
 .Returns
-`Stream<RoleType>`
+`java.util.stream.Stream<? extends Thing>`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-thing.getPlaying(transaction)
-----
-
-[#_Attribute_getRelations__transaction_TypeDBTransaction]
-==== getRelations
-
-[source,nodejs]
-----
-getRelations(transaction): Stream<Relation>
+attribute.getOwners(transaction);
 ----
 
-Retrieves all the ``Relations`` which this ``Thing`` plays a role in, optionally filtered by one or more given roles.
+[#_Attribute_getOwners__TypeDBTransaction__ThingType]
+==== getOwners
+
+[source,java]
+----
+@CheckReturnValue
+java.util.stream.Stream<? extends Thing> getOwners​(TypeDBTransaction transaction,
+                                                   ThingType ownerType)
+----
+
+Retrieves the instances that own this ``Attribute``. 
+
 
 [caption=""]
 .Input parameters
@@ -540,59 +288,76 @@ Retrieves all the ``Relations`` which this ``Thing`` plays a role in, optionally
 |===
 |Name |Description |Type
 a| `transaction` a| The current transaction a| `TypeDBTransaction`
+a| `ownerType` a| Filter results for only owners of the given type a| `ThingType`
 |===
 
 [caption=""]
 .Returns
-`Stream<Relation>`
+`java.util.stream.Stream<? extends Thing>`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-thing.getRelations(transaction, roleTypes)
-----
-
-[#_Attribute_getRelations__transaction_TypeDBTransaction__roleTypes_RoleType__]
-==== getRelations
-
-[source,nodejs]
-----
-getRelations(transaction, roleTypes): Stream<Relation>
+attribute.getOwners(transaction, ownerType);
 ----
 
-Retrieves all the ``Relations`` which this ``Thing`` plays a role in, optionally filtered by one or more given roles.
+[#_Attribute_getType__]
+==== getType
 
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `roleTypes` a| The list of roles to filter the relations by. a| `RoleType[]`
-|===
+[source,java]
+----
+@CheckReturnValue
+AttributeType getType()
+----
+
+Retrieves the type which this ``Attribute`` belongs to. 
+
 
 [caption=""]
 .Returns
-`Stream<Relation>`
+`AttributeType`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-thing.getRelations(transaction, roleTypes)
+attribute.getType();
+----
+
+[#_Attribute_getValue__]
+==== getValue
+
+[source,java]
+----
+Value getValue()
+----
+
+Retrieves the value which the ``Attribute`` instance holds. 
+
+
+[caption=""]
+.Returns
+`Value`
+
+[caption=""]
+.Code examples
+[source,java]
+----
+attribute.getValue();
 ----
 
 [#_Attribute_isAttribute__]
 ==== isAttribute
 
-[source,nodejs]
+[source,java]
 ----
-isAttribute(): boolean
+@CheckReturnValue
+default boolean isAttribute()
 ----
 
-Checks if the concept is an ``Attribute``.
+Checks if the concept is an ``Attribute``. 
+
 
 [caption=""]
 .Returns
@@ -600,20 +365,22 @@ Checks if the concept is an ``Attribute``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isAttribute()
+attribute.isAttribute();
 ----
 
 [#_Attribute_isAttributeType__]
 ==== isAttributeType
 
-[source,nodejs]
+[source,java]
 ----
-isAttributeType(): boolean
+@CheckReturnValue
+default boolean isAttributeType()
 ----
 
-Checks if the concept is an ``AttributeType``.
+Checks if the concept is an ``AttributeType``. 
+
 
 [caption=""]
 .Returns
@@ -621,50 +388,22 @@ Checks if the concept is an ``AttributeType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isAttributeType()
-----
-
-[#_Attribute_isDeleted__transaction_TypeDBTransaction]
-==== isDeleted
-
-[source,nodejs]
-----
-isDeleted(transaction): Promise<boolean>
-----
-
-Checks if this ``Thing`` is deleted.
-
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-|===
-
-[caption=""]
-.Returns
-`Promise<boolean>`
-
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-thing.isDeleted(transaction)
+concept.isAttributeType();
 ----
 
 [#_Attribute_isEntity__]
 ==== isEntity
 
-[source,nodejs]
+[source,java]
 ----
-isEntity(): boolean
+@CheckReturnValue
+default boolean isEntity()
 ----
 
-Checks if the concept is an ``Entity``.
+Checks if the concept is an ``Entity``. 
+
 
 [caption=""]
 .Returns
@@ -672,20 +411,22 @@ Checks if the concept is an ``Entity``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isEntity()
+concept.isEntity();
 ----
 
 [#_Attribute_isEntityType__]
 ==== isEntityType
 
-[source,nodejs]
+[source,java]
 ----
-isEntityType(): boolean
+@CheckReturnValue
+default boolean isEntityType()
 ----
 
-Checks if the concept is an ``EntityType``.
+Checks if the concept is an ``EntityType``. 
+
 
 [caption=""]
 .Returns
@@ -693,20 +434,22 @@ Checks if the concept is an ``EntityType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isEntityType()
+concept.isEntityType();
 ----
 
 [#_Attribute_isRelation__]
 ==== isRelation
 
-[source,nodejs]
+[source,java]
 ----
-isRelation(): boolean
+@CheckReturnValue
+default boolean isRelation()
 ----
 
-Checks if the concept is a ``Relation``.
+Checks if the concept is a ``Relation``. 
+
 
 [caption=""]
 .Returns
@@ -714,20 +457,22 @@ Checks if the concept is a ``Relation``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isRelation()
+concept.isRelation();
 ----
 
 [#_Attribute_isRelationType__]
 ==== isRelationType
 
-[source,nodejs]
+[source,java]
 ----
-isRelationType(): boolean
+@CheckReturnValue
+default boolean isRelationType()
 ----
 
-Checks if the concept is a ``RelationType``.
+Checks if the concept is a ``RelationType``. 
+
 
 [caption=""]
 .Returns
@@ -735,20 +480,22 @@ Checks if the concept is a ``RelationType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isRelationType()
+concept.isRelationType();
 ----
 
 [#_Attribute_isRoleType__]
 ==== isRoleType
 
-[source,nodejs]
+[source,java]
 ----
-isRoleType(): boolean
+@CheckReturnValue
+default boolean isRoleType()
 ----
 
-Checks if the concept is a ``RoleType``.
+Checks if the concept is a ``RoleType``. 
+
 
 [caption=""]
 .Returns
@@ -756,41 +503,22 @@ Checks if the concept is a ``RoleType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isRoleType()
-----
-
-[#_Attribute_isThing__]
-==== isThing
-
-[source,nodejs]
-----
-isThing(): boolean
-----
-
-Checks if the concept is a ``Thing``.
-
-[caption=""]
-.Returns
-`boolean`
-
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-concept.isThing()
+concept.isRoleType();
 ----
 
 [#_Attribute_isThingType__]
 ==== isThingType
 
-[source,nodejs]
+[source,java]
 ----
-isThingType(): boolean
+@CheckReturnValue
+default boolean isThingType()
 ----
 
-Checks if the concept is a ``ThingType``.
+Checks if the concept is a ``ThingType``. 
+
 
 [caption=""]
 .Returns
@@ -798,20 +526,22 @@ Checks if the concept is a ``ThingType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isThingType()
+concept.isThingType();
 ----
 
 [#_Attribute_isType__]
 ==== isType
 
-[source,nodejs]
+[source,java]
 ----
-isType(): boolean
+@CheckReturnValue
+default boolean isType()
 ----
 
-Checks if the concept is a ``Type``.
+Checks if the concept is a ``Type``. 
+
 
 [caption=""]
 .Returns
@@ -819,20 +549,22 @@ Checks if the concept is a ``Type``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isType()
+concept.isType();
 ----
 
 [#_Attribute_isValue__]
 ==== isValue
 
-[source,nodejs]
+[source,java]
 ----
-isValue(): boolean
+@CheckReturnValue
+default boolean isValue()
 ----
 
-Checks if the concept is a ``Value``.
+Checks if the concept is a ``Value``. 
+
 
 [caption=""]
 .Returns
@@ -840,71 +572,9 @@ Checks if the concept is a ``Value``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isValue()
-----
-
-[#_Attribute_setHas__transaction_TypeDBTransaction__attribute_Attribute]
-==== setHas
-
-[source,nodejs]
-----
-setHas(transaction, attribute): Promise<void>
-----
-
-Assigns an ``Attribute`` to be owned by this ``Thing``.
-
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `attribute` a| The ``Attribute`` to be owned by this ``Thing``. a| `Attribute`
-|===
-
-[caption=""]
-.Returns
-`Promise<void>`
-
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-thing.setHas(transaction, attribute)
-----
-
-[#_Attribute_unsetHas__transaction_TypeDBTransaction__attribute_Attribute]
-==== unsetHas
-
-[source,nodejs]
-----
-unsetHas(transaction, attribute): Promise<void>
-----
-
-Unassigns an ``Attribute`` from this ``Thing``.
-
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `attribute` a| The ``Attribute`` to be disowned from this ``Thing``. a| `Attribute`
-|===
-
-[caption=""]
-.Returns
-`Promise<void>`
-
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-thing.unsetHas(transaction, attribute)
+concept.isValue();
 ----
 
 // end::methods[]

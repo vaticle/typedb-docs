@@ -1,51 +1,69 @@
 [#_TypeDBSession]
 === TypeDBSession
 
-[caption=""]
-.Fields
-// tag::properties[]
-[cols=",,"]
-[options="header"]
-|===
-|Name |Type |Description
-a| `database` a| `Database` a| The database of the session. Examples session.database()
-Copy
-a| `options` a| `TypeDBOptions` a| Gets the options for the session
-a| `type` a| `SessionType` a| The current session’s type (SCHEMA or DATA)
-|===
-// end::properties[]
+*Package*: `com.vaticle.typedb.driver.api`
+
+*Superinterfaces:*
+
+* `java.lang.AutoCloseable`
 
 // tag::methods[]
 [#_TypeDBSession_close__]
 ==== close
 
-[source,nodejs]
+[source,java]
 ----
-close(): Promise<void>
+void close()
 ----
 
-Closes the session. Before opening a new session, the session currently open should first be closed.
+Closes the session. Before opening a new session, the session currently open should first be closed. 
+
 
 [caption=""]
 .Returns
-`Promise<void>`
+`void`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-session.close()
+session.close();
+----
+
+[#_TypeDBSession_databaseName__]
+==== databaseName
+
+[source,java]
+----
+@CheckReturnValue
+java.lang.String databaseName()
+----
+
+Returns the name of the database of the session. 
+
+
+[caption=""]
+.Returns
+`java.lang.String`
+
+[caption=""]
+.Code examples
+[source,java]
+----
+session.databaseName();
 ----
 
 [#_TypeDBSession_isOpen__]
 ==== isOpen
 
-[source,nodejs]
+[source,java]
 ----
-isOpen(): boolean
+@CheckReturnValue
+boolean isOpen()
 ----
 
-Checks whether this session is open.
+Checks whether this session is open. 
+
 
 [caption=""]
 .Returns
@@ -53,20 +71,21 @@ Checks whether this session is open.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-session.isOpen()
+session.isOpen();
 ----
 
-[#_TypeDBSession_onClose__callback_______Promise_void__]
+[#_TypeDBSession_onClose__java_lang_Runnable]
 ==== onClose
 
-[source,nodejs]
+[source,java]
 ----
-onClose(callback): void
+void onClose​(java.lang.Runnable function)
 ----
 
-Registers a callback function which will be executed when this session is closed.
+Registers a callback function which will be executed when this session is closed. 
+
 
 [caption=""]
 .Input parameters
@@ -74,7 +93,7 @@ Registers a callback function which will be executed when this session is closed
 [options="header"]
 |===
 |Name |Description |Type
-a| `callback` a| The callback function. a| `(() => Promise<void>)`
+a| `function` a| The callback function. a| `java.lang.Runnable`
 |===
 
 [caption=""]
@@ -83,20 +102,21 @@ a| `callback` a| The callback function. a| `(() => Promise<void>)`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
 session.onClose(function)
 ----
 
-[#_TypeDBSession_onReopen__callback_______Promise_void__]
+[#_TypeDBSession_onReopen__java_lang_Runnable]
 ==== onReopen
 
-[source,nodejs]
+[source,java]
 ----
-onReopen(callback): void
+void onReopen​(java.lang.Runnable function)
 ----
 
-Registers a callback function which will be executed when this session is reopened. A session may be closed if it times out, or loses the connection to the database. In such situations, the session is reopened automatically when opening a new transaction.
+Registers a callback function which will be executed when this session is reopened. A session may be closed if it times out, or loses the connection to the database. In such situations, the session is reopened automatically when opening a new transaction. 
+
 
 [caption=""]
 .Input parameters
@@ -104,7 +124,7 @@ Registers a callback function which will be executed when this session is reopen
 [options="header"]
 |===
 |Name |Description |Type
-a| `callback` a| The callback function. a| `(() => Promise<void>)`
+a| `function` a| The callback function. a| `java.lang.Runnable`
 |===
 
 [caption=""]
@@ -113,20 +133,57 @@ a| `callback` a| The callback function. a| `(() => Promise<void>)`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
 session.onReopen(function)
 ----
 
-[#_TypeDBSession_transaction__type_TransactionType__options_TypeDBOptions]
+[#_TypeDBSession_options__]
+==== options
+
+[source,java]
+----
+@CheckReturnValue
+TypeDBOptions options()
+----
+
+Gets the options for the session
+
+[caption=""]
+.Returns
+`TypeDBOptions`
+
+[#_TypeDBSession_transaction__TypeDBTransaction_Type]
 ==== transaction
 
-[source,nodejs]
+[source,java]
 ----
-transaction(type, options?): Promise<TypeDBTransaction>
+@CheckReturnValue
+TypeDBTransaction transaction​(TypeDBTransaction.Type type)
 ----
 
-Opens a transaction to perform read or write queries on the database connected to the session.
+Opens a transaction on the database connected to the session with default options.
+
+
+See also: <<#_transaction_com_vaticle_typedb_driver_api_TypeDBTransaction_Type_com_vaticle_typedb_driver_api_TypeDBOptions,``transaction(TypeDBTransaction.Type, TypeDBOptions)``>>
+
+
+[caption=""]
+.Returns
+`TypeDBTransaction`
+
+[#_TypeDBSession_transaction__TypeDBTransaction_Type__TypeDBOptions]
+==== transaction
+
+[source,java]
+----
+@CheckReturnValue
+TypeDBTransaction transaction​(TypeDBTransaction.Type type,
+                              TypeDBOptions options)
+----
+
+Opens a transaction to perform read or write queries on the database connected to the session. 
+
 
 [caption=""]
 .Input parameters
@@ -134,20 +191,35 @@ Opens a transaction to perform read or write queries on the database connected t
 [options="header"]
 |===
 |Name |Description |Type
-a| `type` a|  a| `TransactionType`
+a| `type` a| The type of transaction to be created (READ or WRITE) a| `TypeDBTransaction.Type`
 a| `options` a| Options for the session a| `TypeDBOptions`
 |===
 
 [caption=""]
 .Returns
-`Promise<TypeDBTransaction>`
+`TypeDBTransaction`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-session.transaction(transactionType, options)
+session.transaction(transactionType, options);
 ----
+
+[#_TypeDBSession_type__]
+==== type
+
+[source,java]
+----
+@CheckReturnValue
+TypeDBSession.Type type()
+----
+
+The current session’s type (SCHEMA or DATA)
+
+[caption=""]
+.Returns
+`TypeDBSession.Type`
 
 // end::methods[]
 

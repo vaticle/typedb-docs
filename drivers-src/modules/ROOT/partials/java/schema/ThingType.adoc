@@ -1,31 +1,24 @@
 [#_ThingType]
 === ThingType
 
-*Supertypes:*
+*Package*: `com.vaticle.typedb.driver.api.concept.type`
 
+*Superinterfaces:*
+
+* `Concept`
 * `Type`
-
-[caption=""]
-.Namespace variables
-// tag::enum_constants[]
-[cols=""]
-[options="header"]
-|===
-|Name
-a| `NAME`
-|===
-// end::enum_constants[]
 
 // tag::methods[]
 [#_ThingType_asAttribute__]
 ==== asAttribute
 
-[source,nodejs]
+[source,java]
 ----
-asAttribute(): Attribute
+default Attribute asAttribute()
 ----
 
-Casts the concept to ``Attribute``.
+Casts the concept to ``Attribute``. 
+
 
 [caption=""]
 .Returns
@@ -33,20 +26,21 @@ Casts the concept to ``Attribute``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asAttribute()
+concept.asAttribute();
 ----
 
 [#_ThingType_asAttributeType__]
 ==== asAttributeType
 
-[source,nodejs]
+[source,java]
 ----
-asAttributeType(): AttributeType
+default AttributeType asAttributeType()
 ----
 
-Casts the concept to ``AttributeType``.
+Casts the concept to ``AttributeType``. 
+
 
 [caption=""]
 .Returns
@@ -54,20 +48,21 @@ Casts the concept to ``AttributeType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asAttributeType()
+concept.asAttributeType();
 ----
 
 [#_ThingType_asEntity__]
 ==== asEntity
 
-[source,nodejs]
+[source,java]
 ----
-asEntity(): Entity
+default Entity asEntity()
 ----
 
-Casts the concept to ``Entity``.
+Casts the concept to ``Entity``. 
+
 
 [caption=""]
 .Returns
@@ -75,20 +70,21 @@ Casts the concept to ``Entity``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asEntity()
+concept.asEntity();
 ----
 
 [#_ThingType_asEntityType__]
 ==== asEntityType
 
-[source,nodejs]
+[source,java]
 ----
-asEntityType(): EntityType
+default EntityType asEntityType()
 ----
 
-Casts the concept to ``EntityType``.
+Casts the concept to ``EntityType``. 
+
 
 [caption=""]
 .Returns
@@ -96,20 +92,21 @@ Casts the concept to ``EntityType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asEntityType()
+concept.asEntityType();
 ----
 
 [#_ThingType_asRelation__]
 ==== asRelation
 
-[source,nodejs]
+[source,java]
 ----
-asRelation(): Relation
+default Relation asRelation()
 ----
 
-Casts the concept to ``Relation``.
+Casts the concept to ``Relation``. 
+
 
 [caption=""]
 .Returns
@@ -117,20 +114,21 @@ Casts the concept to ``Relation``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asRelation()
+concept.asRelation();
 ----
 
 [#_ThingType_asRelationType__]
 ==== asRelationType
 
-[source,nodejs]
+[source,java]
 ----
-asRelationType(): RelationType
+default RelationType asRelationType()
 ----
 
-Casts the concept to ``RelationType``.
+Casts the concept to ``RelationType``. 
+
 
 [caption=""]
 .Returns
@@ -138,20 +136,21 @@ Casts the concept to ``RelationType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asRelationType()
+concept.asRelationType();
 ----
 
 [#_ThingType_asRoleType__]
 ==== asRoleType
 
-[source,nodejs]
+[source,java]
 ----
-asRoleType(): RoleType
+default RoleType asRoleType()
 ----
 
-Casts the concept to ``RoleType``.
+Casts the concept to ``RoleType``. 
+
 
 [caption=""]
 .Returns
@@ -159,20 +158,21 @@ Casts the concept to ``RoleType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asRoleType()
+concept.asRoleType();
 ----
 
 [#_ThingType_asThing__]
 ==== asThing
 
-[source,nodejs]
+[source,java]
 ----
-asThing(): Thing
+default Thing asThing()
 ----
 
-Casts the concept to ``Thing``.
+Casts the concept to ``Thing``. 
+
 
 [caption=""]
 .Returns
@@ -180,20 +180,22 @@ Casts the concept to ``Thing``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asThing()
+concept.asThing();
 ----
 
 [#_ThingType_asThingType__]
 ==== asThingType
 
-[source,nodejs]
+[source,java]
 ----
-asThingType(): ThingType
+@CheckReturnValue
+default ThingType asThingType()
 ----
 
-Casts the concept to ``ThingType``.
+Casts the concept to ``ThingType``. 
+
 
 [caption=""]
 .Returns
@@ -201,41 +203,21 @@ Casts the concept to ``ThingType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asThingType()
-----
-
-[#_ThingType_asType__]
-==== asType
-
-[source,nodejs]
-----
-asType(): Type
-----
-
-Casts the concept to ``Type``.
-
-[caption=""]
-.Returns
-`Type`
-
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-concept.asType()
+concept.asThingType();
 ----
 
 [#_ThingType_asValue__]
 ==== asValue
 
-[source,nodejs]
+[source,java]
 ----
-asValue(): Value
+default Value asValue()
 ----
 
-Casts the concept to ``Value``.
+Casts the concept to ``Value``. 
+
 
 [caption=""]
 .Returns
@@ -243,103 +225,42 @@ Casts the concept to ``Value``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.asValue()
-----
-
-[#_ThingType_delete__transaction_TypeDBTransaction]
-==== delete
-
-[source,nodejs]
-----
-delete(transaction): Promise<void>
+concept.asValue();
 ----
 
-Deletes this type from the database.
-
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-|===
-
-[caption=""]
-.Returns
-`Promise<void>`
-
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-type.delete(transaction)
-----
-
-[#_ThingType_equals__concept_Concept]
-==== equals
-
-[source,nodejs]
-----
-equals(concept): boolean
-----
-
-Checks if this concept is equal to the argument ``concept``.
-
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `concept` a| The concept to compare to. a| `Concept`
-|===
-
-[caption=""]
-.Returns
-`boolean`
-
-[#_ThingType_getInstances__transaction_TypeDBTransaction]
+[#_ThingType_getInstances__TypeDBTransaction]
 ==== getInstances
 
-[source,nodejs]
+[source,java]
 ----
-getInstances(transaction): Stream<Thing>
+@CheckReturnValue
+java.util.stream.Stream<? extends Thing> getInstances​(TypeDBTransaction transaction)
 ----
 
-Retrieves all direct and indirect ``Thing`` objects that are instances of this ``ThingType``. Equivalent to getInstances(transaction, Transitivity.TRANSITIVE)
+Retrieves all ``Thing`` objects that are instances of this ``ThingType`` or its subtypes. Equivalent to ``getInstances(transaction, Transitivity.TRANSITIVE)``
 
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-|===
+
+See also: <<#_getInstances_com_vaticle_typedb_driver_api_TypeDBTransaction_com_vaticle_typedb_driver_api_concept_Concept_Transitivity,``getInstances(TypeDBTransaction, Transitivity)``>>
+
 
 [caption=""]
 .Returns
-`Stream<Thing>`
+`java.util.stream.Stream<? extends Thing>`
 
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-thingType.getInstances(transaction)
-----
-
-[#_ThingType_getInstances__transaction_TypeDBTransaction__transitivity_Transitivity]
+[#_ThingType_getInstances__TypeDBTransaction__Concept_Transitivity]
 ==== getInstances
 
-[source,nodejs]
+[source,java]
 ----
-getInstances(transaction, transitivity): Stream<Thing>
+@CheckReturnValue
+java.util.stream.Stream<? extends Thing> getInstances​(TypeDBTransaction transaction,
+                                                      Concept.Transitivity transitivity)
 ----
 
-Retrieves all direct and indirect (or direct only) ``Thing`` objects that are instances of this ``ThingType``.
+Retrieves ``Thing`` objects that are instances of this exact ``ThingType``, OR this ``ThingType`` and any of its subtypes 
+
 
 [caption=""]
 .Input parameters
@@ -348,248 +269,177 @@ Retrieves all direct and indirect (or direct only) ``Thing`` objects that are in
 |===
 |Name |Description |Type
 a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `transitivity` a| ``Transitivity.TRANSITIVE`` for direct and indirect instances, ``Transitivity.EXPLICIT`` for direct instances only a| `Transitivity`
+a| `transitivity` a| ``Transitivity.EXPLICIT`` for direct instances only, ``Transitivity.TRANSITIVE`` to include instances of subtypes a| `Concept.Transitivity`
 |===
 
 [caption=""]
 .Returns
-`Stream<Thing>`
+`java.util.stream.Stream<? extends Thing>`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-thingType.getInstances(transaction, Transitivity.EXPLICIT)
+thingType.getInstances(transaction);
+ thingType.getInstances(transaction, Transitivity.EXPLICIT);
 ----
 
-[#_ThingType_getOwns__transaction_TypeDBTransaction]
+[#_ThingType_getOwns__TypeDBTransaction]
 ==== getOwns
 
-[source,nodejs]
+[source,java]
 ----
-getOwns(transaction): Stream<AttributeType>
+@CheckReturnValue
+java.util.stream.Stream<? extends AttributeType> getOwns​(TypeDBTransaction transaction)
 ----
 
 Retrieves ``AttributeType`` that the instances of this ``ThingType`` are allowed to own directly or via inheritance.
 
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-|===
+
+See also: <<#_getOwns_com_vaticle_typedb_driver_api_TypeDBTransaction_com_vaticle_typedb_driver_api_concept_value_Value_Type_java_util_Set_com_vaticle_typedb_driver_api_concept_Concept_Transitivity,``getOwns(TypeDBTransaction, Value.Type, Set, Transitivity)``>>
+
 
 [caption=""]
 .Returns
-`Stream<AttributeType>`
+`java.util.stream.Stream<? extends AttributeType>`
 
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-thingType.getOwns(transaction) thingType.getOwns(transaction, valueType, Transitivity.EXPLICIT,[Annotation.KEY])
-----
-
-[#_ThingType_getOwns__transaction_TypeDBTransaction__valueType_ValueType]
+[#_ThingType_getOwns__TypeDBTransaction__Value_Type]
 ==== getOwns
 
-[source,nodejs]
+[source,java]
 ----
-getOwns(transaction, valueType): Stream<AttributeType>
+@CheckReturnValue
+java.util.stream.Stream<? extends AttributeType> getOwns​(TypeDBTransaction transaction,
+                                                         Value.Type valueType)
 ----
 
 Retrieves ``AttributeType`` that the instances of this ``ThingType`` are allowed to own directly or via inheritance.
 
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `valueType` a| If specified, only attribute types of this ``ValueType`` will be retrieved. a| `ValueType`
-|===
+
+See also: <<#_getOwns_com_vaticle_typedb_driver_api_TypeDBTransaction_com_vaticle_typedb_driver_api_concept_value_Value_Type_java_util_Set_com_vaticle_typedb_driver_api_concept_Concept_Transitivity,``getOwns(TypeDBTransaction, Value.Type, Set, Transitivity)``>>
+
 
 [caption=""]
 .Returns
-`Stream<AttributeType>`
+`java.util.stream.Stream<? extends AttributeType>`
 
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-thingType.getOwns(transaction) thingType.getOwns(transaction, valueType, Transitivity.EXPLICIT,[Annotation.KEY])
-----
-
-[#_ThingType_getOwns__transaction_TypeDBTransaction__annotations_Annotation__]
+[#_ThingType_getOwns__TypeDBTransaction__java_util_Set_ThingType_Annotation_]
 ==== getOwns
 
-[source,nodejs]
+[source,java]
 ----
-getOwns(transaction, annotations): Stream<AttributeType>
+@CheckReturnValue
+java.util.stream.Stream<? extends AttributeType> getOwns​(TypeDBTransaction transaction,
+                                                         java.util.Set<ThingType.Annotation> annotations)
 ----
 
 Retrieves ``AttributeType`` that the instances of this ``ThingType`` are allowed to own directly or via inheritance.
 
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `annotations` a| If specified, only attribute types of this ``ValueType`` will be retrieved. a| `Annotation[]`
-|===
+
+See also: <<#_getOwns_com_vaticle_typedb_driver_api_TypeDBTransaction_com_vaticle_typedb_driver_api_concept_value_Value_Type_java_util_Set_com_vaticle_typedb_driver_api_concept_Concept_Transitivity,``getOwns(TypeDBTransaction, Value.Type, Set, Transitivity)``>>
+
 
 [caption=""]
 .Returns
-`Stream<AttributeType>`
+`java.util.stream.Stream<? extends AttributeType>`
 
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-thingType.getOwns(transaction) thingType.getOwns(transaction, valueType, Transitivity.EXPLICIT,[Annotation.KEY])
-----
-
-[#_ThingType_getOwns__transaction_TypeDBTransaction__valueType_ValueType__annotations_Annotation__]
+[#_ThingType_getOwns__TypeDBTransaction__Value_Type__java_util_Set_ThingType_Annotation_]
 ==== getOwns
 
-[source,nodejs]
+[source,java]
 ----
-getOwns(transaction, valueType, annotations): Stream<AttributeType>
+@CheckReturnValue
+java.util.stream.Stream<? extends AttributeType> getOwns​(TypeDBTransaction transaction,
+                                                         Value.Type valueType,
+                                                         java.util.Set<ThingType.Annotation> annotations)
 ----
 
 Retrieves ``AttributeType`` that the instances of this ``ThingType`` are allowed to own directly or via inheritance.
 
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `valueType` a| If specified, only attribute types of this ``ValueType`` will be retrieved. a| `ValueType`
-a| `annotations` a| Only retrieve attribute types owned with annotations. a| `Annotation[]`
-|===
+
+See also: <<#_getOwns_com_vaticle_typedb_driver_api_TypeDBTransaction_com_vaticle_typedb_driver_api_concept_value_Value_Type_java_util_Set_com_vaticle_typedb_driver_api_concept_Concept_Transitivity,``getOwns(TypeDBTransaction, Value.Type, Set, Transitivity)``>>
+
 
 [caption=""]
 .Returns
-`Stream<AttributeType>`
+`java.util.stream.Stream<? extends AttributeType>`
 
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-thingType.getOwns(transaction) thingType.getOwns(transaction, valueType, Transitivity.EXPLICIT,[Annotation.KEY])
-----
-
-[#_ThingType_getOwns__transaction_TypeDBTransaction__transitivity_Transitivity]
+[#_ThingType_getOwns__TypeDBTransaction__Concept_Transitivity]
 ==== getOwns
 
-[source,nodejs]
+[source,java]
 ----
-getOwns(transaction, transitivity): Stream<AttributeType>
+@CheckReturnValue
+java.util.stream.Stream<? extends AttributeType> getOwns​(TypeDBTransaction transaction,
+                                                         Concept.Transitivity transitivity)
 ----
 
 Retrieves ``AttributeType`` that the instances of this ``ThingType`` are allowed to own directly or via inheritance.
 
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `transitivity` a| If specified, only attribute types of this ``ValueType`` will be retrieved. a| `Transitivity`
-|===
+
+See also: <<#_getOwns_com_vaticle_typedb_driver_api_TypeDBTransaction_com_vaticle_typedb_driver_api_concept_value_Value_Type_java_util_Set_com_vaticle_typedb_driver_api_concept_Concept_Transitivity,``getOwns(TypeDBTransaction, Value.Type, Set, Transitivity)``>>
+
 
 [caption=""]
 .Returns
-`Stream<AttributeType>`
+`java.util.stream.Stream<? extends AttributeType>`
 
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-thingType.getOwns(transaction) thingType.getOwns(transaction, valueType, Transitivity.EXPLICIT,[Annotation.KEY])
-----
-
-[#_ThingType_getOwns__transaction_TypeDBTransaction__valueType_ValueType__transitivity_Transitivity]
+[#_ThingType_getOwns__TypeDBTransaction__Value_Type__Concept_Transitivity]
 ==== getOwns
 
-[source,nodejs]
+[source,java]
 ----
-getOwns(transaction, valueType, transitivity): Stream<AttributeType>
+@CheckReturnValue
+java.util.stream.Stream<? extends AttributeType> getOwns​(TypeDBTransaction transaction,
+                                                         Value.Type valueType,
+                                                         Concept.Transitivity transitivity)
 ----
 
 Retrieves ``AttributeType`` that the instances of this ``ThingType`` are allowed to own directly or via inheritance.
 
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `valueType` a| If specified, only attribute types of this ``ValueType`` will be retrieved. a| `ValueType`
-a| `transitivity` a| Only retrieve attribute types owned with annotations. a| `Transitivity`
-|===
+
+See also: <<#_getOwns_com_vaticle_typedb_driver_api_TypeDBTransaction_com_vaticle_typedb_driver_api_concept_value_Value_Type_java_util_Set_com_vaticle_typedb_driver_api_concept_Concept_Transitivity,``getOwns(TypeDBTransaction, Value.Type, Set, Transitivity)``>>
+
 
 [caption=""]
 .Returns
-`Stream<AttributeType>`
+`java.util.stream.Stream<? extends AttributeType>`
 
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-thingType.getOwns(transaction) thingType.getOwns(transaction, valueType, Transitivity.EXPLICIT,[Annotation.KEY])
-----
-
-[#_ThingType_getOwns__transaction_TypeDBTransaction__annotations_Annotation____transitivity_Transitivity]
+[#_ThingType_getOwns__TypeDBTransaction__java_util_Set_ThingType_Annotation___Concept_Transitivity]
 ==== getOwns
 
-[source,nodejs]
+[source,java]
 ----
-getOwns(transaction, annotations, transitivity): Stream<AttributeType>
+@CheckReturnValue
+java.util.stream.Stream<? extends AttributeType> getOwns​(TypeDBTransaction transaction,
+                                                         java.util.Set<ThingType.Annotation> annotations,
+                                                         Concept.Transitivity transitivity)
 ----
 
 Retrieves ``AttributeType`` that the instances of this ``ThingType`` are allowed to own directly or via inheritance.
 
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `annotations` a| If specified, only attribute types of this ``ValueType`` will be retrieved. a| `Annotation[]`
-a| `transitivity` a| Only retrieve attribute types owned with annotations. a| `Transitivity`
-|===
+
+See also: <<#_getOwns_com_vaticle_typedb_driver_api_TypeDBTransaction_com_vaticle_typedb_driver_api_concept_value_Value_Type_java_util_Set_com_vaticle_typedb_driver_api_concept_Concept_Transitivity,``getOwns(TypeDBTransaction, Value.Type, Set, Transitivity)``>>
+
 
 [caption=""]
 .Returns
-`Stream<AttributeType>`
+`java.util.stream.Stream<? extends AttributeType>`
 
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-thingType.getOwns(transaction) thingType.getOwns(transaction, valueType, Transitivity.EXPLICIT,[Annotation.KEY])
-----
-
-[#_ThingType_getOwns__transaction_TypeDBTransaction__valueType_ValueType__annotations_Annotation____transitivity_Transitivity]
+[#_ThingType_getOwns__TypeDBTransaction__Value_Type__java_util_Set_ThingType_Annotation___Concept_Transitivity]
 ==== getOwns
 
-[source,nodejs]
+[source,java]
 ----
-getOwns(transaction, valueType, annotations, transitivity): Stream<AttributeType>
+@CheckReturnValue
+java.util.stream.Stream<? extends AttributeType> getOwns​(TypeDBTransaction transaction,
+                                                         Value.Type valueType,
+                                                         java.util.Set<ThingType.Annotation> annotations,
+                                                         Concept.Transitivity transitivity)
 ----
 
-Retrieves ``AttributeType`` that the instances of this ``ThingType`` are allowed to own directly or via inheritance.
+Retrieves ``AttributeType`` that the instances of this ``ThingType`` are allowed to own directly or via inheritance. 
+
 
 [caption=""]
 .Input parameters
@@ -598,31 +448,35 @@ Retrieves ``AttributeType`` that the instances of this ``ThingType`` are allowed
 |===
 |Name |Description |Type
 a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `valueType` a| If specified, only attribute types of this ``ValueType`` will be retrieved. a| `ValueType`
-a| `annotations` a| Only retrieve attribute types owned with annotations. a| `Annotation[]`
-a| `transitivity` a| ``Transitivity.TRANSITIVE`` for direct and inherited ownership, ``Transitivity.EXPLICIT`` for direct ownership only a| `Transitivity`
+a| `valueType` a| If specified, only attribute types of this ``ValueType`` will be retrieved. a| `Value.Type`
+a| `transitivity` a| ``Transitivity.TRANSITIVE`` for direct and inherited ownership, ``Transitivity.EXPLICIT`` for direct ownership only a| `Concept.Transitivity`
+a| `annotations` a| Only retrieve attribute types owned with annotations. a| `java.util.Set<ThingType.Annotation>`
 |===
 
 [caption=""]
 .Returns
-`Stream<AttributeType>`
+`java.util.stream.Stream<? extends AttributeType>`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-thingType.getOwns(transaction) thingType.getOwns(transaction, valueType, Transitivity.EXPLICIT,[Annotation.KEY])
+thingType.getOwns(transaction);
+ thingType.getOwns(transaction, valueType, Transitivity.EXPLICIT, Collections.singleton(Annotation.key()));
 ----
 
-[#_ThingType_getOwnsOverridden__transaction_TypeDBTransaction__attributeType_AttributeType]
+[#_ThingType_getOwnsOverridden__TypeDBTransaction__AttributeType]
 ==== getOwnsOverridden
 
-[source,nodejs]
+[source,java]
 ----
-getOwnsOverridden(transaction, attributeType): Promise<AttributeType>
+@CheckReturnValue
+Promise<? extends AttributeType> getOwnsOverridden​(TypeDBTransaction transaction,
+                                                   AttributeType attributeType)
 ----
 
-Retrieves an ``AttributeType``, ownership of which is overridden for this ``ThingType`` by a given ``attribute_type``.
+Retrieves an ``AttributeType``, ownership of which is overridden for this ``ThingType`` by a given ``AttributeType``. 
+
 
 [caption=""]
 .Input parameters
@@ -636,24 +490,46 @@ a| `attributeType` a| The ``AttributeType`` that overrides requested ``Attribute
 
 [caption=""]
 .Returns
-`Promise<AttributeType>`
+`Promise<? extends AttributeType>`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-thingType.getOwnsOverridden(transaction, attributeType)
+thingType.getOwnsOverridden(transaction, attributeType).resolve();
 ----
 
-[#_ThingType_getPlays__transaction_TypeDBTransaction]
+[#_ThingType_getPlays__TypeDBTransaction]
 ==== getPlays
 
-[source,nodejs]
+[source,java]
 ----
-getPlays(transaction): Stream<RoleType>
+@CheckReturnValue
+java.util.stream.Stream<? extends RoleType> getPlays​(TypeDBTransaction transaction)
 ----
 
-Retrieves all direct and inherited (or direct only) roles that are allowed to be played by the instances of this ``ThingType``.
+Retrieves all direct and inherited roles that are allowed to be played by the instances of this ``ThingType``.
+
+
+See also: <<#_getPlays_com_vaticle_typedb_driver_api_TypeDBTransaction_com_vaticle_typedb_driver_api_concept_Concept_Transitivity,``getPlays(TypeDBTransaction, Transitivity)``>>
+
+
+[caption=""]
+.Returns
+`java.util.stream.Stream<? extends RoleType>`
+
+[#_ThingType_getPlays__TypeDBTransaction__Concept_Transitivity]
+==== getPlays
+
+[source,java]
+----
+@CheckReturnValue
+java.util.stream.Stream<? extends RoleType> getPlays​(TypeDBTransaction transaction,
+                                                     Concept.Transitivity transitivity)
+----
+
+Retrieves all direct and inherited (or direct only) roles that are allowed to be played by the instances of this ``ThingType``. 
+
 
 [caption=""]
 .Input parameters
@@ -662,59 +538,33 @@ Retrieves all direct and inherited (or direct only) roles that are allowed to be
 |===
 |Name |Description |Type
 a| `transaction` a| The current transaction a| `TypeDBTransaction`
+a| `transitivity` a| transitivity: ``Transitivity.TRANSITIVE`` for direct and indirect playing, ``Transitivity.EXPLICIT`` for direct playing only a| `Concept.Transitivity`
 |===
 
 [caption=""]
 .Returns
-`Stream<RoleType>`
+`java.util.stream.Stream<? extends RoleType>`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-thingType.getPlays(transaction) thingType.getPlays(transaction, Transitivity.EXPLICIT)
-----
-
-[#_ThingType_getPlays__transaction_TypeDBTransaction__transitivity_Transitivity]
-==== getPlays
-
-[source,nodejs]
-----
-getPlays(transaction, transitivity): Stream<RoleType>
+thingType.getPlays(transaction).resolve();
+ thingType.getPlays(transaction, Transitivity.EXPLICIT).resolve();
 ----
 
-Retrieves all direct and inherited (or direct only) roles that are allowed to be played by the instances of this ``ThingType``.
-
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `transitivity` a| ``Transitivity.TRANSITIVE`` for direct and indirect playing, ``Transitivity.EXPLICIT`` for direct playing only a| `Transitivity`
-|===
-
-[caption=""]
-.Returns
-`Stream<RoleType>`
-
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-thingType.getPlays(transaction) thingType.getPlays(transaction, Transitivity.EXPLICIT)
-----
-
-[#_ThingType_getPlaysOverridden__transaction_TypeDBTransaction__role_RoleType]
+[#_ThingType_getPlaysOverridden__TypeDBTransaction__RoleType]
 ==== getPlaysOverridden
 
-[source,nodejs]
+[source,java]
 ----
-getPlaysOverridden(transaction, role): Promise<RoleType>
+@CheckReturnValue
+Promise<? extends RoleType> getPlaysOverridden​(TypeDBTransaction transaction,
+                                               RoleType roleType)
 ----
 
-Retrieves a ``RoleType`` that is overridden by the given ``role_type`` for this ``ThingType``.
+Retrieves a ``RoleType`` that is overridden by the given ``role_type`` for this ``ThingType``. 
+
 
 [caption=""]
 .Input parameters
@@ -723,59 +573,51 @@ Retrieves a ``RoleType`` that is overridden by the given ``role_type`` for this 
 |===
 |Name |Description |Type
 a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `role` a| The ``RoleType`` that overrides an inherited role a| `RoleType`
+a| `roleType` a| The ``RoleType`` that overrides an inherited role a| `RoleType`
 |===
 
 [caption=""]
 .Returns
-`Promise<RoleType>`
+`Promise<? extends RoleType>`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-thingType.getPlaysOverridden(transaction, role)
+thingType.getPlaysOverridden(transaction, roleType).resolve();
 ----
 
-[#_ThingType_getSubtypes__transaction_TypeDBTransaction]
+[#_ThingType_getSubtypes__TypeDBTransaction]
 ==== getSubtypes
 
-[source,nodejs]
+[source,java]
 ----
-getSubtypes(transaction): Stream<ThingType>
+@CheckReturnValue
+java.util.stream.Stream<? extends ThingType> getSubtypes​(TypeDBTransaction transaction)
 ----
 
-Retrieves all direct and indirect subtypes of the ``ThingType``. Equivalent to getSubtypes(transaction, Transitivity.TRANSITIVE)
+Retrieves all direct and indirect subtypes of the type. Equivalent to ``getSubtypes(transaction, Transitivity.TRANSITIVE)``
 
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-|===
+
+See also: ``Type.getSubtypes(TypeDBTransaction, Transitivity)``
+
 
 [caption=""]
 .Returns
-`Stream<ThingType>`
+`java.util.stream.Stream<? extends ThingType>`
 
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-thingType.getSubtypes(transaction)
-----
-
-[#_ThingType_getSubtypes__transaction_TypeDBTransaction__transitivity_Transitivity]
+[#_ThingType_getSubtypes__TypeDBTransaction__Concept_Transitivity]
 ==== getSubtypes
 
-[source,nodejs]
+[source,java]
 ----
-getSubtypes(transaction, transitivity): Stream<ThingType>
+@CheckReturnValue
+java.util.stream.Stream<? extends ThingType> getSubtypes​(TypeDBTransaction transaction,
+                                                         Concept.Transitivity transitivity)
 ----
 
-Retrieves all direct and indirect (or direct only) subtypes of the ``ThingType``.
+Retrieves all direct and indirect (or direct only) subtypes of the type. 
+
 
 [caption=""]
 .Input parameters
@@ -784,29 +626,32 @@ Retrieves all direct and indirect (or direct only) subtypes of the ``ThingType``
 |===
 |Name |Description |Type
 a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `transitivity` a| ``Transitivity.TRANSITIVE`` for direct and indirect subtypes, ``Transitivity.EXPLICIT`` for direct subtypes only a| `Transitivity`
+a| `transitivity` a| ``Transitivity.TRANSITIVE`` for direct and indirect subtypes, ``Transitivity.EXPLICIT`` for direct subtypes only a| `Concept.Transitivity`
 |===
 
 [caption=""]
 .Returns
-`Stream<ThingType>`
+`java.util.stream.Stream<? extends ThingType>`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-thingType.getSubtypes(transaction, Transitivity.EXPLICIT)
+type.getSubtypes(transaction);
+ type.getSubtypes(transaction, Transitivity.EXPLICIT);
 ----
 
-[#_ThingType_getSupertype__transaction_TypeDBTransaction]
+[#_ThingType_getSupertype__TypeDBTransaction]
 ==== getSupertype
 
-[source,nodejs]
+[source,java]
 ----
-getSupertype(transaction): Promise<ThingType>
+@CheckReturnValue
+Promise<? extends ThingType> getSupertype​(TypeDBTransaction transaction)
 ----
 
-Retrieves the most immediate supertype of the ``ThingType``.
+Retrieves the most immediate supertype of the type. 
+
 
 [caption=""]
 .Input parameters
@@ -819,24 +664,26 @@ a| `transaction` a| The current transaction a| `TypeDBTransaction`
 
 [caption=""]
 .Returns
-`Promise<ThingType>`
+`Promise<? extends ThingType>`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-thingType.getSupertype(transaction)
+type.getSupertype(transaction).resolve();
 ----
 
-[#_ThingType_getSupertypes__transaction_TypeDBTransaction]
+[#_ThingType_getSupertypes__TypeDBTransaction]
 ==== getSupertypes
 
-[source,nodejs]
+[source,java]
 ----
-getSupertypes(transaction): Stream<ThingType>
+@CheckReturnValue
+java.util.stream.Stream<? extends ThingType> getSupertypes​(TypeDBTransaction transaction)
 ----
 
-Retrieves all supertypes of the ``ThingType``.
+Retrieves all supertypes of the type. 
+
 
 [caption=""]
 .Input parameters
@@ -849,24 +696,26 @@ a| `transaction` a| The current transaction a| `TypeDBTransaction`
 
 [caption=""]
 .Returns
-`Stream<ThingType>`
+`java.util.stream.Stream<? extends ThingType>`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-thingType.getSupertypes(transaction)
+type.getSupertypes(transaction);
 ----
 
-[#_ThingType_getSyntax__transaction_TypeDBTransaction]
+[#_ThingType_getSyntax__TypeDBTransaction]
 ==== getSyntax
 
-[source,nodejs]
+[source,java]
 ----
-getSyntax(transaction): Promise<string>
+@CheckReturnValue
+Promise<java.lang.String> getSyntax​(TypeDBTransaction transaction)
 ----
 
-Produces a pattern for creating this ``ThingType`` in a ``define`` query.
+Produces a pattern for creating this ``ThingType`` in a ``define`` query. 
+
 
 [caption=""]
 .Input parameters
@@ -879,24 +728,26 @@ a| `transaction` a| The current transaction a| `TypeDBTransaction`
 
 [caption=""]
 .Returns
-`Promise<string>`
+`Promise<java.lang.String>`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-thingType.getSyntax(transaction)
+thingType.getSyntax(transaction).resolve();
 ----
 
 [#_ThingType_isAttribute__]
 ==== isAttribute
 
-[source,nodejs]
+[source,java]
 ----
-isAttribute(): boolean
+@CheckReturnValue
+default boolean isAttribute()
 ----
 
-Checks if the concept is an ``Attribute``.
+Checks if the concept is an ``Attribute``. 
+
 
 [caption=""]
 .Returns
@@ -904,20 +755,22 @@ Checks if the concept is an ``Attribute``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isAttribute()
+concept.isAttribute();
 ----
 
 [#_ThingType_isAttributeType__]
 ==== isAttributeType
 
-[source,nodejs]
+[source,java]
 ----
-isAttributeType(): boolean
+@CheckReturnValue
+default boolean isAttributeType()
 ----
 
-Checks if the concept is an ``AttributeType``.
+Checks if the concept is an ``AttributeType``. 
+
 
 [caption=""]
 .Returns
@@ -925,43 +778,22 @@ Checks if the concept is an ``AttributeType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isAttributeType()
+concept.isAttributeType();
 ----
-
-[#_ThingType_isDeleted__transaction_TypeDBTransaction]
-==== isDeleted
-
-[source,nodejs]
-----
-isDeleted(transaction): Promise<boolean>
-----
-
-Check if the concept has been deleted
-
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-|===
-
-[caption=""]
-.Returns
-`Promise<boolean>`
 
 [#_ThingType_isEntity__]
 ==== isEntity
 
-[source,nodejs]
+[source,java]
 ----
-isEntity(): boolean
+@CheckReturnValue
+default boolean isEntity()
 ----
 
-Checks if the concept is an ``Entity``.
+Checks if the concept is an ``Entity``. 
+
 
 [caption=""]
 .Returns
@@ -969,20 +801,22 @@ Checks if the concept is an ``Entity``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isEntity()
+concept.isEntity();
 ----
 
 [#_ThingType_isEntityType__]
 ==== isEntityType
 
-[source,nodejs]
+[source,java]
 ----
-isEntityType(): boolean
+@CheckReturnValue
+default boolean isEntityType()
 ----
 
-Checks if the concept is an ``EntityType``.
+Checks if the concept is an ``EntityType``. 
+
 
 [caption=""]
 .Returns
@@ -990,20 +824,22 @@ Checks if the concept is an ``EntityType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isEntityType()
+concept.isEntityType();
 ----
 
 [#_ThingType_isRelation__]
 ==== isRelation
 
-[source,nodejs]
+[source,java]
 ----
-isRelation(): boolean
+@CheckReturnValue
+default boolean isRelation()
 ----
 
-Checks if the concept is a ``Relation``.
+Checks if the concept is a ``Relation``. 
+
 
 [caption=""]
 .Returns
@@ -1011,20 +847,22 @@ Checks if the concept is a ``Relation``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isRelation()
+concept.isRelation();
 ----
 
 [#_ThingType_isRelationType__]
 ==== isRelationType
 
-[source,nodejs]
+[source,java]
 ----
-isRelationType(): boolean
+@CheckReturnValue
+default boolean isRelationType()
 ----
 
-Checks if the concept is a ``RelationType``.
+Checks if the concept is a ``RelationType``. 
+
 
 [caption=""]
 .Returns
@@ -1032,20 +870,22 @@ Checks if the concept is a ``RelationType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isRelationType()
+concept.isRelationType();
 ----
 
 [#_ThingType_isRoleType__]
 ==== isRoleType
 
-[source,nodejs]
+[source,java]
 ----
-isRoleType(): boolean
+@CheckReturnValue
+default boolean isRoleType()
 ----
 
-Checks if the concept is a ``RoleType``.
+Checks if the concept is a ``RoleType``. 
+
 
 [caption=""]
 .Returns
@@ -1053,20 +893,22 @@ Checks if the concept is a ``RoleType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isRoleType()
+concept.isRoleType();
 ----
 
 [#_ThingType_isThing__]
 ==== isThing
 
-[source,nodejs]
+[source,java]
 ----
-isThing(): boolean
+@CheckReturnValue
+default boolean isThing()
 ----
 
-Checks if the concept is a ``Thing``.
+Checks if the concept is a ``Thing``. 
+
 
 [caption=""]
 .Returns
@@ -1074,20 +916,22 @@ Checks if the concept is a ``Thing``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isThing()
+concept.isThing();
 ----
 
 [#_ThingType_isThingType__]
 ==== isThingType
 
-[source,nodejs]
+[source,java]
 ----
-isThingType(): boolean
+@CheckReturnValue
+default boolean isThingType()
 ----
 
-Checks if the concept is a ``ThingType``.
+Checks if the concept is a ``ThingType``. 
+
 
 [caption=""]
 .Returns
@@ -1095,41 +939,22 @@ Checks if the concept is a ``ThingType``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isThingType()
-----
-
-[#_ThingType_isType__]
-==== isType
-
-[source,nodejs]
-----
-isType(): boolean
-----
-
-Checks if the concept is a ``Type``.
-
-[caption=""]
-.Returns
-`boolean`
-
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-concept.isType()
+concept.isThingType();
 ----
 
 [#_ThingType_isValue__]
 ==== isValue
 
-[source,nodejs]
+[source,java]
 ----
-isValue(): boolean
+@CheckReturnValue
+default boolean isValue()
 ----
 
-Checks if the concept is a ``Value``.
+Checks if the concept is a ``Value``. 
+
 
 [caption=""]
 .Returns
@@ -1137,20 +962,22 @@ Checks if the concept is a ``Value``.
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-concept.isValue()
+concept.isValue();
 ----
 
-[#_ThingType_setAbstract__transaction_TypeDBTransaction]
+[#_ThingType_setAbstract__TypeDBTransaction]
 ==== setAbstract
 
-[source,nodejs]
+[source,java]
 ----
-setAbstract(transaction): Promise<void>
+@CheckReturnValue
+Promise<java.lang.Void> setAbstract​(TypeDBTransaction transaction)
 ----
 
-Set a ``ThingType`` to be abstract, meaning it cannot have instances.
+Set a ``ThingType`` to be abstract, meaning it cannot have instances. 
+
 
 [caption=""]
 .Input parameters
@@ -1163,118 +990,29 @@ a| `transaction` a| The current transaction a| `TypeDBTransaction`
 
 [caption=""]
 .Returns
-`Promise<void>`
+`Promise<java.lang.Void>`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-thingType.setAbstract(transaction)
-----
-
-[#_ThingType_setLabel__transaction_TypeDBTransaction__label_string]
-==== setLabel
-
-[source,nodejs]
-----
-setLabel(transaction, label): Promise<void>
+thingType.setAbstract(transaction).resolve();
 ----
 
-Renames the label of the type. The new label must remain unique.
-
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `label` a| The new ``Label`` to be given to the type. a| `string`
-|===
-
-[caption=""]
-.Returns
-`Promise<void>`
-
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-type.setLabel(transaction, label)
-----
-
-[#_ThingType_setOwns__transaction_TypeDBTransaction__attributeType_AttributeType]
+[#_ThingType_setOwns__TypeDBTransaction__AttributeType__AttributeType__java_util_Set_ThingType_Annotation_]
 ==== setOwns
 
-[source,nodejs]
+[source,java]
 ----
-setOwns(transaction, attributeType): Promise<void>
-----
-
-Allows the instances of this ``ThingType`` to own the given ``AttributeType``.
-
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `attributeType` a| The ``AttributeType`` to be owned by the instances of this type. a| `AttributeType`
-|===
-
-[caption=""]
-.Returns
-`Promise<void>`
-
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-thingType.setOwns(transaction, attributeType) thingType.setOwns(transaction, attributeType, overriddenType,[Annotation.KEY])
+@CheckReturnValue
+Promise<java.lang.Void> setOwns​(TypeDBTransaction transaction,
+                                AttributeType attributeType,
+                                AttributeType overriddenType,
+                                java.util.Set<ThingType.Annotation> annotations)
 ----
 
-[#_ThingType_setOwns__transaction_TypeDBTransaction__attributeType_AttributeType__annotations_Annotation__]
-==== setOwns
+Allows the instances of this ``ThingType`` to own the given ``AttributeType``. Optionally, overriding a previously declared ownership. Optionally, adds annotations to the ownership. 
 
-[source,nodejs]
-----
-setOwns(transaction, attributeType, annotations): Promise<void>
-----
-
-Allows the instances of this ``ThingType`` to own the given ``AttributeType``.
-
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `attributeType` a| The ``AttributeType`` to be owned by the instances of this type. a| `AttributeType`
-a| `annotations` a| The ``AttributeType`` that this attribute ownership overrides, if applicable. a| `Annotation[]`
-|===
-
-[caption=""]
-.Returns
-`Promise<void>`
-
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-thingType.setOwns(transaction, attributeType) thingType.setOwns(transaction, attributeType, overriddenType,[Annotation.KEY])
-----
-
-[#_ThingType_setOwns__transaction_TypeDBTransaction__attributeType_AttributeType__overriddenType_AttributeType]
-==== setOwns
-
-[source,nodejs]
-----
-setOwns(transaction, attributeType, overriddenType): Promise<void>
-----
-
-Allows the instances of this ``ThingType`` to own the given ``AttributeType``.
 
 [caption=""]
 .Input parameters
@@ -1285,92 +1023,116 @@ Allows the instances of this ``ThingType`` to own the given ``AttributeType``.
 a| `transaction` a| The current transaction a| `TypeDBTransaction`
 a| `attributeType` a| The ``AttributeType`` to be owned by the instances of this type. a| `AttributeType`
 a| `overriddenType` a| The ``AttributeType`` that this attribute ownership overrides, if applicable. a| `AttributeType`
+a| `annotations` a| Adds annotations to the ownership. a| `java.util.Set<ThingType.Annotation>`
 |===
 
 [caption=""]
 .Returns
-`Promise<void>`
+`Promise<java.lang.Void>`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-thingType.setOwns(transaction, attributeType) thingType.setOwns(transaction, attributeType, overriddenType,[Annotation.KEY])
+thingType.setOwns(transaction, attributeType).resolve();
+ thingType.setOwns(transaction, attributeType, overriddenType, Collections.singleton(Annotation.key())).resolve();
 ----
 
-[#_ThingType_setOwns__transaction_TypeDBTransaction__attributeType_AttributeType__overriddenType_AttributeType__annotations_Annotation__]
+[#_ThingType_setOwns__TypeDBTransaction__AttributeType__AttributeType]
 ==== setOwns
 
-[source,nodejs]
+[source,java]
 ----
-setOwns(transaction, attributeType, overriddenType, annotations): Promise<void>
+@CheckReturnValue
+Promise<java.lang.Void> setOwns​(TypeDBTransaction transaction,
+                                AttributeType attributeType,
+                                AttributeType overriddenType)
+----
+
+Allows the instances of this ``ThingType`` to own the given ``AttributeType``,
+
+
+See also: <<#_setOwns_com_vaticle_typedb_driver_api_TypeDBTransaction_com_vaticle_typedb_driver_api_concept_type_AttributeType_com_vaticle_typedb_driver_api_concept_type_AttributeType_java_util_Set,``setOwns(TypeDBTransaction, AttributeType, AttributeType, Set)``>>
+
+
+[caption=""]
+.Returns
+`Promise<java.lang.Void>`
+
+[#_ThingType_setOwns__TypeDBTransaction__AttributeType__java_util_Set_ThingType_Annotation_]
+==== setOwns
+
+[source,java]
+----
+@CheckReturnValue
+Promise<java.lang.Void> setOwns​(TypeDBTransaction transaction,
+                                AttributeType attributeType,
+                                java.util.Set<ThingType.Annotation> annotations)
 ----
 
 Allows the instances of this ``ThingType`` to own the given ``AttributeType``.
 
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `attributeType` a| The ``AttributeType`` to be owned by the instances of this type. a| `AttributeType`
-a| `overriddenType` a| The ``AttributeType`` that this attribute ownership overrides, if applicable. a| `AttributeType`
-a| `annotations` a| Adds annotations to the ownership. a| `Annotation[]`
-|===
+
+See also: <<#_setOwns_com_vaticle_typedb_driver_api_TypeDBTransaction_com_vaticle_typedb_driver_api_concept_type_AttributeType_com_vaticle_typedb_driver_api_concept_type_AttributeType_java_util_Set,``setOwns(TypeDBTransaction, AttributeType, AttributeType, Set)``>>
+
 
 [caption=""]
 .Returns
-`Promise<void>`
+`Promise<java.lang.Void>`
+
+[#_ThingType_setOwns__TypeDBTransaction__AttributeType]
+==== setOwns
+
+[source,java]
+----
+@CheckReturnValue
+Promise<java.lang.Void> setOwns​(TypeDBTransaction transaction,
+                                AttributeType attributeType)
+----
+
+Allows the instances of this ``ThingType`` to own the given ``AttributeType``.
+
+
+See also: <<#_setOwns_com_vaticle_typedb_driver_api_TypeDBTransaction_com_vaticle_typedb_driver_api_concept_type_AttributeType_com_vaticle_typedb_driver_api_concept_type_AttributeType_java_util_Set,``setOwns(TypeDBTransaction, AttributeType, AttributeType, Set)``>>
+
 
 [caption=""]
-.Code examples
-[source,nodejs]
-----
-thingType.setOwns(transaction, attributeType) thingType.setOwns(transaction, attributeType, overriddenType,[Annotation.KEY])
-----
+.Returns
+`Promise<java.lang.Void>`
 
-[#_ThingType_setPlays__transaction_TypeDBTransaction__role_RoleType]
+[#_ThingType_setPlays__TypeDBTransaction__RoleType]
 ==== setPlays
 
-[source,nodejs]
+[source,java]
 ----
-setPlays(transaction, role): Promise<void>
+@CheckReturnValue
+Promise<java.lang.Void> setPlays​(TypeDBTransaction transaction,
+                                 RoleType roleType)
 ----
 
 Allows the instances of this ``ThingType`` to play the given role.
 
-[caption=""]
-.Input parameters
-[cols=",,"]
-[options="header"]
-|===
-|Name |Description |Type
-a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `role` a| The role to be played by the instances of this type a| `RoleType`
-|===
+
+See also: <<#_setPlays_com_vaticle_typedb_driver_api_TypeDBTransaction_com_vaticle_typedb_driver_api_concept_type_RoleType_com_vaticle_typedb_driver_api_concept_type_RoleType,``setPlays(TypeDBTransaction, RoleType, RoleType)``>>
+
 
 [caption=""]
 .Returns
-`Promise<void>`
+`Promise<java.lang.Void>`
 
-[caption=""]
-.Code examples
-[source,nodejs]
-----
-thingType.setPlays(transaction, role) thingType.setPlays(transaction, role, overriddenType)
-----
-
-[#_ThingType_setPlays__transaction_TypeDBTransaction__role_RoleType__overriddenType_RoleType]
+[#_ThingType_setPlays__TypeDBTransaction__RoleType__RoleType]
 ==== setPlays
 
-[source,nodejs]
+[source,java]
 ----
-setPlays(transaction, role, overriddenType): Promise<void>
+@CheckReturnValue
+Promise<java.lang.Void> setPlays​(TypeDBTransaction transaction,
+                                 RoleType roleType,
+                                 RoleType overriddenType)
 ----
 
-Allows the instances of this ``ThingType`` to play the given role.
+Allows the instances of this ``ThingType`` to play the given role. 
+
 
 [caption=""]
 .Input parameters
@@ -1379,30 +1141,33 @@ Allows the instances of this ``ThingType`` to play the given role.
 |===
 |Name |Description |Type
 a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `role` a| The role to be played by the instances of this type a| `RoleType`
+a| `roleType` a| The role to be played by the instances of this type a| `RoleType`
 a| `overriddenType` a| The role type that this role overrides, if applicable a| `RoleType`
 |===
 
 [caption=""]
 .Returns
-`Promise<void>`
+`Promise<java.lang.Void>`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-thingType.setPlays(transaction, role) thingType.setPlays(transaction, role, overriddenType)
+thingType.setPlays(transaction, roleType).resolve();
+ thingType.setPlays(transaction, roleType, overriddenType).resolve();
 ----
 
-[#_ThingType_unsetAbstract__transaction_TypeDBTransaction]
+[#_ThingType_unsetAbstract__TypeDBTransaction]
 ==== unsetAbstract
 
-[source,nodejs]
+[source,java]
 ----
-unsetAbstract(transaction): Promise<void>
+@CheckReturnValue
+Promise<java.lang.Void> unsetAbstract​(TypeDBTransaction transaction)
 ----
 
-Set a ``ThingType`` to be non-abstract, meaning it can have instances.
+Set a ``ThingType`` to be non-abstract, meaning it can have instances. 
+
 
 [caption=""]
 .Input parameters
@@ -1415,24 +1180,27 @@ a| `transaction` a| The current transaction a| `TypeDBTransaction`
 
 [caption=""]
 .Returns
-`Promise<void>`
+`Promise<java.lang.Void>`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-thingType.unsetAbstract(transaction)
+thingType.unsetAbstract(transaction).resolve();
 ----
 
-[#_ThingType_unsetOwns__transaction_TypeDBTransaction__attributeType_AttributeType]
+[#_ThingType_unsetOwns__TypeDBTransaction__AttributeType]
 ==== unsetOwns
 
-[source,nodejs]
+[source,java]
 ----
-unsetOwns(transaction, attributeType): Promise<void>
+@CheckReturnValue
+Promise<java.lang.Void> unsetOwns​(TypeDBTransaction transaction,
+                                  AttributeType attributeType)
 ----
 
-Disallows the instances of this ``ThingType`` from owning the given ``AttributeType``.
+Disallows the instances of this ``ThingType`` from owning the given ``AttributeType``. 
+
 
 [caption=""]
 .Input parameters
@@ -1446,24 +1214,27 @@ a| `attributeType` a| The ``AttributeType`` to not be owned by the type. a| `Att
 
 [caption=""]
 .Returns
-`Promise<void>`
+`Promise<java.lang.Void>`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-thingType.unsetOwns(transaction, attributeType)
+thingType.unsetOwns(transaction, attributeType).resolve();
 ----
 
-[#_ThingType_unsetPlays__transaction_TypeDBTransaction__role_RoleType]
+[#_ThingType_unsetPlays__TypeDBTransaction__RoleType]
 ==== unsetPlays
 
-[source,nodejs]
+[source,java]
 ----
-unsetPlays(transaction, role): Promise<void>
+@CheckReturnValue
+Promise<java.lang.Void> unsetPlays​(TypeDBTransaction transaction,
+                                   RoleType roleType)
 ----
 
-Disallows the instances of this ``ThingType`` from playing the given role.
+Disallows the instances of this ``ThingType`` from playing the given role. 
+
 
 [caption=""]
 .Input parameters
@@ -1472,18 +1243,18 @@ Disallows the instances of this ``ThingType`` from playing the given role.
 |===
 |Name |Description |Type
 a| `transaction` a| The current transaction a| `TypeDBTransaction`
-a| `role` a| The role to not be played by the instances of this type. a| `RoleType`
+a| `roleType` a| The role to not be played by the instances of this type. a| `RoleType`
 |===
 
 [caption=""]
 .Returns
-`Promise<void>`
+`Promise<java.lang.Void>`
 
 [caption=""]
 .Code examples
-[source,nodejs]
+[source,java]
 ----
-thingType.unsetPlays(transaction, role)
+thingType.unsetPlays(transaction, roleType).resolve();
 ----
 
 // end::methods[]
