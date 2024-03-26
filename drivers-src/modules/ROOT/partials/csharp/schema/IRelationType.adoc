@@ -61,7 +61,7 @@ Creates and returns an instance of this ``IRelationType``.
 [options="header"]
 |===
 |Name |Description |Type
-a| `transaction` a| The current transaction a| 
+a| `transaction` a| The current transaction a| `ITypeDBTransaction`
 |===
 
 [caption=""]
@@ -88,11 +88,14 @@ IEnumerable< IRoleType > GetRelates(ITypeDBTransaction transaction)
 Retrieves roles that this ``IRelationType`` relates to directly or via inheritance.
 
  
-  See also
+
+See also
+[source,cs]
+----
  
  
   IRelationType::getRelates(ITypeDBTransaction, IConcept.Transitivity)
- 
+---- 
 
 
 [caption=""]
@@ -118,8 +121,8 @@ Retrieves roles that this ``IRelationType`` relates to directly or via inheritan
 [options="header"]
 |===
 |Name |Description |Type
-a| `transaction` a| The current transaction a| 
-a| `transitivity` a| ``Transitive`` for direct and inherited relates, ``Explicit`` for direct relates only a| 
+a| `transaction` a| The current transaction a| `ITypeDBTransaction`
+a| `transitivity` a| ``Transitive`` for direct and inherited relates, ``Explicit`` for direct relates only a| `IConcept.Transitivity`
 |===
 
 [caption=""]
@@ -152,8 +155,8 @@ Retrieves roles that this ``IRelationType`` relates to directly or via inheritan
 [options="header"]
 |===
 |Name |Description |Type
-a| `transaction` a| The current transaction a| 
-a| `roleLabel` a| Label of the role we wish to retrieve a| 
+a| `transaction` a| The current transaction a| `ITypeDBTransaction`
+a| `roleLabel` a| Label of the role we wish to retrieve a| `string`
 |===
 
 [caption=""]
@@ -180,11 +183,14 @@ Promise< IRoleType > GetRelatesOverridden(ITypeDBTransaction transaction, IRoleT
 Retrieves a ``IRoleType`` that is overridden by the role with the ``role_label``.
 
  
-  See also
+
+See also
+[source,cs]
+----
  
  
-  <<#_Promise__IRoleType___TypeDB_Driver_Api_IRelationType_GetRelatesOverridden___ITypeDBTransaction_transaction__string_roleLabel_,IRelationType::GetRelatesOverridden(ITypeDBTransaction, string)>>
- 
+  IRelationType::GetRelatesOverridden(ITypeDBTransaction, string)
+---- 
 
 
 [caption=""]
@@ -210,8 +216,8 @@ Retrieves a ``IRoleType`` that is overridden by the role with the ``role_label``
 [options="header"]
 |===
 |Name |Description |Type
-a| `transaction` a| The current transaction a| 
-a| `roleLabel` a| Label of the role that overrides an inherited role a| 
+a| `transaction` a| The current transaction a| `ITypeDBTransaction`
+a| `roleLabel` a| Label of the role that overrides an inherited role a| `string`
 |===
 
 [caption=""]
@@ -266,11 +272,14 @@ VoidPromise SetRelates(ITypeDBTransaction transaction, string roleLabel)
 Sets the new role that this ``IRelationType`` relates to.
 
  
-  See also
+
+See also
+[source,cs]
+----
  
  
   IRelationType::SetRelates(ITypeDBTransaction, string, string)
- 
+---- 
 
 
 [caption=""]
@@ -290,11 +299,14 @@ VoidPromise SetRelates(ITypeDBTransaction transaction, string roleLabel, IRoleTy
 Sets the new role that this ``IRelationType`` relates to.
 
  
-  See also
+
+See also
+[source,cs]
+----
  
  
   IRelationType::SetRelates(ITypeDBTransaction, string, string)
- 
+---- 
 
 
 [caption=""]
@@ -320,9 +332,9 @@ Sets the new role that this ``IRelationType`` relates to. If we are setting an o
 [options="header"]
 |===
 |Name |Description |Type
-a| `transaction` a| The current transaction a| 
-a| `roleLabel` a| The new role for the ``IRelationType`` to relate to a| 
-a| `overriddenLabel` a| The label being overridden, if applicable a| 
+a| `transaction` a| The current transaction a| `ITypeDBTransaction`
+a| `roleLabel` a| The new role for the ``IRelationType`` to relate to a| `string`
+a| `overriddenLabel` a| The label being overridden, if applicable a| `string?`
 |===
 
 [caption=""]
@@ -356,8 +368,8 @@ Sets the supplied ``IRelationType`` as the supertype of the current ``IRelationT
 [options="header"]
 |===
 |Name |Description |Type
-a| `transaction` a| The current transaction a| 
-a| `superRelationType` a| The ``IRelationType`` to set as the supertype of this ``IRelationType`` a| 
+a| `transaction` a| The current transaction a| `ITypeDBTransaction`
+a| `superRelationType` a| The ``IRelationType`` to set as the supertype of this ``IRelationType`` a| `IRelationType`
 |===
 
 [caption=""]
@@ -384,11 +396,14 @@ VoidPromise UnsetRelates(ITypeDBTransaction transaction, IRoleType roleType)
 Disallows this ``IRelationType`` from relating to the given role.
 
  
-  See also
+
+See also
+[source,cs]
+----
  
  
-  <<#_VoidPromise_TypeDB_Driver_Api_IRelationType_UnsetRelates___ITypeDBTransaction_transaction__string_roleLabel_,IRelationType::UnsetRelates(ITypeDBTransaction, string)>>
- 
+  IRelationType::UnsetRelates(ITypeDBTransaction, string)
+---- 
 
 
 [caption=""]
@@ -414,8 +429,8 @@ Disallows this ``IRelationType`` from relating to the given role.
 [options="header"]
 |===
 |Name |Description |Type
-a| `transaction` a| The current transaction a| 
-a| `roleLabel` a| The role to not relate to the relation type. a| 
+a| `transaction` a| The current transaction a| `ITypeDBTransaction`
+a| `roleLabel` a| The role to not relate to the relation type. a| `string`
 |===
 
 [caption=""]

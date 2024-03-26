@@ -54,11 +54,14 @@ IEnumerable< IThing > GetPlayerInstances(ITypeDBTransaction transaction)
 Retrieves the ``Thing`` instances that play this role.
 
  
-  See also
+
+See also
+[source,cs]
+----
  
  
-  <<#_IEnumerable__IThing___TypeDB_Driver_Api_IRoleType_GetPlayerInstances___ITypeDBTransaction_transaction_,IRoleType::GetPlayerInstances>>(ITypeDBTransaction, IConcept.Transitivity)
- 
+  IRoleType::GetPlayerInstances(ITypeDBTransaction, IConcept.Transitivity)
+---- 
 
 
 [caption=""]
@@ -84,8 +87,8 @@ Retrieves the ``Thing`` instances that play this role.
 [options="header"]
 |===
 |Name |Description |Type
-a| `transaction` a| The current transaction a| 
-a| `transitivity` a| ``Transitive`` for direct and indirect playing, ``Explicit`` for direct playing only a| 
+a| `transaction` a| The current transaction a| `ITypeDBTransaction`
+a| `transitivity` a| ``Transitive`` for direct and indirect playing, ``Explicit`` for direct playing only a| `IConcept.Transitivity`
 |===
 
 [caption=""]
@@ -112,11 +115,14 @@ IEnumerable< IThingType > GetPlayerTypes(ITypeDBTransaction transaction)
 Retrieves the ``ThingType``s whose instances play this role. Equivalent to ``GetPlayerTypes(transaction, Transitive)``.
 
  
-  See also
+
+See also
+[source,cs]
+----
  
  
-  <<#_IEnumerable__IThingType___TypeDB_Driver_Api_IRoleType_GetPlayerTypes___ITypeDBTransaction_transaction_,IRoleType::GetPlayerTypes>>(ITypeDBTransaction, IConcept.Transitivity)
- 
+  IRoleType::GetPlayerTypes(ITypeDBTransaction, IConcept.Transitivity)
+---- 
 
 
 [caption=""]
@@ -142,8 +148,8 @@ Retrieves the ``ThingType``s whose instances play this role.
 [options="header"]
 |===
 |Name |Description |Type
-a| `transaction` a| The current transaction a| 
-a| `transitivity` a| ``Transitive`` for direct and indirect playing, ``Explicit`` for direct playing only a| 
+a| `transaction` a| The current transaction a| `ITypeDBTransaction`
+a| `transitivity` a| ``Transitive`` for direct and indirect playing, ``Explicit`` for direct playing only a| `IConcept.Transitivity`
 |===
 
 [caption=""]
@@ -170,11 +176,14 @@ IEnumerable< IRelation > GetRelationInstances(ITypeDBTransaction transaction)
 Retrieves the ``Relation`` instances that this role is related to. Equivalent to ``GetRelationInstances(transaction, Transitive)``
 
  
-  See also
+
+See also
+[source,cs]
+----
  
  
-  <<#_IEnumerable__IRelation___TypeDB_Driver_Api_IRoleType_GetRelationInstances___ITypeDBTransaction_transaction_,IRoleType::GetRelationInstances>>(ITypeDBTransaction, IConcept.Transitivity)
- 
+  IRoleType::GetRelationInstances(ITypeDBTransaction, IConcept.Transitivity)
+---- 
 
 
 [caption=""]
@@ -200,8 +209,8 @@ Retrieves the ``Relation`` instances that this role is related to.
 [options="header"]
 |===
 |Name |Description |Type
-a| `transaction` a| The current transaction a| 
-a| `transitivity` a| ``Transitive`` for direct and indirect relation, ``Explicit`` for direct relation only a| 
+a| `transaction` a| The current transaction a| `ITypeDBTransaction`
+a| `transitivity` a| ``Transitive`` for direct and indirect relation, ``Explicit`` for direct relation only a| `IConcept.Transitivity`
 |===
 
 [caption=""]
@@ -234,7 +243,7 @@ Retrieves ``RelationType``s that this role is related to (directly or indirectly
 [options="header"]
 |===
 |Name |Description |Type
-a| `transaction` a| The current transaction a| 
+a| `transaction` a| The current transaction a| `ITypeDBTransaction`
 |===
 
 [caption=""]
